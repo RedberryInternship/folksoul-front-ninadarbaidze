@@ -32,27 +32,30 @@ const Input: React.FC<inputProps> = (props) => {
       </label>
       <div className='relative flex items-center'>
         <input
-          className={`${props.class} w-[285px] mt-12 h-14  focus:outline-none bg-dark30 placeholder:text-brown  text-sm font-normal  border-0 rounded-[2px]  pl-[8%] `}
+          className={`${props.class} w-[285px]  h-14  focus:outline-none bg-dark30 placeholder:text-brown text-sm font-normal  border-0 rounded-[2px]  pl-[8%] `}
           type={props.type ? props.type : 'text'}
           id={props.id}
           placeholder={props.placeholder}
           {...props.register(props.fieldName, {
             required: {
               value: props.isRequired,
-              message: 'error',
+              message: 'ეს ველი სავალდებულოა',
             },
             minLength: {
               value: props.minValue ? props.minValue : 0,
-              message: 'error',
+              message: `შეიყვანე მინიმუმ ${props.minValue} სიმბოლო `,
             },
-            validate: (value: string) =>
-              props.pass === value || props.callBackMessage,
+            // validate: (value: string) =>
+            //   props.pass === value || props.callBackMessage,
             pattern: {
-              value: props.pattern,
-              message: 'error',
+              value: /^[a-z][a-z0-9]/,
+              message: 'გთხოვ შეიყვანე ვალიდური მეტსახელი',
             },
           })}
         />
+        <p className='max-w-sm pl-[3%] pt-1 text-error xs:text-sm lg:text-xs 2xl:text-base'>
+          {props.errorMessage}
+        </p>
       </div>
     </div>
   );
