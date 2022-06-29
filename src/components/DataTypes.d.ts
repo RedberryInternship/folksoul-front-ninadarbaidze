@@ -38,3 +38,10 @@ export type ChildrenClassesTypes = {
   children: React.ReactNode;
   className?: string;
 };
+
+export type ContextData = {
+  token: any;
+  isLoggedIn: boolean;
+  login: (token: string) => void;
+  logout: () => void;
+};

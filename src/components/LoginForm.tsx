@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Input, LoginModal, Button } from 'components';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import AuthContext from 'store/AuthContext';
+import { useNavigate } from 'react-router-dom';
+
 import axios from 'axios';
 
 export type LoginValueTypes = {
@@ -9,6 +12,9 @@ export type LoginValueTypes = {
 };
 
 const LoginForm = () => {
+  const navigate = useNavigate();
+  const authCtx = useContext(AuthContext);
+
   const {
     register,
     handleSubmit,
@@ -25,11 +31,11 @@ const LoginForm = () => {
     try {
       const response = await axios.post('http://localhost:3000/auth', data);
       const getData = await response;
-      console.log(getData.data.token);
+      authCtx.login(getData.data.token);
     } catch (error: any) {
       throw new Error('Request failed!');
     }
-    // navigate('');
+    navigate('/dashoboard');
   };
   return (
     <LoginModal>
