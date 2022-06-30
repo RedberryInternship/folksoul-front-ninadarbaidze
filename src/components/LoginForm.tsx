@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Input, LoginModal, Button } from 'components';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import AuthContext from 'store/AuthContext';
@@ -12,13 +12,15 @@ export type LoginValueTypes = {
 };
 
 const LoginForm = () => {
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
   const authCtx = useContext(AuthContext);
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    watch,
+    formState: { errors, isSubmitSuccessful },
   } = useForm<LoginValueTypes>({
     mode: 'onChange',
     reValidateMode: 'onChange',
@@ -27,12 +29,16 @@ const LoginForm = () => {
       password: '',
     },
   });
+
+  const username = watch('username');
+
   const onSubmit: SubmitHandler<LoginValueTypes> = async (data) => {
     try {
       const response = await axios.post('http://localhost:3000/auth', data);
       const getData = await response;
       authCtx.login(getData.data.token);
     } catch (error: any) {
+      setError(error.response.status);
       throw new Error('Request failed!');
     }
     navigate('/dashoboard');
@@ -55,10 +61,21 @@ const LoginForm = () => {
             }
             isRequired={true}
             minValue={3}
-            class={errors.username ? 'border-red border-2' : ''}
+            class={
+              errors.username || (error && !isSubmitSuccessful)
+                ? 'border-red border-2'
+                : ''
+            }
           />
           {errors.username ? (
-            <p className='text-red text-xs pt-1'>{errors.username?.message}</p>
+            <p className='text-red text-[10px] pt-1'>
+              {errors.username?.message}
+            </p>
+          ) : null}
+          {error && !isSubmitSuccessful && username.length >= 3 ? (
+            <p className='text-red text-[10px] pt-1'>
+              მეტსახელი ან პაროლი არასწორია
+            </p>
           ) : null}
         </div>
 
