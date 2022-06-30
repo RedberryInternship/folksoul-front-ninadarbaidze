@@ -13,6 +13,9 @@ module.exports = {
       dropShadow: {
         '3xl': '0px 4px 4px rgba(0, 0, 0, 0.25)',
       },
+      boxShadow: {
+        innerSh: 'inset 4px 4px 20px #4D4D4D',
+      },
       backgroundImage: {
         'gradient-radial-to-tr':
           'radial-gradient(50% 50% at 50% 50%, var(--tw-gradient-stops))',

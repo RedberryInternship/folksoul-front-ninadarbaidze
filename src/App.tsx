@@ -20,7 +20,13 @@ const App = () => {
               <Navigate replace to='/login' />
             )
           }
-        ></Route>
+        >
+          {/* <Route path='main' element={<Worldwide />} />
+          <Route path='band-members' element={<ByCountry />} />
+          <Route path='socials' element={<ByCountry />} />
+          <Route path='about-band' element={<ByCountry />} />
+          <Route path='logout' element={<ByCountry />} /> */}
+        </Route>
       </Routes>
     </>
   );
