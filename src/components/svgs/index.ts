@@ -6,3 +6,5 @@ export { default as DoorIcon } from './DoorIcon';
 export { default as NoteIcon } from './NoteIcon';
 export { default as YoutubeIcon } from './YoutubeIcon';
 export { default as HomeIcon } from './HomeIcon';
+export { default as TvSatelite } from './TvSatelite';
+export { default as TvFeet } from './TvFeet';
