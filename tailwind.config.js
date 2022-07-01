@@ -56,6 +56,8 @@ module.exports = {
       red: '#EB5757',
       white: '#FFFFFF',
       brown: '#501C1C',
+      blue2: '#143B52',
+      placeholder: '#A8A3A3',
     },
     animation: {
       bounce: 'bounce 1s 5 ',
