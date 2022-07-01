@@ -32,7 +32,7 @@ const Input: React.FC<inputProps> = (props) => {
       </label>
       <div className='relative flex items-center'>
         <input
-          className={`${props.class} w-[285px]  h-14  focus:outline-none bg-dark30 placeholder:text-brown text-sm font-normal  border-0 rounded-[2px]  pl-[8%] `}
+          className={`${props.class} w-[28rem] h-[5rem]  focus:outline-none bg-dark30 placeholder:text-brown text-2xl font-normal  border-0 rounded-[2px]  pl-[8%] `}
           type={props.type ? props.type : 'text'}
           id={props.id}
           placeholder={props.placeholder}

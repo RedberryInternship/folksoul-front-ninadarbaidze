@@ -5,7 +5,7 @@ import { Outlet, NavLink } from 'react-router-dom';
 import axios from 'axios';
 
 export type Data = {
-  id: string;
+  _id: string;
   name: string;
   instrument: string;
   orbitLength: number;
@@ -32,7 +32,6 @@ const BandMember = () => {
 
   useEffect(() => {
     fetchData();
-    console.log(data);
   }, [fetchData]);
 
   return (
@@ -40,10 +39,10 @@ const BandMember = () => {
       <AdminPanelActionWrapper header='ჯგუფის წევრები'>
         <div className='flex gap-10'>
           {data.map((data) => (
-            <Member name={data.name} />
+            <Member name={data.name} key={data._id} />
           ))}
         </div>
-        <button className=' text-link font-bold underline mt-[-20px]'>
+        <button className=' text-link text-2xl font-bold underline mt-[-20px]'>
           <NavLink to='new-member'>ახალი წევრი გვყავს?</NavLink>
         </button>
       </AdminPanelActionWrapper>

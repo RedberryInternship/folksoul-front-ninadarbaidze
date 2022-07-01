@@ -15,27 +15,27 @@ const Dashoboard = () => {
       <DashboardWrapper>
         <DashboardNavs destination={'main'}>
           <HomeIcon />
-          <h2>მთავარი</h2>
+          <h2 className='text-[28px]'>მთავარი</h2>
         </DashboardNavs>
 
         <DashboardNavs destination={'band-members'}>
           <MemberIcon />
-          <h2>ჯგუფის წევრები</h2>
+          <h2 className='text-[28px]'>ჯგუფის წევრები</h2>
         </DashboardNavs>
 
         <DashboardNavs destination={'socials'}>
           <YoutubeIcon />
-          <h2>სოციალური ბმულები</h2>
+          <h2 className='text-[28px]'>სოციალური ბმულები</h2>
         </DashboardNavs>
 
         <DashboardNavs destination={'about-band'}>
           <NoteIcon />
-          <h2>ბენდის შესახებ</h2>
+          <h2 className='text-[28px]'>ბენდის შესახებ</h2>
         </DashboardNavs>
 
         <DashboardNavs destination={'logout'}>
           <DoorIcon />
-          <h2>გადი გარეთ</h2>
+          <h2 className='text-[28px]'>გადი გარეთ</h2>
         </DashboardNavs>
       </DashboardWrapper>
 

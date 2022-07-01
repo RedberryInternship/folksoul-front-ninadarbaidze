@@ -49,7 +49,7 @@ const LoginForm = () => {
         onSubmit={handleSubmit(onSubmit)}
         className='flex flex-col items-center'
       >
-        <div className='h-12 mt-12'>
+        <div className='h-24 mt-12'>
           <Input
             fieldName='username'
             register={register}
@@ -68,12 +68,12 @@ const LoginForm = () => {
             }
           />
           {errors.username ? (
-            <p className='text-red text-[10px] pt-1'>
+            <p className='text-red text-[20px] pt-1'>
               {errors.username?.message}
             </p>
           ) : null}
           {error && !isSubmitSuccessful && username.length >= 3 ? (
-            <p className='text-red text-[10px] pt-1'>
+            <p className='text-red text-[20px] pt-1'>
               მეტსახელი ან პაროლი არასწორია
             </p>
           ) : null}
@@ -91,10 +91,12 @@ const LoginForm = () => {
             class={errors.password ? 'border-red border-2' : ''}
           />
           {errors.password ? (
-            <p className='text-red text-xs pt-1'>{errors.password?.message}</p>
+            <p className='text-red text-[20px] pt-1'>
+              {errors.password?.message}
+            </p>
           ) : null}
         </div>
-        <Button className='w-[227px] h-[55px] mt-12 bg-grad3 border-[1px] rounded-[3px]  border-white text-white'>
+        <Button className='w-[23rem] h-[5rem] mt-24 text-2xl bg-grad3 border-[1px] rounded-[3px]  border-white text-white'>
           შემობრძანდი
         </Button>
       </form>

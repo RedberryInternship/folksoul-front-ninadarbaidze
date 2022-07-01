@@ -1,4 +1,3 @@
-import React from 'react';
 import { LoginForm } from 'components';
 import {
   RedButton,
@@ -6,31 +5,97 @@ import {
   GreenButton,
   EditPhoto,
 } from 'components/svgs';
+import React from 'react';
+import { AdminPanelActionWrapper } from 'components';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { Input, Textarea, FormButton } from 'pages/NewMember/components';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
+type AddNewMember = {
+  name: string;
+  instrument: string;
+  orbitLength: any;
+  color: any;
+  biography: string;
+};
 
 const Socials = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<AddNewMember>({
+    mode: 'onChange',
+  });
+  const onSubmit: SubmitHandler<AddNewMember> = async (data) => {
+    // const token = localStorage.getItem('token');
+    console.log(data);
+  };
   return (
     <>
-      <div className='flex flex-col pt-16 items-center w-[70%] h-[80%] absolute top-[10%] left-[25%] bg-white rounded-[20px] shadow-innerSh'>
-        {/* <div className='flex flex-col justify-between w-[70%] items-center ml-[8%] mr-[8%]  pb-12 border-b-[1px] border-dark50 h-6'> */}
-        <h1 className='text-lg '>ბენდის წევრები</h1>
-        {/* group members */}
-        <div className='flex flex-col justify-between items-center w-[16%] h-[40%] bg-dark50 border-[1px] rounded-sm drop-shadow-4xl'>
-          <div className='flex flex-col justify-center items-center relative rounded-full bg-backdrop border-[0.1px] mt-4 border-white w-20 h-20'>
-            <img
-              src='https://images.vexels.com/media/users/3/129515/isolated/preview/7fb084074c0ee8cfc07d1b9cebcb977f-boy-cartoon-head.png'
-              alt=''
-              className='w-16'
-            />
-            <EditPhoto className='w-[20px] absolute ml-16 mt-12' />
-          </div>
-          <h1 className='text-white'>ნინა</h1>
-          <div className='flex justify-center items-center gap-8 border-t-[1px] h-8 w-full drop-shadow-4xl'>
-            <GreenButton />
-            <YellowButton />
-            <RedButton />
-          </div>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className='flex flex-col justify-center items-center gap-8'
+      >
+        <Input
+          fieldName='name'
+          type='text'
+          register={register}
+          placeholder={'სახელი'}
+          id={'name'}
+          isRequired={true}
+          minValue={3}
+          class={errors.name ? 'w-[20vw] border-red border-2' : 'w-[20vw]'}
+        />
+        <div className='flex gap-6'>
+          <Input
+            fieldName='instrument'
+            type='text'
+            register={register}
+            placeholder={'ინსტრუმენტი'}
+            id={'instrument'}
+            isRequired={true}
+            minValue={3}
+            class={
+              errors.instrument ? 'w-[10vw] border-red border-2' : 'w-[10vw]'
+            }
+          />
+          <Input
+            fieldName='orbitLength'
+            type='text'
+            register={register}
+            placeholder={'ორბიტა'}
+            isRequired={true}
+            class={
+              errors.instrument ? 'w-[10vw] border-red border-2' : 'w-[10vw]'
+            }
+          />
+
+          <Input
+            fieldName='color'
+            type='text'
+            register={register}
+            placeholder={'ფერი'}
+            id={'color'}
+            isRequired={true}
+            // minValue={6}
+            class={errors.color ? 'w-[10vw] border-red border-2' : 'w-[10vw]'}
+          />
         </div>
-      </div>
+        <Textarea
+          fieldName='ბიოგრაფია'
+          register={register}
+          placeholder={'ბიოგრაფია'}
+        />
+        <FormButton />
+        <button
+          className=' text-link font-bold underline mt-[-20px]'
+          // onClick={() => navigate('/dashoboard/band-members')}
+        >
+          გადი უკან
+        </button>
+      </form>
       {/* </div> */}
     </>
   );

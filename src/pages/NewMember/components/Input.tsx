@@ -32,7 +32,7 @@ const Input: React.FC<inputProps> = (props) => {
       </label>
       <div className='relative flex items-center'>
         <input
-          className={`${props.class} h-[3.5vw] text-center  focus:outline-none bg-white placeholder:placeholder text-sm font-normal border-blue2  border-[1px] rounded-[5px]  pl-[8%] `}
+          className={`${props.class} h-[4rem] text-center  focus:outline-none bg-white placeholder:placeholder text-xl font-normal border-blue2  border-[1px] rounded-[5px]  pl-[8%] `}
           type={props.type ? props.type : 'text'}
           id={props.id}
           placeholder={props.placeholder}
@@ -47,10 +47,10 @@ const Input: React.FC<inputProps> = (props) => {
             },
             // validate: (value: string) =>
             //   props.pass === value || props.callBackMessage,
-            pattern: {
-              value: /^[a-z][a-z0-9]/,
-              message: 'გთხოვ შეიყვანე ვალიდური მეტსახელი',
-            },
+            // pattern: {
+            //   value: /^[a-z][a-z0-9]/,
+            //   message: 'გთხოვ შეიყვანე ვალიდური მეტსახელი',
+            // },
           })}
         />
         <p className='max-w-sm pl-[3%] pt-1 text-error xs:text-sm lg:text-xs 2xl:text-base'>

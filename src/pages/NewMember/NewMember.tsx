@@ -3,12 +3,13 @@ import { AdminPanelActionWrapper } from 'components';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Input, Textarea, FormButton } from 'pages/NewMember/components';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 type AddNewMember = {
   name: string;
   instrument: string;
   orbitLength: number;
-  color: string;
+  color: any;
   biography: string;
 };
 
@@ -17,22 +18,31 @@ const NewMember = () => {
   const {
     register,
     handleSubmit,
-    watch,
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors },
   } = useForm<AddNewMember>({
     mode: 'onChange',
-    reValidateMode: 'onChange',
-    defaultValues: {
-      name: '',
-      instrument: '',
-      orbitLength: 3,
-      color: '',
-    },
   });
+
+  const onSubmit: SubmitHandler<AddNewMember> = async (data) => {
+    const token = localStorage.getItem('token');
+    console.log(data);
+
+    try {
+      await axios.post('http://localhost:3000/new-member', data, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+    } catch (error: any) {
+      throw new Error('Request failed!');
+    }
+    navigate('/dashoboard');
+  };
   return (
     <div>
       <AdminPanelActionWrapper header='დაამატე ჯგუფის ახალი წევრი'>
-        <form className='flex flex-col justify-center items-center gap-8'>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className='flex flex-col mt-14 justify-center items-center gap-14'
+        >
           <Input
             fieldName='name'
             type='text'
@@ -58,16 +68,15 @@ const NewMember = () => {
             />
             <Input
               fieldName='orbitLength'
-              type='number'
+              type='text'
               register={register}
               placeholder={'ორბიტის სიგანე'}
-              id={'lorbitLength'}
               isRequired={true}
-              minValue={3}
               class={
-                errors.orbitLength ? 'w-[10vw] border-red border-2' : 'w-[10vw]'
+                errors.instrument ? 'w-[10vw] border-red border-2' : 'w-[10vw]'
               }
             />
+
             <Input
               fieldName='color'
               type='text'
@@ -75,18 +84,18 @@ const NewMember = () => {
               placeholder={'ფერი'}
               id={'color'}
               isRequired={true}
-              minValue={3}
+              minValue={7}
               class={errors.color ? 'w-[10vw] border-red border-2' : 'w-[10vw]'}
             />
           </div>
           <Textarea
-            fieldName='ბიოგრაფია'
+            fieldName='biography'
             register={register}
             placeholder={'ბიოგრაფია'}
           />
           <FormButton />
           <button
-            className=' text-link font-bold underline mt-[-20px]'
+            className=' text-link text-2xl font-bold underline mt-[-20px]'
             onClick={() => navigate('/dashoboard/band-members')}
           >
             გადი უკან

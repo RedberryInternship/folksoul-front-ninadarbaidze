@@ -9,8 +9,8 @@ const DashboardNavs: React.FC<DashboartNavs> = (props) => {
         to={props.destination}
         className={({ isActive }) =>
           isActive
-            ? 'flex gap-2 pl-4 h-14 items-center text-dark50 bg-white'
-            : 'flex gap-2 pl-4 h-14 items-center text-white'
+            ? 'flex gap-4 pl-4 h-20 items-center text-dark50 bg-white'
+            : 'flex gap-4 pl-4 h-20 items-center text-white'
         }
       >
         {props.children}
