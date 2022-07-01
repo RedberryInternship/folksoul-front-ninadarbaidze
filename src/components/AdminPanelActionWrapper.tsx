@@ -1,5 +1,4 @@
 import React from 'react';
-import { Children } from 'components';
 
 type AdminPanelWrapper = {
   children: React.ReactNode;
