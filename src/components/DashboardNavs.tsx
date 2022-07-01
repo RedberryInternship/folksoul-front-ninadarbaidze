@@ -1,11 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { JsxElement } from 'typescript';
-
-type DashboartNavs = {
-  destination: string;
-  children: React.ReactNode;
-};
+import { DashboartNavs } from 'components';
 
 const DashboardNavs: React.FC<DashboartNavs> = (props) => {
   return (

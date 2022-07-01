@@ -45,3 +45,8 @@ export type ContextData = {
   login: (token: string) => void;
   logout: () => void;
 };
+
+export type DashboartNavs = {
+  destination: string;
+  children: React.ReactNode;
+};
