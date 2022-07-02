@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   RedButton,
   YellowButton,
@@ -19,13 +20,25 @@ export type Data = {
 };
 
 const Member: React.FC<Data> = (props) => {
+  const navigate = useNavigate();
   const [modalState, setModalState] = useState(false);
-  // const navigate = useNavigate();
+
   const editMemberHandler = () => {
-    // console.log(props._id);
+    navigate('/dashoboard/band-members/new-member', {
+      state: {
+        id: props._id,
+        name: props.name,
+        instrument: props.instrument,
+        orbitLength: props.orbitLength,
+        color: props.color,
+        biography: props.biography,
+      },
+    });
   };
+
   const showMemberHandler = () => {
     setModalState(true);
+    console.log();
   };
 
   const deleteMemberHandler = async () => {

@@ -39,11 +39,22 @@ export type ChildrenClassesTypes = {
   className?: string;
 };
 
+export type Data = {
+  _id: string;
+  name: string;
+  instrument: string;
+  orbitLength: number;
+  color: string;
+  biography: string;
+};
+
 export type ContextData = {
   token: any;
   isLoggedIn: boolean;
   login: (token: string) => void;
   logout: () => void;
+  editedMemberHandler: () => void;
+  memberIsEdited: boolean;
 };
 
 export type DashboartNavs = {

@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useContext } from 'react';
 import { AdminPanelActionWrapper, Modal } from 'components';
 import { Member } from 'pages/BandMember/components';
 import { Outlet, NavLink } from 'react-router-dom';
 import axios from 'axios';
+import AuthContext from 'store/AuthContext';
 
 export type Data = {
   _id: string;
@@ -15,6 +16,7 @@ export type Data = {
 
 const BandMember = () => {
   const [data, setData] = useState<Data[]>([]);
+  const authCtx = useContext(AuthContext);
 
   const token = localStorage.getItem('token');
   const fetchData = useCallback(async () => {
@@ -32,7 +34,7 @@ const BandMember = () => {
 
   useEffect(() => {
     fetchData();
-  }, [fetchData]);
+  }, [fetchData, authCtx.memberIsEdited]);
 
   return (
     <>

@@ -1,30 +1,61 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { AdminPanelActionWrapper } from 'components';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Input, Textarea, FormButton } from 'pages/NewMember/components';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import AuthContext from 'store/AuthContext';
+
 import axios from 'axios';
 
 type AddNewMember = {
+  id: string;
   name: string;
   instrument: string;
-  orbitLength: number;
+  orbitLength: number | string;
   color: string;
   biography: string;
 };
 
 const NewMember = () => {
+  const location = useLocation();
+  const state = location.state as AddNewMember;
   const navigate = useNavigate();
+  const authCtx = useContext(AuthContext);
+
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitSuccessful },
   } = useForm<AddNewMember>({
     mode: 'onChange',
+    defaultValues: {
+      name: state ? state.name : '',
+      instrument: state ? state.instrument : '',
+      orbitLength: state ? state.orbitLength : '',
+      color: state ? state.color : '',
+      biography: state ? state.biography : '',
+    },
   });
-
   const onSubmit: SubmitHandler<AddNewMember> = async (data) => {
     const token = localStorage.getItem('token');
+
+    if (state) {
+      try {
+        await axios.patch(
+          'http://localhost:3000/edit-member/' + state.id,
+          data,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+        authCtx.editedMemberHandler();
+        navigate('/dashoboard/band-members');
+
+        return;
+      } catch (error: any) {
+        throw new Error('Request failed!');
+      }
+    }
 
     try {
       await axios.post('http://localhost:3000/new-member', data, {
@@ -33,8 +64,10 @@ const NewMember = () => {
     } catch (error: any) {
       throw new Error('Request failed!');
     }
-    navigate('/dashoboard');
+    navigate('/dashoboard/band-members');
   };
+  // authCtx.fetchMembers();
+
   return (
     <div>
       <AdminPanelActionWrapper header='დაამატე ჯგუფის ახალი წევრი'>

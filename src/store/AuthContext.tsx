@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { ContextData, Children } from 'components';
+import { ContextData, Children, Data } from 'components';
+import axios from 'axios';
 
 const AuthContext = React.createContext({
   token: '',
   isLoggedIn: false,
   login: (token: string) => {},
   logout: () => {},
+  editedMemberHandler: () => {},
+  memberIsEdited: false,
 });
 
 const retrieveStoredToken = () => {
@@ -15,6 +18,7 @@ const retrieveStoredToken = () => {
 
 export const AuthContextProvider: React.FC<Children> = (props) => {
   const tokenData = retrieveStoredToken();
+  const [memberIsEdited, setMemberIsEdited] = useState<boolean>(false);
 
   let initialToken;
   if (tokenData) {
@@ -36,11 +40,17 @@ export const AuthContextProvider: React.FC<Children> = (props) => {
     localStorage.removeItem('token');
   };
 
+  const editedMeberHandler = () => {
+    setMemberIsEdited(!memberIsEdited);
+  };
+
   const contextValue: ContextData = {
     token: token,
     isLoggedIn: userIsLoggedIn,
     login: loginHandler,
     logout: logoutHandler,
+    editedMemberHandler: editedMeberHandler,
+    memberIsEdited: memberIsEdited,
   };
 
   return (
