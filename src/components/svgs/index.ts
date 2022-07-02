@@ -9,3 +9,4 @@ export { default as HomeIcon } from './HomeIcon';
 export { default as TvSatelite } from './TvSatelite';
 export { default as TvFeet } from './TvFeet';
 export { default as EditPhoto } from './EditPhoto';
+export { default as Close } from './Close';

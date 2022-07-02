@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { AdminPanelActionWrapper } from 'components';
+import { AdminPanelActionWrapper, Modal } from 'components';
 import { Member } from 'pages/BandMember/components';
 import { Outlet, NavLink } from 'react-router-dom';
 import axios from 'axios';
@@ -39,7 +39,7 @@ const BandMember = () => {
       <AdminPanelActionWrapper header='ჯგუფის წევრები'>
         <div className='flex gap-10'>
           {data.map((data) => (
-            <Member name={data.name} key={data._id} />
+            <Member {...data} key={data._id} />
           ))}
         </div>
         <button className=' text-link text-2xl font-bold underline mt-[-20px]'>

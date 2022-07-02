@@ -1,18 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   RedButton,
   YellowButton,
   GreenButton,
   EditPhoto,
 } from 'components/svgs';
+import { useNavigate } from 'react-router-dom';
+import { Modal } from 'components';
 
-type BandMember = {
+export type Data = {
+  _id: string;
   name: string;
+  instrument: string;
+  orbitLength: number;
+  color: string;
+  biography: string;
 };
 
-const Member: React.FC<BandMember> = (props) => {
+const Member: React.FC<Data> = (props) => {
+  const [modalState, setModalState] = useState(false);
+  // const navigate = useNavigate();
+  const editMemberHandler = () => {
+    // console.log(props._id);
+  };
+  const showMemberHandler = () => {
+    setModalState(true);
+  };
   return (
     <>
+      {modalState && <Modal {...props} setModalState={setModalState} />}
+
       <div className='flex flex-col justify-between items-center w-[15rem] h-[20rem] bg-dark50 border-[1px] rounded-sm drop-shadow-4xl'>
         <div className='flex flex-col justify-center items-center relative rounded-full bg-backdrop border-[1px] mt-4 border-white w-[11rem] h-[11rem]'>
           <img
@@ -24,8 +41,8 @@ const Member: React.FC<BandMember> = (props) => {
         </div>
         <h1 className='text-white text-2xl'>{props.name}</h1>
         <div className='flex justify-center items-center gap-14 border-t-[1px] h-12 w-full drop-shadow-4xl'>
-          <GreenButton />
-          <YellowButton />
+          <GreenButton onClick={showMemberHandler} />
+          <YellowButton onClick={editMemberHandler} />
           <RedButton />
         </div>
       </div>

@@ -13,6 +13,7 @@ module.exports = {
       dropShadow: {
         '3xl': '0px 4px 4px rgba(0, 0, 0, 0.25)',
         '4xl': '5px 5px 13px rgba(0, 0, 0, 0.63)',
+        '5xl': '2px 4px 6px rgba(0, 0, 0, 1)',
       },
       boxShadow: {
         innerSh: 'inset 4px 4px 20px #4D4D4D',
