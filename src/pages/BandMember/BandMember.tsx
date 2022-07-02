@@ -39,7 +39,7 @@ const BandMember = () => {
       <AdminPanelActionWrapper header='ჯგუფის წევრები'>
         <div className='flex gap-10'>
           {data.map((data) => (
-            <Member {...data} key={data._id} />
+            <Member {...data} key={data._id} fetchData={fetchData} />
           ))}
         </div>
         <button className=' text-link text-2xl font-bold underline mt-[-20px]'>

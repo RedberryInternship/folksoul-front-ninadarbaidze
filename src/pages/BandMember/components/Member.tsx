@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   RedButton,
   YellowButton,
   GreenButton,
   EditPhoto,
 } from 'components/svgs';
-import { useNavigate } from 'react-router-dom';
 import { Modal } from 'components';
+import axios from 'axios';
 
 export type Data = {
   _id: string;
@@ -15,6 +15,7 @@ export type Data = {
   orbitLength: number;
   color: string;
   biography: string;
+  fetchData: () => void;
 };
 
 const Member: React.FC<Data> = (props) => {
@@ -26,6 +27,20 @@ const Member: React.FC<Data> = (props) => {
   const showMemberHandler = () => {
     setModalState(true);
   };
+
+  const deleteMemberHandler = async () => {
+    const token = localStorage.getItem('token');
+
+    try {
+      await axios.delete('http://localhost:3000/delete-member/' + props._id, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      props.fetchData();
+    } catch (error: any) {
+      throw new Error('Request failed!');
+    }
+  };
+
   return (
     <>
       {modalState && <Modal {...props} setModalState={setModalState} />}
@@ -43,7 +58,7 @@ const Member: React.FC<Data> = (props) => {
         <div className='flex justify-center items-center gap-14 border-t-[1px] h-12 w-full drop-shadow-4xl'>
           <GreenButton onClick={showMemberHandler} />
           <YellowButton onClick={editMemberHandler} />
-          <RedButton />
+          <RedButton onClick={deleteMemberHandler} />
         </div>
       </div>
     </>

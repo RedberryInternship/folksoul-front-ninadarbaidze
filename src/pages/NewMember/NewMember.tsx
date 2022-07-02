@@ -25,7 +25,6 @@ const NewMember = () => {
 
   const onSubmit: SubmitHandler<AddNewMember> = async (data) => {
     const token = localStorage.getItem('token');
-    console.log(data);
 
     try {
       await axios.post('http://localhost:3000/new-member', data, {

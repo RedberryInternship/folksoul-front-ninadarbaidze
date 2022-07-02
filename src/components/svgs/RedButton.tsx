@@ -1,12 +1,14 @@
 import React from 'react';
+import { OnClick } from 'components';
 
-const RedButton = () => {
+const RedButton: React.FC<OnClick> = (props) => {
   return (
     <svg
       width='28'
       height='28'
       viewBox='0 0 24 24'
       fill='none'
+      onClick={props.onClick}
       className='cursor-pointer'
       xmlns='http://www.w3.org/2000/svg'
     >
