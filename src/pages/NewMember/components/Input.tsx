@@ -1,4 +1,5 @@
 import React from 'react';
+import { isNumber } from 'util';
 
 type inputProps = {
   labelName?: string;
@@ -22,6 +23,7 @@ type inputProps = {
   repeatPass?: string;
   error?: any;
   pattern?: any;
+  isNum?: boolean;
 };
 
 const Input: React.FC<inputProps> = (props) => {
@@ -32,25 +34,25 @@ const Input: React.FC<inputProps> = (props) => {
       </label>
       <div className='relative flex items-center'>
         <input
-          className={`${props.class} h-[4rem] text-center  focus:outline-none bg-white placeholder:placeholder text-xl font-normal border-blue2  border-[1px] rounded-[5px]  pl-[8%] `}
+          className={`${props.class} h-[4rem] text-center  focus:outline-none bg-white placeholder:placeholder text-xl font-normal  border-[2px] rounded-[5px]  pl-[8%] `}
           type={props.type ? props.type : 'text'}
           id={props.id}
           placeholder={props.placeholder}
           {...props.register(props.fieldName, {
             required: {
               value: props.isRequired,
-              message: 'ეს ველი სავალდებულოა',
+              message: '*სავალდებულო',
             },
             minLength: {
               value: props.minValue ? props.minValue : 0,
-              message: `შეიყვანე მინიმუმ ${props.minValue} სიმბოლო `,
+              message: `მინ. ${props.minValue} სიმბოლო `,
             },
             // validate: (value: string) =>
             //   props.pass === value || props.callBackMessage,
-            // pattern: {
-            //   value: /^[a-z][a-z0-9]/,
-            //   message: 'გთხოვ შეიყვანე ვალიდური მეტსახელი',
-            // },
+            pattern: {
+              value: props.pattern,
+              message: props.patternValueMessage,
+            },
           })}
         />
         <p className='max-w-sm pl-[3%] pt-1 text-error xs:text-sm lg:text-xs 2xl:text-base'>

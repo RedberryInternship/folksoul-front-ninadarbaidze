@@ -9,7 +9,7 @@ type AddNewMember = {
   name: string;
   instrument: string;
   orbitLength: number;
-  color: any;
+  color: string;
   biography: string;
 };
 
@@ -18,7 +18,7 @@ const NewMember = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitSuccessful },
   } = useForm<AddNewMember>({
     mode: 'onChange',
   });
@@ -43,56 +43,114 @@ const NewMember = () => {
           onSubmit={handleSubmit(onSubmit)}
           className='flex flex-col mt-14 justify-center items-center gap-14'
         >
-          <Input
-            fieldName='name'
-            type='text'
-            register={register}
-            placeholder={'სახელი'}
-            id={'name'}
-            isRequired={true}
-            minValue={3}
-            class={errors.name ? 'w-[20vw] border-red border-2' : 'w-[20vw]'}
-          />
-          <div className='flex gap-6'>
+          <div className='flex flex-col items-center h-[4rem]'>
             <Input
-              fieldName='instrument'
+              fieldName='name'
               type='text'
               register={register}
-              placeholder={'ინსტრუმენტი'}
-              id={'instrument'}
+              placeholder={'სახელი'}
+              id={'name'}
+              pattern={/[\u10A0-\u10FF]/}
+              patternValueMessage={'წერე ქართულად!'}
               isRequired={true}
               minValue={3}
               class={
-                errors.instrument ? 'w-[10vw] border-red border-2' : 'w-[10vw]'
+                errors.name ? 'border-red w-[20vw] ' : 'border-blue2 w-[20vw]'
               }
             />
-            <Input
-              fieldName='orbitLength'
-              type='text'
-              register={register}
-              placeholder={'ორბიტის სიგანე'}
-              isRequired={true}
-              class={
-                errors.instrument ? 'w-[10vw] border-red border-2' : 'w-[10vw]'
-              }
-            />
-
-            <Input
-              fieldName='color'
-              type='text'
-              register={register}
-              placeholder={'ფერი'}
-              id={'color'}
-              isRequired={true}
-              minValue={7}
-              class={errors.color ? 'w-[10vw] border-red border-2' : 'w-[10vw]'}
-            />
+            {errors.name ? (
+              <p className='text-red text-[16px] pt-1'>
+                {errors.name?.message}
+              </p>
+            ) : null}
           </div>
-          <Textarea
-            fieldName='biography'
-            register={register}
-            placeholder={'ბიოგრაფია'}
-          />
+          <div className='flex gap-6 h-[4rem]'>
+            <div className='flex flex-col items-center'>
+              <Input
+                fieldName='instrument'
+                type='text'
+                register={register}
+                placeholder={'ინსტრუმენტი'}
+                id={'instrument'}
+                pattern={/[\u10A0-\u10FF]/}
+                patternValueMessage={'წერე ქართულად!'}
+                isRequired={true}
+                minValue={2}
+                class={
+                  errors.instrument
+                    ? 'border-red w-[10vw] '
+                    : 'border-blue2 w-[10vw]'
+                }
+              />
+              {errors.instrument ? (
+                <p className='text-red text-[16px] pt-1'>
+                  {errors.instrument?.message}
+                </p>
+              ) : null}
+            </div>
+            <div className='flex flex-col items-center'>
+              <Input
+                fieldName='orbitLength'
+                type='text'
+                register={register}
+                placeholder={'ორბიტის სიგანე'}
+                isRequired={true}
+                pattern={/^[0-9]*$/}
+                patternValueMessage={'შეიყვანე რიცხვი'}
+                class={
+                  errors.orbitLength
+                    ? 'border-red w-[10vw] '
+                    : 'border-blue2 w-[10vw]'
+                }
+              />
+              {errors.orbitLength ? (
+                <p className='text-red text-[16px] pt-1'>
+                  {errors.orbitLength?.message}
+                </p>
+              ) : null}
+            </div>
+            <div className='flex flex-col items-center'>
+              <Input
+                fieldName='color'
+                type='text'
+                register={register}
+                placeholder={'ფერი'}
+                id={'color'}
+                isRequired={true}
+                pattern={/^#(?:[0-9A-F]{3}){1,2}$/}
+                patternValueMessage={'ფერის არასწორი ფორმატი'}
+                minValue={7}
+                class={
+                  errors.color
+                    ? 'border-red w-[10vw] '
+                    : 'border-blue2 w-[10vw]'
+                }
+              />
+              {errors.color ? (
+                <p className='text-red text-[16px] pt-1'>
+                  {errors.color?.message}
+                </p>
+              ) : null}
+            </div>
+          </div>
+          <div className='flex flex-col items-center h-[14rem]'>
+            <Textarea
+              fieldName='biography'
+              register={register}
+              placeholder={'ბიოგრაფია'}
+              isRequired={true}
+              pattern={/[\u10A0-\u10FF]/}
+              patternValueMessage={'წერე ქართულად!'}
+              class={
+                errors.biography ? 'border-red  ' : 'border-blue2 w-[10vw]'
+              }
+            />
+            {errors.biography ? (
+              <p className='text-red text-[16px] pt-1'>
+                {errors.biography?.message}
+              </p>
+            ) : null}
+          </div>
           <FormButton />
           <button
             className=' text-link text-2xl font-bold underline mt-[-20px]'

@@ -55,10 +55,6 @@ const LoginForm = () => {
             register={register}
             placeholder={'მეტსახელი'}
             id={'login-usr'}
-            pattern={/^[a-z0-9]*/}
-            patternValueMessage={
-              'გთხოვთ შეიყვანოთ დაბალი რეგისტრის სიმბოლოები და/ან რიცხვები'
-            }
             isRequired={true}
             minValue={3}
             class={
