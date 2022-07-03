@@ -183,7 +183,9 @@ const NewMember = () => {
               </p>
             ) : null}
           </div>
-          <FormButton />
+          <FormButton
+            buttonText={!state ? 'დაამატე წევრი' : 'განაახლე წევრი'}
+          />
           <button
             className=' text-link text-2xl font-bold underline mt-[-20px]'
             onClick={() => navigate('/dashoboard/band-members')}

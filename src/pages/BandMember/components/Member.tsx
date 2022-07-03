@@ -36,7 +36,7 @@ const Member: React.FC<Data> = (props) => {
   const editMemberHandler = () => {
     navigate('/dashoboard/band-members/new-member', {
       state: {
-        memberId: props._id, //id
+        id: props._id,
         name: props.name,
         instrument: props.instrument,
         orbitLength: props.orbitLength,
