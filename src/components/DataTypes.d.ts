@@ -53,7 +53,7 @@ export type ContextData = {
   isLoggedIn: boolean;
   login: (token: string) => void;
   logout: () => void;
-  editedMemberHandler: () => void;
+  refreshMembers: () => void;
   memberIsEdited: boolean;
 };
 

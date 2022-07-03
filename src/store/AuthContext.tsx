@@ -7,7 +7,7 @@ const AuthContext = React.createContext({
   isLoggedIn: false,
   login: (token: string) => {},
   logout: () => {},
-  editedMemberHandler: () => {},
+  refreshMembers: () => {},
   memberIsEdited: false,
 });
 
@@ -40,7 +40,7 @@ export const AuthContextProvider: React.FC<Children> = (props) => {
     localStorage.removeItem('token');
   };
 
-  const editedMeberHandler = () => {
+  const refreshMembers = () => {
     setMemberIsEdited(!memberIsEdited);
   };
 
@@ -49,7 +49,7 @@ export const AuthContextProvider: React.FC<Children> = (props) => {
     isLoggedIn: userIsLoggedIn,
     login: loginHandler,
     logout: logoutHandler,
-    editedMemberHandler: editedMeberHandler,
+    refreshMembers: refreshMembers,
     memberIsEdited: memberIsEdited,
   };
 

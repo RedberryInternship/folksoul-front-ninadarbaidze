@@ -1,10 +1,13 @@
 import React from 'react';
 
-const EditPhoto: React.FC<{ className: string }> = (props) => {
+const EditPhoto: React.FC<{ className: string; onClick: () => void }> = (
+  props
+) => {
   return (
     <svg
       viewBox='0 0 37 37'
       fill='none'
+      onClick={props.onClick}
       xmlns='http://www.w3.org/2000/svg'
       className={props.className}
     >

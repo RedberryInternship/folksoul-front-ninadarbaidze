@@ -48,7 +48,7 @@ const NewMember = () => {
             headers: { Authorization: `Bearer ${token}` },
           }
         );
-        authCtx.editedMemberHandler();
+        authCtx.refreshMembers();
         navigate('/dashoboard/band-members');
 
         return;
@@ -64,9 +64,9 @@ const NewMember = () => {
     } catch (error: any) {
       throw new Error('Request failed!');
     }
+    authCtx.refreshMembers();
     navigate('/dashoboard/band-members');
   };
-  // authCtx.fetchMembers();
 
   return (
     <div>

@@ -5,6 +5,11 @@ import { Outlet, NavLink } from 'react-router-dom';
 import axios from 'axios';
 import AuthContext from 'store/AuthContext';
 
+type Image = {
+  imageUrl: string;
+  memberId: string;
+};
+
 export type Data = {
   _id: string;
   name: string;
@@ -12,6 +17,7 @@ export type Data = {
   orbitLength: number;
   color: string;
   biography: string;
+  image: Image[];
 };
 
 const BandMember = () => {
@@ -31,6 +37,8 @@ const BandMember = () => {
       setData(response);
     } catch (error: any) {}
   }, []);
+
+  // console.log(data);
 
   useEffect(() => {
     fetchData();
