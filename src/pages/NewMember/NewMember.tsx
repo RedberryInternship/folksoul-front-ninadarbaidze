@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { AdminPanelActionWrapper } from 'components';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Input, Textarea, FormButton } from 'pages/NewMember/components';
@@ -21,6 +21,7 @@ const NewMember = () => {
   const state = location.state as AddNewMember;
   const navigate = useNavigate();
   const authCtx = useContext(AuthContext);
+  const [error, setError] = useState<number | null>(null);
 
   const {
     register,
@@ -36,6 +37,7 @@ const NewMember = () => {
       biography: state ? state.biography : '',
     },
   });
+
   const onSubmit: SubmitHandler<AddNewMember> = async (data) => {
     const token = localStorage.getItem('token');
 
@@ -53,6 +55,7 @@ const NewMember = () => {
 
         return;
       } catch (error: any) {
+        setError(error.response.status);
         throw new Error('Request failed!');
       }
     }
@@ -62,6 +65,7 @@ const NewMember = () => {
         headers: { Authorization: `Bearer ${token}` },
       });
     } catch (error: any) {
+      setError(error.response.status);
       throw new Error('Request failed!');
     }
     authCtx.refreshMembers();
@@ -75,7 +79,7 @@ const NewMember = () => {
           onSubmit={handleSubmit(onSubmit)}
           className='flex flex-col mt-14 justify-center items-center gap-14'
         >
-          <div className='flex flex-col items-center h-[4rem]'>
+          <div className='flex flex-col items-center h-[5rem]'>
             <Input
               fieldName='name'
               type='text'
@@ -93,6 +97,11 @@ const NewMember = () => {
             {errors.name ? (
               <p className='text-red text-[16px] pt-1'>
                 {errors.name?.message}
+              </p>
+            ) : null}
+            {error && !isSubmitSuccessful ? (
+              <p className='text-red text-[16px] pt-1'>
+                უკვე არსებობს სხვა ამ მეტსახელით
               </p>
             ) : null}
           </div>
