@@ -1,9 +1,5 @@
 import React from 'react';
-
-type AdminPanelWrapper = {
-  children: React.ReactNode;
-  header: string;
-};
+import { AdminPanelWrapper } from 'components';
 
 const AdminPanelActionWrapper: React.FC<AdminPanelWrapper> = (props) => {
   return (

@@ -3,30 +3,14 @@ import { Close } from 'components/svgs';
 import axios from 'axios';
 import AuthContext from 'store/AuthContext';
 import { memberIcon } from 'assets/images';
+import { Image, ImageUploadData } from 'components';
 
-export type Image = {
-  image: string;
-  memberId: string;
-};
-
-export type Data = {
-  _id: string;
-  name: string;
-  instrument: string;
-  orbitLength: number;
-  color: string;
-  biography: string;
-  image: any;
-  fetchData: () => void;
-  setImageModalState: any;
-};
-
-const ImageUploadModal: React.FC<Data> = (props) => {
-  const [showSubmitButton, setShowSubmitButton] = useState<any>(false);
-  const [imagePreview, setImagePreview] = useState<any>('');
+const ImageUploadModal: React.FC<ImageUploadData> = (props) => {
   const fileRef = useRef<any>();
   const authCtx = useContext(AuthContext);
 
+  const [showSubmitButton, setShowSubmitButton] = useState<boolean>(false);
+  const [imagePreview, setImagePreview] = useState<string>('');
   const [memberImage, setMemberImage] = useState<Image>({
     image: '',
     memberId: '',
@@ -35,17 +19,17 @@ const ImageUploadModal: React.FC<Data> = (props) => {
     props.setImageModalState(false);
   };
 
-  const handlePhoto = (e: any) => {
+  const imageChangeHandler = (e: any) => {
     setMemberImage({
       ...memberImage,
       image: e.target.files[0],
       memberId: props._id,
     });
-    const src = URL.createObjectURL(e.target.files[0]);
-    setImagePreview(src);
+    const imageSrc = URL.createObjectURL(e.target.files[0]);
+    setImagePreview(imageSrc);
   };
 
-  const handleImagePreview = () => {
+  const imagePreviewHandler = () => {
     if (props.image <= 0 && !imagePreview) {
       return memberIcon;
     } else if (!imagePreview) {
@@ -55,14 +39,13 @@ const ImageUploadModal: React.FC<Data> = (props) => {
     }
   };
 
-  const handleSubmit = async (e: any) => {
+  const submitImage = async (e: any) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
 
     const formData = new FormData();
     formData.append('image', memberImage.image);
     formData.append('memberId', memberImage.memberId);
-    // console.log(memberImage);
 
     try {
       await axios.post('http://localhost:3000/change-avatar', formData, {
@@ -86,16 +69,16 @@ const ImageUploadModal: React.FC<Data> = (props) => {
         <div className='flex flex-col items-center gap-20'>
           <div className='flex flex-col items-center mt-16  w-[30rem]'>
             <div className='flex flex-col justify-center items-center py-16 rounded-full bg-backdrop border-[3px]  mb-6 border-white w-[20rem] h-[20rem] drop-shadow-5xl'>
-              <img src={handleImagePreview()} alt='' className='w-[12rem] ' />
+              <img src={imagePreviewHandler()} alt='' className='w-[12rem] ' />
             </div>
           </div>
-          <form onSubmit={handleSubmit} encType='multipart/form-data'>
+          <form onSubmit={submitImage} encType='multipart/form-data'>
             <input
               type='file'
               accept='.png, .jpg, .jpeg'
               name='image'
               ref={fileRef}
-              onChange={handlePhoto}
+              onChange={imageChangeHandler}
               hidden
             />
             {!showSubmitButton && (

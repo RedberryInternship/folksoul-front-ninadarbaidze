@@ -1,19 +1,9 @@
 import React from 'react';
 import { Close } from 'components/svgs';
 import { memberIcon } from 'assets/images';
+import { ModalData } from 'components';
 
-export type Data = {
-  _id: string;
-  name: string;
-  instrument: string;
-  orbitLength: number;
-  color: string;
-  biography: string;
-  image: any;
-  setModalState: any;
-};
-
-const Modal: React.FC<Data> = (props) => {
+const Modal: React.FC<ModalData> = (props) => {
   const modalStateHandler = () => {
     props.setModalState(false);
   };

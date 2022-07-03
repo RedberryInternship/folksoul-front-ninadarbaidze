@@ -1,6 +1,7 @@
 import React from 'react';
+import { Children } from 'components';
 
-const DashboardWrapper: React.FC<{ children: React.ReactNode }> = (props) => {
+const DashboardWrapper: React.FC<Children> = (props) => {
   return (
     <>
       {' '}

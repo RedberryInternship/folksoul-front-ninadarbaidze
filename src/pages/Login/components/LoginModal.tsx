@@ -1,7 +1,7 @@
 import React from 'react';
-// import { Children } from 'components';
+import { Children } from 'components';
 
-const LoginModal: React.FC<{ children: React.ReactNode }> = (props) => {
+const LoginModal: React.FC<Children> = (props) => {
   return (
     <>
       <div className='flex items-center justify-center h-screen w-screen bg-gradient-radial-to-tr  from-grad1 to-grad2'>

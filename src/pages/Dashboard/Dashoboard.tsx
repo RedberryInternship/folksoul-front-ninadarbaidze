@@ -7,7 +7,7 @@ import {
   NoteIcon,
   DoorIcon,
 } from 'components/svgs';
-import { DashboardWrapper, DashboardNavs } from 'components';
+import { DashboardWrapper, DashboardNavs } from 'pages/Dashboard/components';
 
 const Dashoboard = () => {
   return (

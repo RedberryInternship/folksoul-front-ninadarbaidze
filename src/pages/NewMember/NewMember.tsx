@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react';
-import { AdminPanelActionWrapper } from 'components';
+import { useContext, useState } from 'react';
+import { AdminPanelActionWrapper, AddNewMember } from 'components';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Input, Textarea, FormButton } from 'pages/NewMember/components';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -7,21 +7,12 @@ import AuthContext from 'store/AuthContext';
 
 import axios from 'axios';
 
-type AddNewMember = {
-  id: string;
-  name: string;
-  instrument: string;
-  orbitLength: number | string;
-  color: string;
-  biography: string;
-};
-
 const NewMember = () => {
+  const authCtx = useContext(AuthContext);
+  const [error, setError] = useState<number | null>(null);
   const location = useLocation();
   const state = location.state as AddNewMember;
   const navigate = useNavigate();
-  const authCtx = useContext(AuthContext);
-  const [error, setError] = useState<number | null>(null);
 
   const {
     register,
@@ -37,29 +28,24 @@ const NewMember = () => {
       biography: state ? state.biography : '',
     },
   });
+  const token = localStorage.getItem('token');
 
-  const onSubmit: SubmitHandler<AddNewMember> = async (data) => {
-    const token = localStorage.getItem('token');
+  const updateBandMemberHandler = async (data: AddNewMember) => {
+    try {
+      await axios.patch('http://localhost:3000/edit-member/' + state.id, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      authCtx.refreshMembers();
+      navigate('/dashoboard/band-members');
 
-    if (state) {
-      try {
-        await axios.patch(
-          'http://localhost:3000/edit-member/' + state.id,
-          data,
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
-        authCtx.refreshMembers();
-        navigate('/dashoboard/band-members');
-
-        return;
-      } catch (error: any) {
-        setError(error.response.status);
-        throw new Error('Request failed!');
-      }
+      return;
+    } catch (error: any) {
+      setError(error.response.status);
+      throw new Error('Request failed!');
     }
+  };
 
+  const addNewBandMemberHandler = async (data: AddNewMember) => {
     try {
       await axios.post('http://localhost:3000/new-member', data, {
         headers: { Authorization: `Bearer ${token}` },
@@ -70,6 +56,11 @@ const NewMember = () => {
     }
     authCtx.refreshMembers();
     navigate('/dashoboard/band-members');
+  };
+
+  const onSubmit: SubmitHandler<AddNewMember> = async (data) => {
+    if (state) updateBandMemberHandler(data);
+    else addNewBandMemberHandler(data);
   };
 
   return (

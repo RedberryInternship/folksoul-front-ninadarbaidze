@@ -1,15 +1,11 @@
 import React, { useContext, useState } from 'react';
-import { Input, LoginModal, Button } from 'components';
+import { Input, Button, LoginValueTypes } from 'components';
+import { LoginModal } from 'pages/Login/components';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import AuthContext from 'store/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
-
-export type LoginValueTypes = {
-  username: string;
-  password: string;
-};
 
 const LoginForm = () => {
   const [error, setError] = useState(null);

@@ -1,30 +1,7 @@
 import React from 'react';
+import { InputProps } from 'components';
 
-type inputProps = {
-  labelName?: string;
-  type?: string;
-  register: any;
-  fieldName: string;
-  placeholder: string;
-  isRequired?: boolean;
-  requiredMessage?: string;
-  minValue?: number;
-  minValueMessage?: string;
-  errorMessage?: string;
-  id?: string;
-  patternValueMessage?: string;
-  classes?: string;
-  callBack?: () => void;
-  callBackMessage?: string;
-  class?: string;
-  isValidInput?: Boolean;
-  pass?: string;
-  repeatPass?: string;
-  error?: any;
-  pattern?: any;
-};
-
-const Input: React.FC<inputProps> = (props) => {
+const Input: React.FC<InputProps> = (props) => {
   return (
     <div className={`flex flex-col`}>
       <label htmlFor={props.fieldName} className='text-dark100 font-extrabold'>
@@ -45,8 +22,6 @@ const Input: React.FC<inputProps> = (props) => {
               value: props.minValue ? props.minValue : 0,
               message: `შეიყვანე მინიმუმ ${props.minValue} სიმბოლო `,
             },
-            // validate: (value: string) =>
-            //   props.pass === value || props.callBackMessage,
             pattern: {
               value: /^[a-z][a-z0-9]/,
               message: 'გთხოვ შეიყვანე ვალიდური მეტსახელი',

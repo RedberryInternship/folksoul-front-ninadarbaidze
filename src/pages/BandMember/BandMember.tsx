@@ -1,27 +1,12 @@
 import React, { useState, useEffect, useCallback, useContext } from 'react';
-import { AdminPanelActionWrapper } from 'components';
+import { AdminPanelActionWrapper, BandMemberData } from 'components';
 import { Member } from 'pages/BandMember/components';
 import { Outlet, NavLink } from 'react-router-dom';
 import axios from 'axios';
 import AuthContext from 'store/AuthContext';
 
-type Image = {
-  imageUrl: string;
-  memberId: string;
-};
-
-export type Data = {
-  _id: string;
-  name: string;
-  instrument: string;
-  orbitLength: number;
-  color: string;
-  biography: string;
-  image: Image[];
-};
-
 const BandMember = () => {
-  const [data, setData] = useState<Data[]>([]);
+  const [data, setData] = useState<BandMemberData[]>([]);
   const authCtx = useContext(AuthContext);
 
   const token = localStorage.getItem('token');
@@ -36,9 +21,7 @@ const BandMember = () => {
 
       setData(response);
     } catch (error: any) {}
-  }, []);
-
-  // console.log(data);
+  }, [token]);
 
   useEffect(() => {
     fetchData();

@@ -1,5 +1,4 @@
 import React from 'react';
-import { LoginForm } from 'components';
 import { TvFeet, TvSatelite } from 'components/svgs';
 
 const Main = () => {

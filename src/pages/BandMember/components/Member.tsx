@@ -7,29 +7,22 @@ import {
   EditPhoto,
 } from 'components/svgs';
 import { memberIcon } from 'assets/images';
-import { Modal, ImageUploadModal } from 'components';
+import { Modal, MemberData } from 'components';
+import { ImageUploadModal } from 'pages/BandMember/components';
 import axios from 'axios';
 
-// type Image = {
-//   imageUrl: string;
-//   memberId: string;
-// };
-
-export type Data = {
-  _id: string;
-  name: string;
-  instrument: string;
-  orbitLength: number;
-  color: string;
-  biography: string;
-  image: any;
-  fetchData: () => void;
-};
-
-const Member: React.FC<Data> = (props) => {
+const Member: React.FC<MemberData> = (props) => {
   const navigate = useNavigate();
   const [modalState, setModalState] = useState(false);
   const [imageModalState, setImageModalState] = useState(false);
+
+  const openImagePickerHandler = () => {
+    setImageModalState(true);
+  };
+
+  const showMemberHandler = () => {
+    setModalState(true);
+  };
 
   const editMemberHandler = () => {
     navigate('/dashoboard/band-members/new-member', {
@@ -44,14 +37,6 @@ const Member: React.FC<Data> = (props) => {
     });
   };
 
-  const showMemberHandler = () => {
-    setModalState(true);
-  };
-
-  const openImagePickerHandler = () => {
-    setImageModalState(true);
-  };
-
   const deleteMemberHandler = async () => {
     const token = localStorage.getItem('token');
 
@@ -64,6 +49,7 @@ const Member: React.FC<Data> = (props) => {
       throw new Error('Request failed!');
     }
   };
+
   return (
     <>
       {modalState && <Modal {...props} setModalState={setModalState} />}

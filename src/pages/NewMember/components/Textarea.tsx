@@ -1,17 +1,5 @@
 import React from 'react';
-
-type TextareaField = {
-  labelName?: string;
-  register: any;
-  fieldName: string;
-  errorMessage?: string;
-  id?: string;
-  placeholder: string;
-  class?: string;
-  isRequired?: boolean;
-  pattern?: any;
-  patternValueMessage?: string;
-};
+import { TextareaField } from 'components';
 
 const Textarea: React.FC<TextareaField> = (props) => {
   return (
