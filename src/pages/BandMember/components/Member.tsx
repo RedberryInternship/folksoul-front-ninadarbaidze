@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   RedButton,
@@ -6,6 +6,7 @@ import {
   GreenButton,
   EditPhoto,
 } from 'components/svgs';
+import { memberIcon } from 'assets/images';
 import { Modal, ImageUploadModal } from 'components';
 import axios from 'axios';
 
@@ -29,9 +30,6 @@ const Member: React.FC<Data> = (props) => {
   const navigate = useNavigate();
   const [modalState, setModalState] = useState(false);
   const [imageModalState, setImageModalState] = useState(false);
-  const [memberImage, setMemberImage] = useState<string>(
-    'https://images.vexels.com/media/users/3/129515/isolated/preview/7fb084074c0ee8cfc07d1b9cebcb977f-boy-cartoon-head.png'
-  );
 
   const editMemberHandler = () => {
     navigate('/dashoboard/band-members/new-member', {
@@ -70,12 +68,7 @@ const Member: React.FC<Data> = (props) => {
     <>
       {modalState && <Modal {...props} setModalState={setModalState} />}
       {imageModalState && (
-        <ImageUploadModal
-          memberImage={memberImage}
-          setMemberImage={setMemberImage}
-          {...props}
-          setImageModalState={setImageModalState}
-        />
+        <ImageUploadModal {...props} setImageModalState={setImageModalState} />
       )}
 
       <div className='flex flex-col justify-between items-center w-[15rem] h-[20rem] bg-dark50 border-[1px] rounded-sm drop-shadow-4xl'>
@@ -84,7 +77,7 @@ const Member: React.FC<Data> = (props) => {
             src={
               props.image.length > 0
                 ? `http://localhost:3000/${props.image[0].imageUrl}`
-                : 'https://images.vexels.com/media/users/3/129515/isolated/preview/7fb084074c0ee8cfc07d1b9cebcb977f-boy-cartoon-head.png'
+                : memberIcon
             }
             alt=''
             className='w-[7rem] '

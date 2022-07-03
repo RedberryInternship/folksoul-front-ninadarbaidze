@@ -1,5 +1,6 @@
 import React from 'react';
-import { EditPhoto, Close } from 'components/svgs';
+import { Close } from 'components/svgs';
+import { memberIcon } from 'assets/images';
 
 export type Data = {
   _id: string;
@@ -8,6 +9,7 @@ export type Data = {
   orbitLength: number;
   color: string;
   biography: string;
+  image: any;
   setModalState: any;
 };
 
@@ -28,9 +30,13 @@ const Modal: React.FC<Data> = (props) => {
         <div className='flex flex-col items-center mt-4 overflow-scroll'>
           <div className='flex flex-col justify-center items-center py-16 rounded-full bg-backdrop border-[1px]  mb-6 border-white w-[10rem] h-[10rem] drop-shadow-5xl'>
             <img
-              src='https://images.vexels.com/media/users/3/129515/isolated/preview/7fb084074c0ee8cfc07d1b9cebcb977f-boy-cartoon-head.png'
+              src={
+                props.image.length > 0
+                  ? `http://localhost:3000/${props.image[0].imageUrl}`
+                  : memberIcon
+              }
               alt=''
-              className='w-[120px]'
+              className='w-[100px]'
             />
           </div>
           <h1>

@@ -1,12 +1,8 @@
 import React, { useState, useRef, useContext } from 'react';
-import { EditPhoto, Close } from 'components/svgs';
+import { Close } from 'components/svgs';
 import axios from 'axios';
 import AuthContext from 'store/AuthContext';
-// export type Data = {
-//   imageUrl: string;
-//   memberId: string;
-//   setImageModalState: any;
-// };
+import { memberIcon } from 'assets/images';
 
 export type Image = {
   image: string;
@@ -23,8 +19,6 @@ export type Data = {
   image: any;
   fetchData: () => void;
   setImageModalState: any;
-  setMemberImage: any;
-  memberImage: string;
 };
 
 const ImageUploadModal: React.FC<Data> = (props) => {
@@ -53,7 +47,7 @@ const ImageUploadModal: React.FC<Data> = (props) => {
 
   const handleImagePreview = () => {
     if (props.image <= 0 && !imagePreview) {
-      return 'https://images.vexels.com/media/users/3/129515/isolated/preview/7fb084074c0ee8cfc07d1b9cebcb977f-boy-cartoon-head.png';
+      return memberIcon;
     } else if (!imagePreview) {
       return `http://localhost:3000/${props.image[0].imageUrl}`;
     } else {
@@ -71,19 +65,12 @@ const ImageUploadModal: React.FC<Data> = (props) => {
     // console.log(memberImage);
 
     try {
-      const data = await axios.post(
-        'http://localhost:3000/change-avatar',
-        formData,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-      // const response = await data;
-      // console.log(data);
+      await axios.post('http://localhost:3000/change-avatar', formData, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
     } catch (error: any) {
       throw new Error('Request failed!');
     }
-    // props.setMemberImage(response?.image.imageUrl);
     authCtx.refreshMembers();
     props.setImageModalState(false);
   };
