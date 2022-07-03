@@ -23,6 +23,8 @@ export type Data = {
   image: any;
   fetchData: () => void;
   setImageModalState: any;
+  setMemberImage: any;
+  memberImage: string;
 };
 
 const ImageUploadModal: React.FC<Data> = (props) => {
@@ -47,7 +49,16 @@ const ImageUploadModal: React.FC<Data> = (props) => {
     });
     const src = URL.createObjectURL(e.target.files[0]);
     setImagePreview(src);
-    console.log(src);
+  };
+
+  const handleImagePreview = () => {
+    if (props.image <= 0 && !imagePreview) {
+      return 'https://images.vexels.com/media/users/3/129515/isolated/preview/7fb084074c0ee8cfc07d1b9cebcb977f-boy-cartoon-head.png';
+    } else if (!imagePreview) {
+      return `http://localhost:3000/${props.image[0].imageUrl}`;
+    } else {
+      return imagePreview;
+    }
   };
 
   const handleSubmit = async (e: any) => {
@@ -60,12 +71,19 @@ const ImageUploadModal: React.FC<Data> = (props) => {
     // console.log(memberImage);
 
     try {
-      await axios.post('http://localhost:3000/change-avatar', formData, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const data = await axios.post(
+        'http://localhost:3000/change-avatar',
+        formData,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      // const response = await data;
+      // console.log(data);
     } catch (error: any) {
       throw new Error('Request failed!');
     }
+    // props.setMemberImage(response?.image.imageUrl);
     authCtx.refreshMembers();
     props.setImageModalState(false);
   };
@@ -81,15 +99,7 @@ const ImageUploadModal: React.FC<Data> = (props) => {
         <div className='flex flex-col items-center gap-20'>
           <div className='flex flex-col items-center mt-16  w-[30rem]'>
             <div className='flex flex-col justify-center items-center py-16 rounded-full bg-backdrop border-[3px]  mb-6 border-white w-[20rem] h-[20rem] drop-shadow-5xl'>
-              <img
-                src={
-                  !imagePreview
-                    ? `http://localhost:3000/${props.image[0].imageUrl}`
-                    : imagePreview
-                }
-                alt=''
-                className='w-[12rem] '
-              />
+              <img src={handleImagePreview()} alt='' className='w-[12rem] ' />
             </div>
           </div>
           <form onSubmit={handleSubmit} encType='multipart/form-data'>
