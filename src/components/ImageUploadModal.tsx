@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import { EditPhoto, Close } from 'components/svgs';
 import axios from 'axios';
-
+import AuthContext from 'store/AuthContext';
 // export type Data = {
 //   imageUrl: string;
 //   memberId: string;
@@ -26,6 +26,11 @@ export type Data = {
 };
 
 const ImageUploadModal: React.FC<Data> = (props) => {
+  const [showSubmitButton, setShowSubmitButton] = useState<any>(false);
+  const [imagePreview, setImagePreview] = useState<any>('');
+  const fileRef = useRef<any>();
+  const authCtx = useContext(AuthContext);
+
   const [memberImage, setMemberImage] = useState<Image>({
     image: '',
     memberId: '',
@@ -40,6 +45,9 @@ const ImageUploadModal: React.FC<Data> = (props) => {
       image: e.target.files[0],
       memberId: props._id,
     });
+    const src = URL.createObjectURL(e.target.files[0]);
+    setImagePreview(src);
+    console.log(src);
   };
 
   const handleSubmit = async (e: any) => {
@@ -58,6 +66,8 @@ const ImageUploadModal: React.FC<Data> = (props) => {
     } catch (error: any) {
       throw new Error('Request failed!');
     }
+    authCtx.refreshMembers();
+    props.setImageModalState(false);
   };
 
   return (
@@ -73,9 +83,9 @@ const ImageUploadModal: React.FC<Data> = (props) => {
             <div className='flex flex-col justify-center items-center py-16 rounded-full bg-backdrop border-[3px]  mb-6 border-white w-[20rem] h-[20rem] drop-shadow-5xl'>
               <img
                 src={
-                  props.image.length > 0
+                  !imagePreview
                     ? `http://localhost:3000/${props.image[0].imageUrl}`
-                    : 'https://images.vexels.com/media/users/3/129515/isolated/preview/7fb084074c0ee8cfc07d1b9cebcb977f-boy-cartoon-head.png'
+                    : imagePreview
                 }
                 alt=''
                 className='w-[12rem] '
@@ -87,14 +97,30 @@ const ImageUploadModal: React.FC<Data> = (props) => {
               type='file'
               accept='.png, .jpg, .jpeg'
               name='image'
+              ref={fileRef}
               onChange={handlePhoto}
+              hidden
             />
-            <button
-              type='submit'
-              className='w-[250px] h-[60px] rounded-[5px] text-white text-2xl bg-backdrop'
-            >
-              ატვირთე
-            </button>
+            {!showSubmitButton && (
+              <button
+                onClick={() => {
+                  fileRef.current.click();
+                  setShowSubmitButton(true);
+                }}
+                className='w-[250px] h-[60px] rounded-[5px] text-white text-2xl bg-backdrop'
+              >
+                ატვირთე
+              </button>
+            )}
+
+            {showSubmitButton && (
+              <button
+                type='submit'
+                className='w-[250px] h-[60px] rounded-[5px] text-white text-2xl bg-green'
+              >
+                შეინახე
+              </button>
+            )}
           </form>
         </div>
       </div>
