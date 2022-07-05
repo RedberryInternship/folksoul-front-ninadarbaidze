@@ -72,7 +72,9 @@ export type ContextData = {
   login: (token: string) => void;
   logout: () => void;
   refreshMembers: () => void;
+  refreshSocials: () => void;
   memberIsEdited: boolean;
+  socialIsEdited: boolean;
 };
 
 export type DashboartNavs = {
@@ -86,7 +88,7 @@ type AdminPanelWrapper = {
   className?: string;
 };
 
-export type ModalData = {
+export type ModalDataMembers = {
   _id: string;
   name: string;
   instrument: string;
@@ -97,9 +99,21 @@ export type ModalData = {
   setModalState: any;
 };
 
+export type ModalDataSocial = {
+  id: props._id;
+  name: props.name;
+  url: props.url;
+  setModalState: any;
+};
+
 export type Image = {
   image: string;
   memberId: string;
+};
+
+export type Socialmage = {
+  image: string;
+  socialId: string;
 };
 
 export type ImageUploadData = {
@@ -109,6 +123,14 @@ export type ImageUploadData = {
   orbitLength: number;
   color: string;
   biography: string;
+  image: any;
+  fetchData: () => void;
+  setImageModalState: any;
+};
+export type ImageUploadDataSocials = {
+  _id: string;
+  name: string;
+  url: string;
   image: any;
   fetchData: () => void;
   setImageModalState: any;
@@ -147,4 +169,10 @@ export type AddNewMember = {
   orbitLength: number | string;
   color: string;
   biography: string;
+};
+
+export type AddNewSocial = {
+  id: string;
+  name: string;
+  url: string;
 };

@@ -3,6 +3,7 @@ import { AdminPanelActionWrapper } from 'components';
 import AuthContext from 'store/AuthContext';
 import axios from 'axios';
 import { Social } from 'pages/Socials/components';
+import { Outlet, NavLink } from 'react-router-dom';
 
 type SocialsTypes = {
   _id: string;
@@ -28,14 +29,18 @@ const Socials = () => {
 
   useEffect(() => {
     fetchData();
-  }, [fetchData, authCtx.memberIsEdited]);
+  }, [fetchData, authCtx.socialIsEdited]);
   return (
     <>
       <AdminPanelActionWrapper className=' gap-12' header='სოციალური ბმულები'>
         {data.map((data) => (
           <Social {...data} key={data._id} fetchData={fetchData} />
         ))}
+        <button className=' text-link text-2xl font-bold underline  mt-24'>
+          <NavLink to='new-social'>დაამატე ახალი სოციალური ბმული</NavLink>
+        </button>
       </AdminPanelActionWrapper>
+      <Outlet />
     </>
   );
 };
