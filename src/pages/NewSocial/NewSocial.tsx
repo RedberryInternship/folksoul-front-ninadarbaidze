@@ -25,6 +25,7 @@ const NewMember = () => {
       url: state ? state.url : '',
     },
   });
+
   const token = localStorage.getItem('token');
 
   const updateSocialHandler = async (data: AddNewSocial) => {

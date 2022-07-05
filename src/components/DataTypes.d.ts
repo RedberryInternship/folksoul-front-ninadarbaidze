@@ -75,6 +75,8 @@ export type ContextData = {
   refreshSocials: () => void;
   memberIsEdited: boolean;
   socialIsEdited: boolean;
+  refreshBand: () => void;
+  bandIsEdited: boolean;
 };
 
 export type DashboartNavs = {
@@ -175,4 +177,28 @@ export type AddNewSocial = {
   id: string;
   name: string;
   url: string;
+};
+
+export type EditBandTypes = {
+  about: any;
+  id: string;
+  name: string;
+  url: string;
+};
+
+export type EditBand = {
+  id: string;
+  about: string;
+};
+
+type SocialsTypes = {
+  _id: string;
+  name: string;
+  url: string;
+  image: [];
+};
+type AboutBandTypes = {
+  _id: string;
+  about: string;
+  image: [];
 };

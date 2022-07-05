@@ -10,6 +10,8 @@ const AuthContext = React.createContext({
   memberIsEdited: false,
   refreshSocials: () => {},
   socialIsEdited: false,
+  refreshBand: () => {},
+  bandIsEdited: false,
 });
 
 const retrieveStoredToken = () => {
@@ -21,6 +23,7 @@ export const AuthContextProvider: React.FC<Children> = (props) => {
   const tokenData = retrieveStoredToken();
   const [memberIsEdited, setMemberIsEdited] = useState<boolean>(false);
   const [socialIsEdited, setSocialIsEdited] = useState<boolean>(false);
+  const [bandIsEdited, setBandIsEdited] = useState<boolean>(false);
 
   let initialToken;
   if (tokenData) {
@@ -49,6 +52,10 @@ export const AuthContextProvider: React.FC<Children> = (props) => {
   const refreshSocials = () => {
     setSocialIsEdited(!socialIsEdited);
   };
+  const refreshBand = () => {
+    setBandIsEdited(!bandIsEdited);
+  };
+
   const contextValue: ContextData = {
     token: token,
     isLoggedIn: userIsLoggedIn,
@@ -58,6 +65,8 @@ export const AuthContextProvider: React.FC<Children> = (props) => {
     memberIsEdited: memberIsEdited,
     refreshSocials: refreshSocials,
     socialIsEdited: socialIsEdited,
+    refreshBand: refreshBand,
+    bandIsEdited: bandIsEdited,
   };
 
   return (

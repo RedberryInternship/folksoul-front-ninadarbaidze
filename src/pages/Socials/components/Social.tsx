@@ -19,7 +19,6 @@ const Social: React.FC<Socials> = (props) => {
 
   const openImagePickerHandler = () => {
     setImageModalState(true);
-    console.log(props);
   };
 
   const editMemberHandler = () => {
@@ -67,7 +66,7 @@ const Social: React.FC<Socials> = (props) => {
           />
         </div>
         <h1 className='text-white text-2xl'>{props.name}</h1>
-        <p className='text-link underline'>{props.url}</p>
+        <p className='text-link2 underline text-xl'>{props.url}</p>
         <div className='flex justify-center items-center gap-14'>
           <YellowButton onClick={editMemberHandler} />
           <RedButton onClick={deleteMemberHandler} />

@@ -1,16 +1,9 @@
 import { useState, useContext, useCallback, useEffect } from 'react';
-import { AdminPanelActionWrapper } from 'components';
+import { AdminPanelActionWrapper, SocialsTypes } from 'components';
 import AuthContext from 'store/AuthContext';
 import axios from 'axios';
 import { Social } from 'pages/Socials/components';
 import { Outlet, NavLink } from 'react-router-dom';
-
-type SocialsTypes = {
-  _id: string;
-  name: string;
-  url: string;
-  image: [];
-};
 
 const Socials = () => {
   const [data, setData] = useState<SocialsTypes[]>([]);
@@ -22,7 +15,6 @@ const Socials = () => {
       const response = await axios.get(`http://localhost:3000/social-media`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      console.log(response.data);
       setData(response.data);
     } catch (error: any) {}
   }, [token]);

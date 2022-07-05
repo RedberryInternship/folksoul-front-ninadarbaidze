@@ -8,6 +8,7 @@ import {
   Socials,
   NewMember,
   NewSocial,
+  EditBand,
 } from 'pages';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
@@ -38,7 +39,9 @@ const App = () => {
           <Route path='socials' element={<Socials />}>
             <Route path='new-social' element={<NewSocial />} />
           </Route>
-          <Route path='about-band' element={<AboutBand />} />
+          <Route path='about-band' element={<AboutBand />}>
+            <Route path='edit-band' element={<EditBand />} />
+          </Route>
           {/* <Route path='logout' element={<ByCountry />} /> */}
         </Route>
       </Routes>
