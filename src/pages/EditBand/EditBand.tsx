@@ -21,7 +21,7 @@ const EditBand = () => {
   });
   const token = localStorage.getItem('token');
 
-  const updateSocialHandler = async (data: EditBandTypes) => {
+  const onSubmit: SubmitHandler<EditBandTypes> = async (data) => {
     try {
       await axios.patch('http://localhost:3000/edit-band/' + state.id, data, {
         headers: { Authorization: `Bearer ${token}` },
@@ -33,10 +33,6 @@ const EditBand = () => {
     } catch (error: any) {
       throw new Error('Request failed!');
     }
-  };
-
-  const onSubmit: SubmitHandler<EditBandTypes> = async (data) => {
-    if (state) updateSocialHandler(data);
   };
 
   return (
@@ -60,7 +56,7 @@ const EditBand = () => {
           </div>
 
           <button
-            onClick={() => updateSocialHandler}
+            type='submit'
             className='w-[250px] h-[60px] rounded-[5px] text-white text-2xl bg-green'
           >
             შეინახე

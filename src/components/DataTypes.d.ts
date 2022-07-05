@@ -118,6 +118,11 @@ export type Socialmage = {
   socialId: string;
 };
 
+export type BandImage = {
+  image: string;
+  bandId: string;
+};
+
 export type ImageUploadData = {
   _id: string;
   name: string;
@@ -135,6 +140,13 @@ export type ImageUploadDataSocials = {
   url: string;
   image: any;
   fetchData: () => void;
+  setImageModalState: any;
+};
+
+export type ImageUploadBand = {
+  _id: string;
+  about: string;
+  image: any;
   setImageModalState: any;
 };
 
@@ -195,10 +207,10 @@ type SocialsTypes = {
   _id: string;
   name: string;
   url: string;
-  image: [];
+  image: any;
 };
 type AboutBandTypes = {
   _id: string;
   about: string;
-  image: [];
+  image: any;
 };

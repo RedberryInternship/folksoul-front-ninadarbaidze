@@ -62,6 +62,7 @@ module.exports = {
       white: '#FFFFFF',
       brown: '#501C1C',
       blue2: '#143B52',
+      blue3: '#3B5495',
       placeholder: '#A8A3A3',
     },
     animation: {
