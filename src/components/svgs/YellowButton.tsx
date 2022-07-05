@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { OnClick } from 'components';
 const YellowButton: React.FC<OnClick> = (props) => {
   return (

@@ -48,6 +48,8 @@ module.exports = {
       grad2: '#342C46',
       grad3: '#345161',
       grad4: '#7B5A5A',
+      dark10: '#C4C4C4',
+      dark20: '#444444',
       dark30: '#C4B6B2',
       dark50: '#333333',
       blue: '#2029F3',
