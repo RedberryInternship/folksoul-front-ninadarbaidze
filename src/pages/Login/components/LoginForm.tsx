@@ -37,7 +37,7 @@ const LoginForm = () => {
       setError(error.response.status);
       throw new Error('Request failed!');
     }
-    navigate('/dashoboard');
+    navigate('/dashoboard/main');
   };
   return (
     <LoginModal>
