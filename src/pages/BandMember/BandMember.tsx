@@ -33,7 +33,7 @@ const BandMember = () => {
 
   return (
     <>
-      <AdminPanelActionWrapper header='ჯგუფის წევრები'>
+      <AdminPanelActionWrapper className='gap-40' header='ჯგუფის წევრები'>
         <div className='flex gap-10'>
           {data.map((data) => (
             <Member {...data} key={data._id} fetchData={fetchData} />

@@ -83,6 +83,7 @@ export type DashboartNavs = {
 type AdminPanelWrapper = {
   children: React.ReactNode;
   header: string;
+  className?: string;
 };
 
 export type ModalData = {
