@@ -42,7 +42,6 @@ const App = () => {
           <Route path='about-band' element={<AboutBand />}>
             <Route path='edit-band' element={<EditBand />} />
           </Route>
-          {/* <Route path='logout' element={<ByCountry />} /> */}
         </Route>
       </Routes>
     </>

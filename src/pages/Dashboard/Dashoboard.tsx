@@ -1,4 +1,5 @@
-import React from 'react';
+import { useContext } from 'react';
+import AuthContext from 'store/AuthContext';
 import { Outlet } from 'react-router-dom';
 import {
   HomeIcon,
@@ -10,6 +11,8 @@ import {
 import { DashboardWrapper, DashboardNavs } from 'pages/Dashboard/components';
 
 const Dashoboard = () => {
+  const authCtx = useContext(AuthContext);
+
   return (
     <>
       <DashboardWrapper>
@@ -33,7 +36,7 @@ const Dashoboard = () => {
           <h2 className='text-[28px]'>ბენდის შესახებ</h2>
         </DashboardNavs>
 
-        <DashboardNavs destination={'logout'}>
+        <DashboardNavs destination={'/login'} onClick={() => authCtx.logout()}>
           <DoorIcon />
           <h2 className='text-[28px]'>გადი გარეთ</h2>
         </DashboardNavs>

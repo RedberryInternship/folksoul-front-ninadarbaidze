@@ -82,6 +82,7 @@ export type ContextData = {
 export type DashboartNavs = {
   destination: string;
   children: React.ReactNode;
+  onClick?: () => void;
 };
 
 type AdminPanelWrapper = {

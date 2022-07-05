@@ -6,6 +6,7 @@ const DashboardNavs: React.FC<DashboartNavs> = (props) => {
   return (
     <li>
       <NavLink
+        onClick={props.onClick}
         to={props.destination}
         className={({ isActive }) =>
           isActive
