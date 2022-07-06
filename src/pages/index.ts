@@ -7,3 +7,4 @@ export { default as AboutBand } from './AboutBand';
 export { default as NewMember } from './NewMember';
 export { default as NewSocial } from './NewSocial';
 export { default as EditBand } from './EditBand';
+export { default as FrontApplication } from './FrontApplication';

@@ -58,7 +58,7 @@ const Social: React.FC<Socials> = (props) => {
                 : youtube
             }
             alt='social-icon'
-            className='w-[3rem] '
+            className='max-w-[3rem] '
           />
           <EditPhoto
             onClick={openImagePickerHandler}

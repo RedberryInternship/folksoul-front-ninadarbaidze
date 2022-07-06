@@ -50,6 +50,8 @@ const Member: React.FC<MemberData> = (props) => {
     }
   };
 
+  console.log(props.color);
+
   return (
     <>
       {modalState && <Modal {...props} setModalState={setModalState} />}
@@ -58,7 +60,10 @@ const Member: React.FC<MemberData> = (props) => {
       )}
 
       <div className='flex flex-col justify-between items-center w-[15rem] h-[20rem] bg-dark50 border-[1px] rounded-sm drop-shadow-4xl'>
-        <div className='flex flex-col justify-center items-center relative rounded-full bg-backdrop border-[1px] mt-4 border-white w-[11rem] h-[11rem]'>
+        <div
+          style={{ backgroundColor: `${props.color}` }}
+          className={`flex flex-col justify-center items-center relative rounded-full  border-[1px] mt-4 border-white w-[11rem] h-[11rem]`}
+        >
           <img
             src={
               props.image.length > 0
@@ -66,7 +71,7 @@ const Member: React.FC<MemberData> = (props) => {
                 : memberIcon
             }
             alt=''
-            className='w-[7rem] '
+            className='w-[9rem]'
           />
           <EditPhoto
             onClick={openImagePickerHandler}
