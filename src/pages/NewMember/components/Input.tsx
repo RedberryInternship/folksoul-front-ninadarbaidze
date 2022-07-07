@@ -26,6 +26,10 @@ const Input: React.FC<InputProps> = (props) => {
               value: props.pattern,
               message: props.patternValueMessage,
             },
+            min: {
+              value: 300,
+              message: 'ორბიტის მინიმალური სიგრძე: 300',
+            },
           })}
         />
         <p className='max-w-sm pl-[3%] pt-1 text-error xs:text-sm lg:text-xs 2xl:text-base'>

@@ -215,3 +215,13 @@ type AboutBandTypes = {
   about: string;
   image: any;
 };
+
+export type BandMemberTypes = {
+  _id: string;
+  name: string;
+  instrument: string;
+  orbitLength: number;
+  color: string;
+  biography: string;
+  image: any;
+};

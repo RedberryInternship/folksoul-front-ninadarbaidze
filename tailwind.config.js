@@ -65,6 +65,7 @@ module.exports = {
       blue2: '#143B52',
       blue3: '#3B5495',
       yellow: '#FBD560',
+      yellow2: '#F2C94C',
       placeholder: '#A8A3A3',
     },
     animation: {
