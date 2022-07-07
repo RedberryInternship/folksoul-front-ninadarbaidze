@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-// import { sun } from 'assets/images';
 
 type CirclesTypes = {
   size: number;
@@ -11,6 +10,9 @@ type CirclesTypes = {
   memberName: string;
   memerImage: string;
   memberColor: string;
+  onClick: any;
+  setMemberIsSelected: any;
+  memberIsSelected: boolean;
 };
 
 const Circles: React.FC<CirclesTypes> = (props) => {
@@ -41,59 +43,72 @@ const Circles: React.FC<CirclesTypes> = (props) => {
     },
   };
 
-  // const onTap = () => {
+  const seTScaleToFalse = () => {
+    if (props.isSpinning) setScale(false);
+  };
+
+  useEffect(() => {
+    seTScaleToFalse();
+  }, [props.isSpinning]);
 
   return (
     <>
       <div
-        className={`inset-0 m-auto right-[50%] z-0 border-yellow2  border-dashed border-[3px] rounded-full border-black absolute  `}
+        className={`inset-0 m-auto right-[50%] z-[-98] border-yellow2  border-dashed border-[3px] rounded-full border-black absolute  `}
         style={{
           width: `${props.size}px`,
           height: `${props.size}px`,
-          // padding: `${props.padding}`,
         }}
+      ></div>
+      <motion.div
+        variants={circleVariants}
+        custom={360}
+        style={{
+          rotate: 0,
+          width: `${props.size}px`,
+          height: `${props.size}px`,
+        }}
+        animate={!props.isSpinning ? 'notSpinning' : 'spinning'}
+        className={`inset-0 m-auto right-[50%]   rounded-full border-black absolute  `}
       >
         <motion.div
+          drag
+          dragConstraints={{ left: 0, top: 0, right: 0, bottom: 0 }}
+          dragElastic={0.7}
           variants={circleVariants}
-          custom={360}
+          custom={-360}
           style={{
-            rotate: 0,
-            width: `${props.size}px`,
-            height: `${props.size}px`,
+            animationPlayState: 'paused',
+            backgroundColor: `${props.memberColor}`,
           }}
-          animate={!props.isSpinning ? 'notSpinning' : 'spinning'}
-          className={`inset-0 m-auto right-[50%]   rounded-full border-black absolute  `}
+          className={`${
+            scale && !props.isSpinning && props.memberIsSelected
+              ? 'w-24 h-24'
+              : 'w-20 h-20'
+          } z-50 absolute flex flex-col justify-center items-center top-[20%] border-[5px] border-yellow2  rounded-full`}
+          onClick={() => {
+            props.onClick();
+            props.setIsSpinning(false);
+            setScale(true);
+            props.setMemberIsSelected(true);
+          }}
         >
-          <motion.div
-            drag
-            dragConstraints={{ left: 0, top: 0, right: 0, bottom: 0 }}
-            dragElastic={0.7}
-            variants={circleVariants}
-            custom={-360}
-            style={{
-              animationPlayState: 'paused',
-              backgroundColor: `${props.memberColor}`,
-            }}
+          <img
+            src={`http://localhost:3000/${props.memerImage}`}
+            alt='membericon'
+          />
+          <div
             className={`${
-              scale && !props.isSpinning ? 'w-24 h-24' : 'w-20 h-20'
-            } z-50 absolute flex flex-col justify-center items-center top-[20%] border-[5px] border-yellow2  rounded-full`}
-            onClick={() => {
-              props.setIsSpinning(false);
-              setScale(!scale);
-            }}
+              scale && !props.isSpinning && props.memberIsSelected
+                ? 'w-28 h-10 top-16'
+                : 'w-24 h-8'
+            } flex items-center justify-center z-50  absolute top-12 bg-yellow2 border-[5px] rounded-full`}
+            style={{ borderColor: `${props.memberColor}` }}
           >
-            <img src={`http://localhost:3000/${props.memerImage}`} alt='' />
-            <div
-              className={`${
-                scale && !props.isSpinning ? 'w-28 h-10 top-16' : 'w-24 h-8'
-              } flex items-center justify-center z-50  absolute top-12 bg-yellow2 border-[5px] rounded-full`}
-              style={{ borderColor: `${props.memberColor}` }}
-            >
-              <h1 className='text-base'>{props.memberName}</h1>
-            </div>
-          </motion.div>
+            <h1 className='text-base'>{props.memberName}</h1>
+          </div>
         </motion.div>
-      </div>
+      </motion.div>
     </>
   );
 };

@@ -77,6 +77,8 @@ export type ContextData = {
   socialIsEdited: boolean;
   refreshBand: () => void;
   bandIsEdited: boolean;
+  scale: boolean;
+  scaleHandler: any;
 };
 
 export type DashboartNavs = {

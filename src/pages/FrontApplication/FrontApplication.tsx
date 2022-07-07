@@ -2,14 +2,18 @@ import { BandLogo, sun } from 'assets/images';
 import { Link } from 'react-router-dom';
 import { SocialsTypes, BandMemberTypes } from 'components';
 import { Circles2 } from 'pages/FrontApplication/components';
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useContext } from 'react';
 import axios from 'axios';
+import { AuthContext } from 'store';
 
 const FrontApplication = () => {
   const [bandLogo, setbandLogo] = useState<string>('');
   const [socials, setSocials] = useState<SocialsTypes[]>([]);
   const [bandMembers, setBandMembers] = useState<BandMemberTypes[]>([]);
   const [isSpinning, setIsSpinning] = useState<boolean>(true);
+  const [memberIsSelected, setMemberIsSelected] = useState<boolean>(true);
+  const [selectedMember, setSelectedMemeber] = useState<any>();
+  const ctx = useContext(AuthContext);
 
   const fetchData = useCallback(async () => {
     try {
@@ -28,9 +32,16 @@ const FrontApplication = () => {
     fetchData();
   }, [fetchData]);
 
+  const manageAppStateHandler = () => {
+    setIsSpinning(true);
+    setMemberIsSelected(false);
+    setSelectedMemeber(null);
+    ctx.scaleHandler();
+  };
+
   return (
     <>
-      <div className='flex gap-20 absolute z-[-1] h-screen w-screen bg-gradient-radial-to-tr  from-grad1 to-grad2'></div>
+      <div className='flex z-[-99] gap-20 absolute h-screen w-screen bg-gradient-radial-to-tr  from-grad1 to-grad2'></div>
       <header className='flex items-center justify-between px-[5%] pt-[1%]'>
         <img src={BandLogo} alt='band-logo' className=' w-60 ' />
         <h2 className='text-white text-xl '>
@@ -42,7 +53,7 @@ const FrontApplication = () => {
           <div className='w-1/2 flex items-center  justify-center'>
             <img
               src={sun}
-              onClick={() => setIsSpinning(true)}
+              onClick={manageAppStateHandler}
               alt='sun'
               className={`${
                 isSpinning ? 'animate-pulse' : ''
@@ -59,6 +70,9 @@ const FrontApplication = () => {
                 memberName={member.name}
                 memerImage={member.image[0].imageUrl}
                 memberColor={member.color}
+                onClick={() => setSelectedMemeber(member)}
+                setMemberIsSelected={setMemberIsSelected}
+                memberIsSelected={memberIsSelected}
               />
             ))}
           </div>
@@ -69,15 +83,19 @@ const FrontApplication = () => {
               <div className='flex justify-center items-center absolute w-[300px] h-[300px] left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-radial-to-tr  from-grad1 to-grad2 border-2 border-white drop-shadow-6xl'>
                 <img
                   src={
-                    bandLogo ? `http://localhost:3000/${bandLogo}` : BandLogo
+                    !selectedMember
+                      ? `http://localhost:3000/${bandLogo}`
+                      : `http://localhost:3000/${selectedMember.image[0].imageUrl}`
                   }
                   alt='bandLogo'
-                  className='max-w-[18rem]'
+                  className='max-w-[12rem]'
                 />
               </div>
               <div className=''>
                 <p className=' mt-48 text-xl mx-[10%] overflow-auto h-[400px] text-justify '>
-                  დაწყვილების პერიოდი ზომიერ და არქტიკულ რეგიონებში მობინადრე
+                  {selectedMember
+                    ? selectedMember.biography
+                    : ` დაწყვილების პერიოდი ზომიერ და არქტიკულ რეგიონებში მობინადრე
                   დათვებისთვის, ჩვეულებრივ, გაზაფხულია. მაკეობა ხანმოკლეა, თუმცა
                   იმის გამო, რომ დათვი არ მშობიარობს მანამ, სანამ ზამთრის შუა
                   ძილში არ იქნება, განაყოფიერებული კვერცხუჯრედის საშვილოსნოში
@@ -92,7 +110,7 @@ const FrontApplication = () => {
                   ვირთხებს. ისინი თვალაუხელელნი, უკბილონი და ბეწვის გარეშე
                   იბადებიან. პატარები რჩებიან რა ბუნაგში დედასთან, მისი ნოყიერი
                   რძით იკვებებიან და სწრაფად იზრდებიან. როდესაც გაზაფხულზე ისინი
-                  ბარბაცით გამოდიან ბუნაგიდან
+                  ბარბაცით გამოდიან ბუნაგიდან`}
                 </p>
               </div>
               <div className='flex justify-center items-center mt-10 gap-4'>
