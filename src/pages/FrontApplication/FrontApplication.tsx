@@ -1,19 +1,18 @@
-import { BandLogo, sun } from 'assets/images';
+import { BandLogo, sun, memberIcon } from 'assets/images';
 import { Link } from 'react-router-dom';
 import { SocialsTypes, BandMemberTypes } from 'components';
-import { Circles2 } from 'pages/FrontApplication/components';
-import { useState, useCallback, useEffect, useContext } from 'react';
+import { Circles } from 'pages/FrontApplication/components';
+import { useState, useCallback, useEffect } from 'react';
 import axios from 'axios';
-import { AuthContext } from 'store';
 
 const FrontApplication = () => {
   const [bandLogo, setbandLogo] = useState<string>('');
+  const [bandInfo, setbandInfo] = useState<string>('');
   const [socials, setSocials] = useState<SocialsTypes[]>([]);
   const [bandMembers, setBandMembers] = useState<BandMemberTypes[]>([]);
   const [isSpinning, setIsSpinning] = useState<boolean>(true);
   const [memberIsSelected, setMemberIsSelected] = useState<boolean>(true);
   const [selectedMember, setSelectedMemeber] = useState<any>();
-  const ctx = useContext(AuthContext);
 
   const fetchData = useCallback(async () => {
     try {
@@ -23,6 +22,7 @@ const FrontApplication = () => {
       );
       const members = await axios.get(`http://localhost:3000/band-members`);
       setbandLogo(aboutBandResponse.data.image[0].imageUrl);
+      setbandInfo(aboutBandResponse.data.about);
       setSocials(aboutSocialsResponse.data);
       setBandMembers(members.data);
     } catch (error: any) {}
@@ -36,7 +36,16 @@ const FrontApplication = () => {
     setIsSpinning(true);
     setMemberIsSelected(false);
     setSelectedMemeber(null);
-    ctx.scaleHandler();
+  };
+
+  const showMemberIcon = () => {
+    if (!selectedMember) {
+      return `http://localhost:3000/${bandLogo}`;
+    } else if (selectedMember.image.length === 0) {
+      return memberIcon;
+    } else {
+      return `http://localhost:3000/${selectedMember.image[0].imageUrl}`;
+    }
   };
 
   return (
@@ -60,7 +69,7 @@ const FrontApplication = () => {
               } inset-0 m-auto right-[50%] px-4 py-4 p-3 w-44 h-44 z-50 cursor-pointer absolute`}
             />
             {bandMembers.map((member) => (
-              <Circles2
+              <Circles
                 key={member._id}
                 size={member.orbitLength}
                 setIsSpinning={setIsSpinning}
@@ -68,7 +77,7 @@ const FrontApplication = () => {
                 duration={member.orbitLength / 4}
                 padding={'500px'}
                 memberName={member.name}
-                memerImage={member.image[0].imageUrl}
+                memberImage={member.image[0] ? member.image[0].imageUrl : ''}
                 memberColor={member.color}
                 onClick={() => setSelectedMemeber(member)}
                 setMemberIsSelected={setMemberIsSelected}
@@ -82,42 +91,25 @@ const FrontApplication = () => {
             <div className='flex flex-col justify-between'>
               <div className='flex justify-center items-center absolute w-[300px] h-[300px] left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-radial-to-tr  from-grad1 to-grad2 border-2 border-white drop-shadow-6xl'>
                 <img
-                  src={
-                    !selectedMember
-                      ? `http://localhost:3000/${bandLogo}`
-                      : `http://localhost:3000/${selectedMember.image[0].imageUrl}`
-                  }
+                  src={showMemberIcon()}
                   alt='bandLogo'
                   className='max-w-[12rem]'
                 />
               </div>
               <div className=''>
                 <p className=' mt-48 text-xl mx-[10%] overflow-auto h-[400px] text-justify '>
-                  {selectedMember
-                    ? selectedMember.biography
-                    : ` დაწყვილების პერიოდი ზომიერ და არქტიკულ რეგიონებში მობინადრე
-                  დათვებისთვის, ჩვეულებრივ, გაზაფხულია. მაკეობა ხანმოკლეა, თუმცა
-                  იმის გამო, რომ დათვი არ მშობიარობს მანამ, სანამ ზამთრის შუა
-                  ძილში არ იქნება, განაყოფიერებული კვერცხუჯრედის საშვილოსნოში
-                  იმპლანტაცია ხდება მხოლოდ ოქტომბე-ნოემბერში, ამ პროცესს
-                  „დაგვიანებული იმპლანტაცია“ ეწოდება. დათვი შობს წარმოუდგენლად
-                  პატარა ბელებს, ხშირ შემთხვევაში — ორს. ახალშობილები მხოლოდ
-                  200-700 გრამს იწონიან და ძალიან ჰგვანან პატარა ვირთხებს. ისინი
-                  თვალაუხელელნი, უკბილონი და ბეწვის გარეშე იბადებიან. პატარები
-                  რჩებიან რა ბუნაგში დედასთან, მისი ნოყიერი რძით იკვებებიან და
-                  სწრაფად იზრდებიან. როდესაც გაზაფხულზე ისინი ბარბაცით გამოდიან
-                  ბუნაგიდან200-700 გრამს იწონიან და ძალიან ჰგვანან პატარა
-                  ვირთხებს. ისინი თვალაუხელელნი, უკბილონი და ბეწვის გარეშე
-                  იბადებიან. პატარები რჩებიან რა ბუნაგში დედასთან, მისი ნოყიერი
-                  რძით იკვებებიან და სწრაფად იზრდებიან. როდესაც გაზაფხულზე ისინი
-                  ბარბაცით გამოდიან ბუნაგიდან`}
+                  {selectedMember ? selectedMember.biography : bandInfo}
                 </p>
               </div>
               <div className='flex justify-center items-center mt-10 gap-4'>
                 {socials.map((social) => (
                   <a href={social.url} target='_blank' rel='noreferrer'>
                     <img
-                      src={`http://localhost:3000/${social.image[0].imageUrl}`}
+                      src={
+                        social.image.length > 0
+                          ? `http://localhost:3000/${social.image[0].imageUrl}`
+                          : memberIcon
+                      }
                       className='max-h-[3rem] cursor-pointer'
                       alt='social-icon'
                       key={social._id}

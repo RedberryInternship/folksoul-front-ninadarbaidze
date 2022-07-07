@@ -227,3 +227,17 @@ export type BandMemberTypes = {
   biography: string;
   image: any;
 };
+
+type CirclesTypes = {
+  size: number;
+  setIsSpinning: any;
+  isSpinning: boolean;
+  duration: number;
+  padding?: string;
+  memberName: string;
+  memberImage: string;
+  memberColor: string;
+  onClick: any;
+  setMemberIsSelected: any;
+  memberIsSelected: boolean;
+};

@@ -1,19 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-
-type CirclesTypes = {
-  size: number;
-  setIsSpinning: any;
-  isSpinning: boolean;
-  duration: number;
-  padding?: string;
-  memberName: string;
-  memerImage: string;
-  memberColor: string;
-  onClick: any;
-  setMemberIsSelected: any;
-  memberIsSelected: boolean;
-};
+import { memberIcon } from 'assets/images';
+import { CirclesTypes } from 'components';
 
 const Circles: React.FC<CirclesTypes> = (props) => {
   const [scale, setScale] = useState(false);
@@ -34,13 +22,6 @@ const Circles: React.FC<CirclesTypes> = (props) => {
         duration: 12147836472,
       },
     }),
-    scale: {
-      scale: 1.5,
-      transition: {
-        duration: 0.3,
-        yoyo: 10,
-      },
-    },
   };
 
   const seTScaleToFalse = () => {
@@ -69,7 +50,7 @@ const Circles: React.FC<CirclesTypes> = (props) => {
           height: `${props.size}px`,
         }}
         animate={!props.isSpinning ? 'notSpinning' : 'spinning'}
-        className={`inset-0 m-auto right-[50%]   rounded-full border-black absolute  `}
+        className={`inset-0 m-auto right-[50%]  rounded-full border-black absolute  `}
       >
         <motion.div
           drag
@@ -94,8 +75,13 @@ const Circles: React.FC<CirclesTypes> = (props) => {
           }}
         >
           <img
-            src={`http://localhost:3000/${props.memerImage}`}
+            src={
+              props.memberImage
+                ? `http://localhost:3000/${props.memberImage}`
+                : memberIcon
+            }
             alt='membericon'
+            className='w-16'
           />
           <div
             className={`${

@@ -71,7 +71,7 @@ const Member: React.FC<MemberData> = (props) => {
                 : memberIcon
             }
             alt=''
-            className='w-[9rem]'
+            className='h-[8rem]'
           />
           <EditPhoto
             onClick={openImagePickerHandler}
