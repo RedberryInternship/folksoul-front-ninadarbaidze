@@ -70,7 +70,7 @@ const AboutBand = () => {
               className='w-[40px] 2xl:w-[60px] absolute ml-28 mt-32 2xl:ml-44 2xl:mt-48 cursor-pointer'
             />
           </div>
-          <div className='flex justify-center gap-12 items-center'>
+          <div className='flex justify-center gap-12 items-center w-[100%]'>
             <div className='bg-dark10 relative w-8 h-8 2xl:w-12 2xl:h-12 border-[1px]  rounded-full cursor-pointer'>
               <EditIcon onClick={editBandInfoHandler} />
             </div>

@@ -47,7 +47,7 @@ const EditBand = () => {
       >
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className='flex flex-col mt-4 justify-center items-center gap-8'
+          className='flex flex-col mt-4 justify-center items-center gap-4 2xl:gap-8'
         >
           <div className='flex flex-col items-center'>
             <Textarea
@@ -61,12 +61,12 @@ const EditBand = () => {
 
           <button
             type='submit'
-            className='w-[250px] h-[60px] rounded-[5px] text-white text-2xl bg-green'
+            className='w-[150px] h-[50px] 2xl:w-[250px] 2xl:h-[60px] rounded-[5px] text-white text-lg 2xl:text-2xl bg-green'
           >
             შეინახე
           </button>
           <button
-            className=' text-link text-2xl font-bold underline '
+            className=' text-link text-base 2xl:text-2xl font-bold underline '
             onClick={() => navigate('/dashoboard/about-band')}
           >
             გადი უკან
