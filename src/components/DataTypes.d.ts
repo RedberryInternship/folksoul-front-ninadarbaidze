@@ -77,8 +77,6 @@ export type ContextData = {
   socialIsEdited: boolean;
   refreshBand: () => void;
   bandIsEdited: boolean;
-  scale: boolean;
-  scaleHandler: any;
 };
 
 export type DashboartNavs = {
@@ -100,7 +98,7 @@ export type ModalDataMembers = {
   orbitLength: number;
   color: string;
   biography: string;
-  image: any;
+  image: [image];
   setModalState: any;
 };
 
@@ -240,4 +238,17 @@ type CirclesTypes = {
   onClick: any;
   setMemberIsSelected: any;
   memberIsSelected: boolean;
+};
+
+type EditPhotoTypes = {
+  className: string;
+  onClick: () => void;
+};
+
+type Socials = {
+  _id: string;
+  name: string;
+  url: string;
+  image: any;
+  fetchData: () => void;
 };

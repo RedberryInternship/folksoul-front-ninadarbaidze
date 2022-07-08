@@ -1,8 +1,7 @@
 import React from 'react';
+import { EditPhotoTypes } from 'components';
 
-const EditPhoto: React.FC<{ className: string; onClick: () => void }> = (
-  props
-) => {
+const EditPhoto: React.FC<EditPhotoTypes> = (props) => {
   return (
     <svg
       viewBox='0 0 37 37'

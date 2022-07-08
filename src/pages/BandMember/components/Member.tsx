@@ -50,8 +50,6 @@ const Member: React.FC<MemberData> = (props) => {
     }
   };
 
-  console.log(props.color);
-
   return (
     <>
       {modalState && <Modal {...props} setModalState={setModalState} />}

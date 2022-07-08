@@ -28,7 +28,6 @@ const AboutBand = () => {
       const response = await axios.get(`http://localhost:3000/bands`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      console.log(response.data);
       setData(response.data);
     } catch (error: any) {}
   }, [token]);

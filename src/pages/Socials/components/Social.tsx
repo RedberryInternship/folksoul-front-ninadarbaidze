@@ -4,14 +4,7 @@ import { RedButton, YellowButton, EditPhoto } from 'components/svgs';
 import { ImageUploadModal } from 'pages/Socials/components';
 import axios from 'axios';
 import { youtube } from 'assets/images';
-
-type Socials = {
-  _id: string;
-  name: string;
-  url: string;
-  image: any;
-  fetchData: () => void;
-};
+import { Socials } from 'components';
 
 const Social: React.FC<Socials> = (props) => {
   const navigate = useNavigate();

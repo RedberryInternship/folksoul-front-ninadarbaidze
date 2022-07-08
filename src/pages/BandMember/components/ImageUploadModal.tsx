@@ -84,7 +84,7 @@ const ImageUploadModal: React.FC<ImageUploadData> = (props) => {
             {!showSubmitButton && (
               <button
                 onClick={() => {
-                  fileRef.current.click();
+                  fileRef.current!.click();
                   setShowSubmitButton(true);
                 }}
                 className='w-[250px] h-[60px] rounded-[5px] text-white text-2xl bg-backdrop'
