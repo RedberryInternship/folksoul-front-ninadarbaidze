@@ -31,8 +31,8 @@ const Input: React.FC<InputProps> = (props) => {
               message: 'მინ. სიგრძე: 300',
             },
             max: {
-              value: 800,
-              message: 'მაქს. სიგრძე: 800',
+              value: 700,
+              message: 'მაქს. სიგრძე: 700',
             },
           })}
         />
