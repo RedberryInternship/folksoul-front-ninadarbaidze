@@ -27,9 +27,12 @@ const Social: React.FC<Socials> = (props) => {
   const deleteMemberHandler = async () => {
     const token = localStorage.getItem('token');
     try {
-      await axios.delete('http://localhost:3000/delete-social/' + props._id, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.delete(
+        `${process.env.REACT_APP_DOMAIN}/delete-social/${props._id}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       props.fetchData();
     } catch (error: any) {
       throw new Error('Request failed!');
@@ -47,7 +50,7 @@ const Social: React.FC<Socials> = (props) => {
           <img
             src={
               props.image.length > 0
-                ? `http://localhost:3000/${props.image[0].imageUrl}`
+                ? `${process.env.REACT_APP_DOMAIN}/${props.image[0].imageUrl}`
                 : youtube
             }
             alt='social-icon'

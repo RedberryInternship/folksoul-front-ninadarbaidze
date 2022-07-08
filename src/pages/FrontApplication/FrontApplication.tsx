@@ -16,11 +16,15 @@ const FrontApplication = () => {
 
   const fetchData = useCallback(async () => {
     try {
-      const aboutBandResponse = await axios.get(`http://localhost:3000/bands`);
-      const aboutSocialsResponse = await axios.get(
-        `http://localhost:3000/social-media`
+      const aboutBandResponse = await axios.get(
+        `${process.env.REACT_APP_DOMAIN}/bands`
       );
-      const members = await axios.get(`http://localhost:3000/band-members`);
+      const aboutSocialsResponse = await axios.get(
+        `${process.env.REACT_APP_DOMAIN}/social-media`
+      );
+      const members = await axios.get(
+        `${process.env.REACT_APP_DOMAIN}/band-members`
+      );
       setbandLogo(aboutBandResponse.data.image[0].imageUrl);
       setbandInfo(aboutBandResponse.data.about);
       setSocials(aboutSocialsResponse.data);
@@ -40,11 +44,11 @@ const FrontApplication = () => {
 
   const showMemberIcon = () => {
     if (!selectedMember) {
-      return `http://localhost:3000/${bandLogo}`;
+      return `${process.env.REACT_APP_DOMAIN}/${bandLogo}`;
     } else if (selectedMember.image.length === 0) {
       return memberIcon;
     } else {
-      return `http://localhost:3000/${selectedMember.image[0].imageUrl}`;
+      return `${process.env.REACT_APP_DOMAIN}/${selectedMember.image[0].imageUrl}`;
     }
   };
 
@@ -107,7 +111,7 @@ const FrontApplication = () => {
                     <img
                       src={
                         social.image.length > 0
-                          ? `http://localhost:3000/${social.image[0].imageUrl}`
+                          ? `${process.env.REACT_APP_DOMAIN}/${social.image[0].imageUrl}`
                           : memberIcon
                       }
                       className='max-h-[3rem] cursor-pointer'

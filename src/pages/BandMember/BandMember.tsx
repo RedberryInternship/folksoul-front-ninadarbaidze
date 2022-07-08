@@ -17,7 +17,7 @@ const BandMember = () => {
   const fetchData = useCallback(async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/band-members?page=${pageNumber}`,
+        `${process.env.REACT_APP_DOMAIN}/band-members?page=${pageNumber}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

@@ -12,9 +12,12 @@ const Socials = () => {
   const token = localStorage.getItem('token');
   const fetchData = useCallback(async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/social-media`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await axios.get(
+        `${process.env.REACT_APP_DOMAIN}/social-media`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       setData(response.data);
     } catch (error: any) {}
   }, [token]);

@@ -41,9 +41,12 @@ const Member: React.FC<MemberData> = (props) => {
     const token = localStorage.getItem('token');
 
     try {
-      await axios.delete('http://localhost:3000/delete-member/' + props._id, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.delete(
+        `${process.env.REACT_APP_DOMAIN}/delete-member/${props._id}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       props.fetchData();
     } catch (error: any) {
       throw new Error('Request failed!');
@@ -65,7 +68,7 @@ const Member: React.FC<MemberData> = (props) => {
           <img
             src={
               props.image.length > 0
-                ? `http://localhost:3000/${props.image[0].imageUrl}`
+                ? `${process.env.REACT_APP_DOMAIN}/${props.image[0].imageUrl}`
                 : memberIcon
             }
             alt=''

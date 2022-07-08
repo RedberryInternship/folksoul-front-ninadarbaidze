@@ -25,9 +25,12 @@ const AboutBand = () => {
   const token = localStorage.getItem('token');
   const fetchData = useCallback(async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/bands`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await axios.get(
+        `${process.env.REACT_APP_DOMAIN}/bands`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       setData(response.data);
     } catch (error: any) {}
   }, [token]);
@@ -55,7 +58,7 @@ const AboutBand = () => {
             <img
               src={
                 data.image.length > 0
-                  ? `http://localhost:3000/${data.image[0].imageUrl}`
+                  ? `${process.env.REACT_APP_DOMAIN}/${data.image[0].imageUrl}`
                   : band
               }
               alt=''

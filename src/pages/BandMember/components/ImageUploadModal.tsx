@@ -1,12 +1,11 @@
-import React, { useState, useRef, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { Close } from 'components/svgs';
 import axios from 'axios';
 import AuthContext from 'store/AuthContext';
 import { memberIcon } from 'assets/images';
-import { Image, ImageUploadData } from 'components';
+import { Image, ImageUploadData, ImageUploadModalForm } from 'components';
 
 const ImageUploadModal: React.FC<ImageUploadData> = (props) => {
-  const fileRef = useRef<any>();
   const authCtx = useContext(AuthContext);
 
   const [showSubmitButton, setShowSubmitButton] = useState<boolean>(false);
@@ -33,7 +32,7 @@ const ImageUploadModal: React.FC<ImageUploadData> = (props) => {
     if (props.image <= 0 && !imagePreview) {
       return memberIcon;
     } else if (!imagePreview) {
-      return `http://localhost:3000/${props.image[0].imageUrl}`;
+      return `${process.env.REACT_APP_DOMAIN}/${props.image[0].imageUrl}`;
     } else {
       return imagePreview;
     }
@@ -48,9 +47,13 @@ const ImageUploadModal: React.FC<ImageUploadData> = (props) => {
     formData.append('memberId', memberImage.memberId);
 
     try {
-      await axios.post('http://localhost:3000/change-avatar', formData, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.post(
+        `${process.env.REACT_APP_DOMAIN}/change-avatar`,
+        formData,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
     } catch (error: any) {
       throw new Error('Request failed!');
     }
@@ -78,36 +81,12 @@ const ImageUploadModal: React.FC<ImageUploadData> = (props) => {
               />
             </div>
           </div>
-          <form onSubmit={submitImage} encType='multipart/form-data'>
-            <input
-              type='file'
-              accept='.png, .jpg, .jpeg'
-              name='image'
-              ref={fileRef}
-              onChange={imageChangeHandler}
-              hidden
-            />
-            {!showSubmitButton && (
-              <button
-                onClick={() => {
-                  fileRef.current!.click();
-                  setShowSubmitButton(true);
-                }}
-                className='w-[150px] h-[50px] 2xl:w-[250px] 2xl:h-[60px] rounded-[5px] text-white text-base 2xl:text-2xl bg-backdrop'
-              >
-                ატვირთე
-              </button>
-            )}
-
-            {showSubmitButton && (
-              <button
-                type='submit'
-                className='w-[150px] h-[50px] 2xl:w-[250px] 2xl:h-[60px] rounded-[5px] text-white text-base 2xl:text-2xl bg-green'
-              >
-                შეინახე
-              </button>
-            )}
-          </form>
+          <ImageUploadModalForm
+            onSubmit={submitImage}
+            onChange={imageChangeHandler}
+            showSubmitButton={showSubmitButton}
+            setShowSubmitButton={setShowSubmitButton}
+          />
         </div>
       </div>
     </>

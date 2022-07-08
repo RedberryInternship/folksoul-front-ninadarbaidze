@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
-import { AdminPanelActionWrapper, AddNewMember } from 'components';
+import { AdminPanelActionWrapper, AddNewMember, Input } from 'components';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { Input, Textarea, FormButton } from 'pages/NewMember/components';
+import { Textarea, FormButton } from 'pages/NewMember/components';
 import { useNavigate, useLocation } from 'react-router-dom';
 import AuthContext from 'store/AuthContext';
 
@@ -32,9 +32,13 @@ const NewMember = () => {
 
   const updateBandMemberHandler = async (data: AddNewMember) => {
     try {
-      await axios.patch('http://localhost:3000/edit-member/' + state.id, data, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.patch(
+        `${process.env.REACT_APP_DOMAIN}/edit-member/${state.id}`,
+        data,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       authCtx.refreshMembers();
       navigate('/dashoboard/band-members');
 
@@ -47,7 +51,7 @@ const NewMember = () => {
 
   const addNewBandMemberHandler = async (data: AddNewMember) => {
     try {
-      await axios.post('http://localhost:3000/new-member', data, {
+      await axios.post(`${process.env.REACT_APP_DOMAIN}/new-member`, data, {
         headers: { Authorization: `Bearer ${token}` },
       });
     } catch (error: any) {
@@ -82,7 +86,9 @@ const NewMember = () => {
               isRequired={true}
               minValue={3}
               class={
-                errors.name ? 'border-red w-[20vw] ' : 'border-blue2 w-[20vw]'
+                errors.name
+                  ? 'border-red w-[20vw] h-[3rem] 2xl:h-[4rem] text-center  focus:outline-none bg-white placeholder:placeholder text-[14px] 2xl:text-xl font-normal  border-[1px] 2xl:border-[1.5px] rounded-[5px]  pl-[8%] '
+                  : 'border-blue2 w-[20vw] h-[3rem] 2xl:h-[4rem] text-center  focus:outline-none bg-white placeholder:placeholder text-[14px] 2xl:text-xl font-normal  border-[1px] 2xl:border-[1.5px] rounded-[5px]  pl-[8%]'
               }
             />
             {errors.name ? (
@@ -110,8 +116,8 @@ const NewMember = () => {
                 minValue={2}
                 class={
                   errors.instrument
-                    ? 'border-red w-[10vw] '
-                    : 'border-blue2 w-[10vw]'
+                    ? 'border-red w-[10vw] h-[3rem] 2xl:h-[4rem] text-center  focus:outline-none bg-white placeholder:placeholder text-[14px] 2xl:text-xl font-normal  border-[1px] 2xl:border-[1.5px] rounded-[5px]  pl-[8%] '
+                    : 'border-blue2 w-[10vw] h-[3rem] 2xl:h-[4rem] text-center  focus:outline-none bg-white placeholder:placeholder text-[14px] 2xl:text-xl font-normal  border-[1px] 2xl:border-[1.5px] rounded-[5px]  pl-[8%]'
                 }
               />
               {errors.instrument ? (
@@ -129,10 +135,14 @@ const NewMember = () => {
                 isRequired={true}
                 pattern={/^[0-9]*$/}
                 patternValueMessage={'შეიყვანე რიცხვი'}
+                min={300}
+                minMessage={'სიგრძე მინ. 300 '}
+                max={700}
+                maxMessage={'სიგრძე მაქს. 700 '}
                 class={
                   errors.orbitLength
-                    ? 'border-red w-[10vw] '
-                    : 'border-blue2 w-[10vw]'
+                    ? 'border-red w-[10vw] h-[3rem] 2xl:h-[4rem] text-center  focus:outline-none bg-white placeholder:placeholder text-[14px] 2xl:text-xl font-normal  border-[1px] 2xl:border-[1.5px] rounded-[5px]  pl-[8%] '
+                    : 'border-blue2 w-[10vw] h-[3rem] 2xl:h-[4rem] text-center  focus:outline-none bg-white placeholder:placeholder text-[14px] 2xl:text-xl font-normal  border-[1px] 2xl:border-[1.5px] rounded-[5px]  pl-[8%]'
                 }
               />
               {errors.orbitLength ? (
@@ -150,12 +160,12 @@ const NewMember = () => {
                 id={'color'}
                 isRequired={true}
                 pattern={/^#(?:[0-9A-F]{3}){1,2}$/}
-                patternValueMessage={'ფერის არასწორი ფორმატი'}
+                patternValueMessage={'არასწორი ფორმატი'}
                 minValue={7}
                 class={
                   errors.color
-                    ? 'border-red w-[10vw] '
-                    : 'border-blue2 w-[10vw]'
+                    ? 'border-red w-[10vw] h-[3rem] 2xl:h-[4rem] text-center  focus:outline-none bg-white placeholder:placeholder text-[14px] 2xl:text-xl font-normal  border-[1px] 2xl:border-[1.5px] rounded-[5px]  pl-[8%] '
+                    : 'border-blue2 w-[10vw] h-[3rem] 2xl:h-[4rem] text-center  focus:outline-none bg-white placeholder:placeholder text-[14px] 2xl:text-xl font-normal  border-[1px] 2xl:border-[1.5px] rounded-[5px]  pl-[8%]'
                 }
               />
               {errors.color ? (

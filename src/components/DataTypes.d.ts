@@ -21,6 +21,10 @@ type InputProps = {
   error?: any;
   pattern?: any;
   isNum?: boolean;
+  min?: number;
+  minMessage?: string;
+  max?: number;
+  maxMessage?: string;
 };
 
 export type TextareaField = {

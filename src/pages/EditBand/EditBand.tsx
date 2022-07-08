@@ -23,9 +23,13 @@ const EditBand = () => {
 
   const onSubmit: SubmitHandler<EditBandTypes> = async (data) => {
     try {
-      await axios.patch('http://localhost:3000/edit-band/' + state.id, data, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.patch(
+        `${process.env.REACT_APP_DOMAIN}/edit-band/${state.id}`,
+        data,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       authCtx.refreshSocials();
       navigate('/dashoboard/about-band');
 
