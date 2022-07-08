@@ -88,7 +88,7 @@ const Circles: React.FC<CirclesTypes> = (props) => {
               scale && !props.isSpinning && props.memberIsSelected
                 ? 'w-28 h-10 top-16'
                 : 'w-24 h-8'
-            } flex items-center justify-center z-50  absolute top-12 bg-yellow2 border-[5px] rounded-full`}
+            } flex items-center justify-center z-50  absolute top-16 bg-yellow2 border-[5px] rounded-full`}
             style={{ borderColor: `${props.memberColor}` }}
           >
             <h1 className='text-base'>{props.memberName}</h1>

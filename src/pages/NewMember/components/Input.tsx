@@ -31,8 +31,8 @@ const Input: React.FC<InputProps> = (props) => {
               message: 'ორბიტის მინიმალური სიგრძე: 300',
             },
             max: {
-              value: 900,
-              message: 'ორბიტის მაქსიმალური სიგრძე: 900',
+              value: 800,
+              message: 'ორბიტის მაქსიმალური სიგრძე: 800',
             },
           })}
         />

@@ -5,10 +5,12 @@ const LoginModal: React.FC<Children> = (props) => {
   return (
     <>
       <div className='flex items-center justify-center h-screen w-screen bg-gradient-radial-to-tr  from-grad1 to-grad2'>
-        <div className='flex flex-col items-center w-[35rem] h-[40rem] border-[1px] rounded-[1px]  border-white bg-gradient-to-t  from-grad4 to-grad3'>
-          <div className='flex justify-center items-center w-[15rem] h-[4rem]  before:block before:absolute before:-inset-1 before:-skew-x-[20deg] before:bg-red relative mt-16 drop-shadow-3xl'>
+        <div className='flex flex-col items-center w-[25rem] h-[30rem] 2xl:w-[35rem] 2xl:h-[40rem] border-[1px] rounded-[1px]  border-white bg-gradient-to-t  from-grad4 to-grad3'>
+          <div className='flex justify-center items-center w-[12rem] h-[3rem]  2xl:w-[15rem] 2xl:h-[4rem]  before:block before:absolute before:-inset-1 before:-skew-x-[20deg] before:bg-red relative mt-16 drop-shadow-3xl'>
             <div>
-              <h1 className='relative font-bold text-3xl'>კარიბჭე</h1>
+              <h1 className='relative font-bold xl:text-2xl 2xl:text-3xl'>
+                კარიბჭე
+              </h1>
             </div>
           </div>
 
