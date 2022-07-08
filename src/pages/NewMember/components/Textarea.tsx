@@ -8,7 +8,8 @@ const Textarea: React.FC<TextareaField> = (props) => {
         <label htmlFor={props.fieldName}>{props.labelName}</label>
         <textarea
           id={props.fieldName}
-          className={`${props.class} w-[40vw] h-[6vw] text-center  focus:outline-none bg-white placeholder:placeholder text-xl font-normal  border-[2px] rounded-[5px]  pl-[1%] `}
+          placeholder='ბიოგრაფია'
+          className={`${props.class} w-[40vw] h-[6vw] text-center  focus:outline-none bg-white placeholder:placeholder text-[14px] 2xl:text-xl font-normal  border-[1px] 2xl:border-[1.5px] rounded-[5px]  pl-[1%] `}
           {...props.register(props.fieldName, {
             required: {
               value: props.isRequired,

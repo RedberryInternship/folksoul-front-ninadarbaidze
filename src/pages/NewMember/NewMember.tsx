@@ -68,7 +68,7 @@ const NewMember = () => {
       <AdminPanelActionWrapper header='დაამატე ჯგუფის ახალი წევრი'>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className='flex flex-col mt-14 justify-center items-center gap-14'
+          className='flex flex-col mt-4 2xl:mt-8 justify-center items-center gap-4 2xl:gap-12'
         >
           <div className='flex flex-col items-center h-[5rem]'>
             <Input
@@ -86,12 +86,12 @@ const NewMember = () => {
               }
             />
             {errors.name ? (
-              <p className='text-red text-[16px] pt-1'>
+              <p className='text-red text-[12px] 2xl:text-[16px] pt-1'>
                 {errors.name?.message}
               </p>
             ) : null}
             {error && !isSubmitSuccessful ? (
-              <p className='text-red text-[16px] pt-1'>
+              <p className='text-red text-[12px] 2xl:text-[16px] pt-1'>
                 უკვე არსებობს სხვა ამ მეტსახელით
               </p>
             ) : null}
@@ -115,7 +115,7 @@ const NewMember = () => {
                 }
               />
               {errors.instrument ? (
-                <p className='text-red text-[16px] pt-1'>
+                <p className='text-red text-[12px] 2xl:text-[16px] pt-1'>
                   {errors.instrument?.message}
                 </p>
               ) : null}
@@ -136,7 +136,7 @@ const NewMember = () => {
                 }
               />
               {errors.orbitLength ? (
-                <p className='text-red text-[16px] pt-1'>
+                <p className='text-red text-[12px] 2xl:text-[16px] pt-1'>
                   {errors.orbitLength?.message}
                 </p>
               ) : null}
@@ -159,13 +159,13 @@ const NewMember = () => {
                 }
               />
               {errors.color ? (
-                <p className='text-red text-[16px] pt-1'>
+                <p className='text-red text-[12px] 2xl:text-[16px] pt-1'>
                   {errors.color?.message}
                 </p>
               ) : null}
             </div>
           </div>
-          <div className='flex flex-col items-center h-[14rem]'>
+          <div className='flex flex-col items-center h-[8rem] 2xl:h-[10rem]'>
             <Textarea
               fieldName='biography'
               register={register}
@@ -178,7 +178,7 @@ const NewMember = () => {
               }
             />
             {errors.biography ? (
-              <p className='text-red text-[16px] pt-1'>
+              <p className='text-red text-[12px] 2xl:text-[16px] pt-1'>
                 {errors.biography?.message}
               </p>
             ) : null}
@@ -187,7 +187,7 @@ const NewMember = () => {
             buttonText={!state ? 'დაამატე წევრი' : 'განაახლე წევრი'}
           />
           <button
-            className=' text-link text-2xl font-bold underline mt-[-20px]'
+            className=' text-link text-base 2xl:text-2xl font-bold underline '
             onClick={() => navigate('/dashoboard/band-members')}
           >
             გადი უკან

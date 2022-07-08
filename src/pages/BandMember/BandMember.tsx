@@ -33,7 +33,10 @@ const BandMember = () => {
 
   return (
     <>
-      <AdminPanelActionWrapper className='gap-40' header='ჯგუფის წევრები'>
+      <AdminPanelActionWrapper
+        className='gap-20 2xl:gap-32'
+        header='ჯგუფის წევრები'
+      >
         <div className='flex gap-10'>
           {data.map((data) => (
             <Member {...data} key={data._id} fetchData={fetchData} />
@@ -44,8 +47,8 @@ const BandMember = () => {
             <button
               className={
                 pageNumber === pageIndex
-                  ? 'bg-dark20  h-6 w-6 rounded-full'
-                  : 'bg-dark10 h-6 w-6 rounded-full'
+                  ? 'bg-dark20  h-5 w-5 2xl:h-6 2xl:w-6 rounded-full'
+                  : 'bg-dark10 h-5 w-5 2xl:h-6 2xl:w-6 rounded-full'
               }
               key={pageIndex}
               onClick={() => setPageNumber(pageIndex)}
@@ -53,7 +56,7 @@ const BandMember = () => {
           ))}
         </div>
 
-        <button className=' text-link text-2xl font-bold underline  mt-[-20px]'>
+        <button className=' text-link text-base 2xl:text-2xl font-bold underline  mt-[-20px]'>
           <NavLink to='new-member'>ახალი წევრი გვყავს?</NavLink>
         </button>
       </AdminPanelActionWrapper>

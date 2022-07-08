@@ -24,11 +24,14 @@ const Socials = () => {
   }, [fetchData, authCtx.socialIsEdited]);
   return (
     <>
-      <AdminPanelActionWrapper className=' gap-12' header='სოციალური ბმულები'>
+      <AdminPanelActionWrapper
+        className='gap-8 2xl:gap-12'
+        header='სოციალური ბმულები'
+      >
         {data.map((data) => (
           <Social {...data} key={data._id} fetchData={fetchData} />
         ))}
-        <button className=' text-link text-2xl font-bold underline  mt-24'>
+        <button className=' text-link text-base 2xl:text-2xl font-bold underline mt-[30%] 2xl:mt-[40%]'>
           <NavLink to='new-social'>დაამატე ახალი სოციალური ბმული</NavLink>
         </button>
       </AdminPanelActionWrapper>

@@ -69,7 +69,7 @@ const NewMember = () => {
       >
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className='flex flex-col mt-14 justify-center items-center gap-14'
+          className='flex flex-col  2xl:mt-14 justify-center items-center gap-4 2xl:gap-14'
         >
           <div className='flex flex-col items-center h-[5rem]'>
             <Input
@@ -81,16 +81,18 @@ const NewMember = () => {
               isRequired={true}
               minValue={2}
               class={
-                errors.name ? 'border-red w-[25rem] ' : 'border-blue2 w-[25rem]'
+                errors.name
+                  ? 'border-red w-[20rem] 2xl:w-[25rem] '
+                  : 'border-blue2 w-[20rem] 2xl:w-[25rem]'
               }
             />
             {errors.name ? (
-              <p className='text-red text-[16px] pt-1'>
+              <p className='text-red text-[12px] 2xl:text-[16px] pt-1'>
                 {errors.name?.message}
               </p>
             ) : null}
             {error && !isSubmitSuccessful ? (
-              <p className='text-red text-[16px] pt-1'>
+              <p className='text-red text-[12px] 2xl:text-[16px] pt-1'>
                 უკვე არსებობს მსგავსი სოციალური ქსელი
               </p>
             ) : null}
@@ -106,14 +108,18 @@ const NewMember = () => {
               isRequired={true}
               minValue={2}
               class={
-                errors.url ? 'border-red w-[40rem] ' : 'border-blue2 w-[40rem]'
+                errors.url
+                  ? 'border-red w-[30rem] 2xl:w-[40rem] '
+                  : 'border-blue2 w-[30rem] 2xl:w-[40rem]'
               }
             />
             {errors.url ? (
-              <p className='text-red text-[16px] pt-1'>{errors.url?.message}</p>
+              <p className='text-red text-[12px] 2xl:text-[16px] pt-1'>
+                {errors.url?.message}
+              </p>
             ) : null}
             {error && !isSubmitSuccessful ? (
-              <p className='text-red text-[16px] pt-1'>
+              <p className='text-red text-[12px] 2xl:text-[16px] pt-1'>
                 უკვე არსებობს მსგავსი სოციალური ქსელი
               </p>
             ) : null}
@@ -123,7 +129,7 @@ const NewMember = () => {
               buttonText={!state ? 'დაამატე სოციალური ბმული' : 'განაახლე ბმული'}
             />
             <button
-              className=' text-link text-2xl font-bold underline mt-[20px]'
+              className=' text-link text-base 2xl:text-2xl font-bold underline mt-[20px]'
               onClick={() => navigate('/dashoboard/socials')}
             >
               გადი უკან

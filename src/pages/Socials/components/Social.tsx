@@ -42,8 +42,8 @@ const Social: React.FC<Socials> = (props) => {
         <ImageUploadModal {...props} setImageModalState={setImageModalState} />
       )}
 
-      <div className='flex justify-around items-center w-[60rem] h-[4rem] bg-dark50  border-[1px] rounded-[5px] drop-shadow-4xl'>
-        <div className='relative'>
+      <div className='flex justify-start gap-[10%] pl-[5%] items-center w-[40rem] h-[3rem] 2xl:w-[50rem] 2xl:h-[4rem] bg-dark50  border-[1px] rounded-[5px] drop-shadow-4xl'>
+        <div className='relative max-w-[50px]'>
           <img
             src={
               props.image.length > 0
@@ -51,16 +51,18 @@ const Social: React.FC<Socials> = (props) => {
                 : youtube
             }
             alt='social-icon'
-            className='max-w-[3rem] '
+            className='w-[4rem] 2xl:w-[5rem]'
           />
           <EditPhoto
             onClick={openImagePickerHandler}
-            className='absolute w-[20px] top-[50%] left-[60%]  cursor-pointer'
+            className='absolute w-[1rem] 2xl:w-[1.5rem] top-[50%] left-[60%]  cursor-pointer'
           />
         </div>
-        <h1 className='text-white text-2xl'>{props.name}</h1>
-        <p className='text-link2 underline text-xl'>{props.url}</p>
-        <div className='flex justify-center items-center gap-14'>
+        <h1 className='text-white text-base 2xl:text-2xl'>{props.name}</h1>
+        <p className='text-link2 underline text-base 2xl:text-xl'>
+          {props.url}
+        </p>
+        <div className='flex justify-end items-center pr-[5%] w-[20rem] gap-14'>
           <YellowButton onClick={editMemberHandler} />
           <RedButton onClick={deleteMemberHandler} />
         </div>

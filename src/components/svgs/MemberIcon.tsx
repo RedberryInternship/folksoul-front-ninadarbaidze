@@ -1,8 +1,7 @@
 const MemberIcon = () => {
   return (
     <svg
-      width='40'
-      height='40'
+      className='w-[30px] h-[30px] 2xl:w-[40px] 2xl:h-[40px]'
       viewBox='0 0 37 53'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'

@@ -4,12 +4,10 @@ import { OnClick } from 'components';
 const EditIcon: React.FC<OnClick> = (props) => {
   return (
     <svg
-      width='30'
-      height='25'
       viewBox='0 0 46 41'
       fill='none'
       onClick={props.onClick}
-      className='absolute left-3 top-3'
+      className='absolute left-1.5 top-2 2xl:left-3 2xl:top-3 w-[20px] h-[15px] 2xl:w-[30px] 2xl:h-[25px]'
       xmlns='http://www.w3.org/2000/svg'
     >
       <path

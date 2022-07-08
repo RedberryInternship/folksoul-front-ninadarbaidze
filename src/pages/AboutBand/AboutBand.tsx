@@ -51,7 +51,7 @@ const AboutBand = () => {
       )}
       <AdminPanelActionWrapper className=' gap-12' header='ბენდის შესახებ'>
         <div className='flex flex-col justify-center items-center overflow-auto'>
-          <div className='flex flex-col justify-center items-center relative rounded-full bg-backdrop mt-4  w-[16rem] h-[16rem] drop-shadow-5xl'>
+          <div className='flex flex-col justify-center items-center relative rounded-full bg-backdrop mt-4 w-[10rem] h-[10rem]  2xl:w-[16rem] 2xl:h-[16rem] drop-shadow-5xl'>
             <img
               src={
                 data.image.length > 0
@@ -59,19 +59,19 @@ const AboutBand = () => {
                   : band
               }
               alt=''
-              className='w-[16rem] h-[16rem] object-cover border-[8px] border-blue3  rounded-full'
+              className='w-[10rem] h-[10rem] 2xl:w-[16rem] 2xl:h-[16rem] object-cover border-[5px] 2xl:border-[8px] border-blue3  rounded-full'
             />
 
             <EditPhoto
               onClick={openImagePickerHandler}
-              className='w-[60px] absolute ml-44 mt-48 cursor-pointer'
+              className='w-[40px] 2xl:w-[60px] absolute ml-28 mt-32 2xl:ml-44 2xl:mt-48 cursor-pointer'
             />
           </div>
           <div className='flex justify-center gap-12 items-center'>
-            <div className='bg-dark10 relative w-12 border-[1px] h-12 rounded-full cursor-pointer'>
+            <div className='bg-dark10 relative w-8 h-8 2xl:w-12 2xl:h-12 border-[1px]  rounded-full cursor-pointer'>
               <EditIcon onClick={editBandInfoHandler} />
             </div>
-            <p className='w-[70%] text-xl mt-12  mr-[5%] h-[300px]'>
+            <p className='w-[70%] text-sm 2xl:text-xl mt-12 mr-[5%] h-[200px] 2xl:h-[300px]'>
               {data!.about}
             </p>
           </div>

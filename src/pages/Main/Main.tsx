@@ -29,7 +29,7 @@ const Main = () => {
     <>
       <div className='fixed bg-backdrop w-screen h-screen'></div>
       <div className='flex flex-col pt-20 items-center w-[70%] h-[80%] absolute top-[10%] left-[25%] bg-white rounded-[20px] shadow-innerSh'>
-        <h1 className=' text-4xl'>დილამშვიდობისა!</h1>
+        <h1 className='text-2xl 2xl:text-3xl '>დილამშვიდობისა!</h1>
         <div className='flex flex-col items-center pt-20'>
           <TvSatelite />
           <img

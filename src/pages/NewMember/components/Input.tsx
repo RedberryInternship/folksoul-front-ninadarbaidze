@@ -9,7 +9,7 @@ const Input: React.FC<InputProps> = (props) => {
       </label>
       <div className='relative flex items-center'>
         <input
-          className={`${props.class} h-[4rem] text-center  focus:outline-none bg-white placeholder:placeholder text-xl font-normal  border-[2px] rounded-[5px]  pl-[8%] `}
+          className={`${props.class} h-[3rem] 2xl:h-[4rem] text-center  focus:outline-none bg-white placeholder:placeholder text-[14px] 2xl:text-xl font-normal  border-[1px] 2xl:border-[1.5px] rounded-[5px]  pl-[8%] `}
           type={props.type ? props.type : 'text'}
           id={props.id}
           placeholder={props.placeholder}
@@ -28,17 +28,14 @@ const Input: React.FC<InputProps> = (props) => {
             },
             min: {
               value: 300,
-              message: 'ორბიტის მინიმალური სიგრძე: 300',
+              message: 'მინ. სიგრძე: 300',
             },
             max: {
               value: 800,
-              message: 'ორბიტის მაქსიმალური სიგრძე: 800',
+              message: 'მაქს. სიგრძე: 800',
             },
           })}
         />
-        <p className='max-w-sm pl-[3%] pt-1 text-error xs:text-sm lg:text-xs 2xl:text-base'>
-          {props.errorMessage}
-        </p>
       </div>
     </div>
   );
