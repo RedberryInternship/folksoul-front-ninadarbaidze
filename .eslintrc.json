@@ -1,7 +1,9 @@
 {
     "extends": [
         "react-app",
-        "react-app/jest"
+        "react-app/jest",
+        "prettier",
+        "plugin:cypress/recommended"
       ],
     "plugins": ["prettier"],
     "rules": {
