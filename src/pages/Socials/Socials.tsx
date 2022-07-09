@@ -28,13 +28,13 @@ const Socials = () => {
   return (
     <>
       <AdminPanelActionWrapper
-        className='gap-8 2xl:gap-12'
+        className='flex flex-col justify-between gap-8 2xl:gap-12'
         header='სოციალური ბმულები'
       >
         {data.map((data) => (
           <Social {...data} key={data._id} fetchData={fetchData} />
         ))}
-        <button className=' text-link text-base 2xl:text-2xl font-bold underline mt-[30%] 2xl:mt-[40%]'>
+        <button className=' text-link text-base 2xl:text-2xl font-bold underline mt-[2rem] 2xl:mt-[5rem]'>
           <NavLink to='new-social'>დაამატე ახალი სოციალური ბმული</NavLink>
         </button>
       </AdminPanelActionWrapper>
