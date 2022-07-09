@@ -69,6 +69,7 @@ describe('Band Members', () => {
     cy.contains('ჯგუფის წევრები').click();
     cy.get('#yellowButton').click();
     cy.get('#name').type('ნინელი');
+    Cypress.on('uncaught:exception', () => false);
     cy.intercept(
       'PATCH',
       'https://folksoul-api.nina.redberryinternship.ge/edit-member/id',

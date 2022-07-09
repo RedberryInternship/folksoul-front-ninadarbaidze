@@ -25,10 +25,12 @@ describe('login', () => {
     cy.url().should('include', 'login');
   });
 
-  it('visitor CAN proceed to next page if inputs are VALID', () => {
+  it('visitor CAN proceed to next page if inputs are VALID and then logout sucessfully', () => {
     cy.get('#login-usr').type('nina');
     cy.get('#password').type('nina');
     cy.contains('შემობრძანდი').click();
     cy.url().should('include', 'dashoboard/main');
+    cy.contains('გადი გარეთ').click();
+    cy.url().should('include', '/login');
   });
 });

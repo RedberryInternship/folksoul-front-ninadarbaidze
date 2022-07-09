@@ -55,6 +55,7 @@ describe('Social Links', () => {
   it('visitors CAN EDIT social links', () => {
     cy.get('#yellowButton').click();
     cy.get('#social-name').type('Google');
+    Cypress.on('uncaught:exception', () => false);
     cy.intercept(
       'PATCH',
       'https://folksoul-api.nina.redberryinternship.ge/edit-social/id',

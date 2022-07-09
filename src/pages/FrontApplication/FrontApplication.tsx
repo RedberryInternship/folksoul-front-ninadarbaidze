@@ -70,7 +70,7 @@ const FrontApplication = () => {
     <>
       <div className='flex z-[-99] gap-20 absolute h-screen w-screen bg-gradient-radial-to-tr  from-grad1 to-grad2'></div>
       <header className='flex items-center justify-between px-[5%] pt-[1%]'>
-        <img src={BandLogo} alt='band-logo' className='w-48 2xl:w-60 ' />
+        <img src={BandLogo} alt='band-logo' className='w-48 2xl:w-60' />
         <h2 className='text-white text-xl '>
           <Link to={{ pathname: '/login' }}>შესვლა</Link>
         </h2>
@@ -81,6 +81,7 @@ const FrontApplication = () => {
             <img
               src={sun}
               onClick={manageAppStateHandler}
+              id='sun'
               alt='sun'
               className={`${
                 isSpinning ? 'animate-pulse' : ''

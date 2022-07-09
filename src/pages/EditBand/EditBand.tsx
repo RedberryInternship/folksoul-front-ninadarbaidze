@@ -30,13 +30,11 @@ const EditBand = () => {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      authCtx.refreshSocials();
+      authCtx.refreshBand();
       navigate('/dashoboard/about-band');
 
       return;
-    } catch (error: any) {
-      throw new Error('Request failed!');
-    }
+    } catch (error: any) {}
   };
 
   return (

@@ -57,7 +57,7 @@ const ImageUploadModal: React.FC<ImageUploadBand> = (props) => {
     } catch (error: any) {
       throw new Error('Request failed!');
     }
-    authCtx.refreshSocials();
+    authCtx.refreshBand();
     props.setImageModalState(false);
   };
 
