@@ -5,7 +5,8 @@ describe('Front Application', () => {
   });
 
   it('login', () => {
-    cy.get('#memberSpinner').click();
+    cy.contains('ნინალოზი').click();
+    cy.contains('ვეფხო').click();
     cy.get('#sun').click();
   });
 });
