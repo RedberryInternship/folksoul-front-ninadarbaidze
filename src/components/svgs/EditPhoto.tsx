@@ -7,6 +7,7 @@ const EditPhoto: React.FC<EditPhotoTypes> = (props) => {
       viewBox='0 0 37 37'
       fill='none'
       onClick={props.onClick}
+      id='editPhoto'
       xmlns='http://www.w3.org/2000/svg'
       className={props.className}
     >

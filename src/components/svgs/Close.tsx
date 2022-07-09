@@ -7,6 +7,7 @@ const Close: React.FC<OnClick> = (props) => {
       viewBox='0 0 41 40'
       fill='none'
       onClick={props.onClick}
+      id='closeButton'
       className='fixed right-5 top-5 cursor-pointer h-6 w-6 2xl:h-9 2xl:w-9 '
       xmlns='http://www.w3.org/2000/svg'
     >

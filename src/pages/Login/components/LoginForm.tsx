@@ -82,7 +82,7 @@ const LoginForm = () => {
             type='password'
             register={register}
             placeholder={'პაროლი'}
-            id={'login-usr'}
+            id={'password'}
             isRequired={true}
             minValue={3}
             class={

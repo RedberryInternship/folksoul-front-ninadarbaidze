@@ -14,27 +14,41 @@ const FrontApplication = () => {
   const [memberIsSelected, setMemberIsSelected] = useState<boolean>(true);
   const [selectedMember, setSelectedMemeber] = useState<any>();
 
-  const fetchData = useCallback(async () => {
+  const fetchBand = useCallback(async () => {
     try {
       const aboutBandResponse = await axios.get(
         `${process.env.REACT_APP_DOMAIN}/bands`
       );
+      setbandLogo(aboutBandResponse.data.image[0].imageUrl);
+      setbandInfo(aboutBandResponse.data.about);
+    } catch (error: any) {}
+  }, []);
+
+  const fetchSocials = useCallback(async () => {
+    try {
       const aboutSocialsResponse = await axios.get(
         `${process.env.REACT_APP_DOMAIN}/social-media`
       );
+
+      setSocials(aboutSocialsResponse.data);
+    } catch (error: any) {}
+  }, []);
+
+  const fetchBandMembers = useCallback(async () => {
+    try {
       const members = await axios.get(
         `${process.env.REACT_APP_DOMAIN}/band-members`
       );
-      setbandLogo(aboutBandResponse.data.image[0].imageUrl);
-      setbandInfo(aboutBandResponse.data.about);
-      setSocials(aboutSocialsResponse.data);
+
       setBandMembers(members.data);
     } catch (error: any) {}
   }, []);
 
   useEffect(() => {
-    fetchData();
-  }, [fetchData]);
+    fetchBand();
+    fetchSocials();
+    fetchBandMembers();
+  }, [fetchBand, fetchBandMembers, fetchSocials]);
 
   const manageAppStateHandler = () => {
     setIsSpinning(true);

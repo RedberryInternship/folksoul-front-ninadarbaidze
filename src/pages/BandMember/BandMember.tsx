@@ -50,6 +50,7 @@ const BandMember = () => {
                   ? 'bg-dark20  h-5 w-5 2xl:h-6 2xl:w-6 rounded-full'
                   : 'bg-dark10 h-5 w-5 2xl:h-6 2xl:w-6 rounded-full'
               }
+              id={`${pageIndex}`}
               key={pageIndex}
               onClick={() => setPageNumber(pageIndex)}
             ></button>

@@ -48,9 +48,7 @@ const Member: React.FC<MemberData> = (props) => {
         }
       );
       props.fetchData();
-    } catch (error: any) {
-      throw new Error('Request failed!');
-    }
+    } catch (error: any) {}
   };
 
   return (

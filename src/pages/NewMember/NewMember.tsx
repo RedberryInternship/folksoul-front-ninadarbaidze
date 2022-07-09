@@ -133,6 +133,7 @@ const NewMember = () => {
                 register={register}
                 placeholder={'ორბიტის სიგანე'}
                 isRequired={true}
+                id={'orbitLength'}
                 pattern={/^[0-9]*$/}
                 patternValueMessage={'შეიყვანე რიცხვი'}
                 min={300}
