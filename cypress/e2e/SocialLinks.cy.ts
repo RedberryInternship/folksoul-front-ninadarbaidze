@@ -77,6 +77,7 @@ describe('Social Links', () => {
       .attachFile('Vano.png');
     cy.contains('ატვირთე').click();
     cy.contains('შეინახე').click();
+    cy.wait(500);
     cy.get('#editPhoto').click();
     cy.contains('შეცვალე სოციალური ბმულის ხატულა').should('be.visible');
   });

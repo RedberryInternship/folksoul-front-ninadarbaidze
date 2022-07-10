@@ -17,7 +17,7 @@ describe('Social Links', () => {
     cy.get('#editPhoto').click();
     cy.get('input[type=file]')
       .invoke('removeClass', 'file_input_hidden')
-      .attachFile('Vano.png');
+      .attachFile('tamar.png');
     cy.contains('ატვირთე').click();
     cy.contains('შეინახე').click();
     cy.url().should('include', '/about-band');
@@ -39,6 +39,7 @@ describe('Social Links', () => {
       }
     );
     cy.contains('შეინახე').click();
+    cy.wait(500);
     cy.url().should('include', '/about-band');
     cy.get('#editPhoto').click();
     cy.get('#closeButton').click();
