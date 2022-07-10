@@ -29,7 +29,6 @@ const NewMember = () => {
 
   const updateSocialHandler = async (data: AddNewSocial) => {
     try {
-      console.log(process.env.REACT_APP_DOMAIN);
       await axios.patch(
         `${process.env.REACT_APP_DOMAIN}/edit-social/${state.id}`,
         data,
@@ -41,10 +40,7 @@ const NewMember = () => {
       navigate('/dashoboard/socials');
 
       return;
-    } catch (error: any) {
-      setError(error.response.status);
-      throw new Error('Request failed!');
-    }
+    } catch (error: any) {}
   };
 
   const addNewSocialHandler = async (data: AddNewSocial) => {
@@ -96,7 +92,7 @@ const NewMember = () => {
                 {errors.name?.message}
               </p>
             ) : null}
-            {error && !isSubmitSuccessful ? (
+            {error ? (
               <p className='text-red text-[12px] 2xl:text-[16px] pt-1'>
                 უკვე არსებობს მსგავსი სოციალური ქსელი
               </p>
