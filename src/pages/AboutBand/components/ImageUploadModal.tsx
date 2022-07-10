@@ -54,9 +54,7 @@ const ImageUploadModal: React.FC<ImageUploadBand> = (props) => {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-    } catch (error: any) {
-      throw new Error('Request failed!');
-    }
+    } catch (error: any) {}
     authCtx.refreshBand();
     props.setImageModalState(false);
   };

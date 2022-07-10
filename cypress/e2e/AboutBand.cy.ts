@@ -7,6 +7,9 @@ describe('Social Links', () => {
     cy.contains('შემობრძანდი').click();
     cy.contains('ბენდის შესახებ').click();
   });
+  afterEach(() => {
+    cy.wait(500);
+  });
 
   it('upload band image', () => {
     cy.get('#editPhoto').click();
@@ -36,7 +39,9 @@ describe('Social Links', () => {
       }
     );
     cy.contains('შეინახე').click();
-    cy.wait(400);
+    cy.url().should('include', '/about-band');
+    cy.get('#editPhoto').click();
+    cy.get('#closeButton').click();
     cy.url().should('include', '/about-band');
   });
 });
