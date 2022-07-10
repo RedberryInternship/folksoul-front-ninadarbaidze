@@ -25,38 +25,5 @@ button {
 }
 
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-
-
-:root {
-  --translate: translateX(70px)
-  }
   
   
-  .mercury {
-     height: 20px;
-     width: 20px;
-      background: blue;
-      border-radius: 0%;
-      position: absolute;
-      left: 40%;
-      top: 47%;
-      animation: orbit2 5s linear infinite;
-  }
-  
-  
-  @keyframes orbit2{
-      from{transform: rotate(0deg)  var(--translate) rotate(0deg);}
-      to{transform: rotate(360deg) var(--translate)  rotate(-360deg);}
-  }
-  
-  .running {
-      animation-play-state: running;
-  }
-  .paused {
-      animation-play-state: paused;
-  }
