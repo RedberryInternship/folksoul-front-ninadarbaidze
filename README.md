@@ -38,15 +38,21 @@ This is a Folksoul app, where we can add/remove/edit/delete band members and soc
 git clone git@github.com:RedberryInternship/folksoul-front-ninadarbaidze.git
 ```
 
+2. copy env.example file:
 
-2. Install dependencies
+```
+cp .env.example .env
+```
+
+
+3. Install dependencies
 
 ```
 npm install
 ```
 
 
-3. Make a development server available for the application.
+4. Make a development server available for the application.
 
 ```
 npm start
