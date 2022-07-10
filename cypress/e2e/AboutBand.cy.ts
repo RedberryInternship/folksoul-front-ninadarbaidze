@@ -1,4 +1,5 @@
 /// <reference types='cypress' />
+/* eslint-disable cypress/no-unnecessary-waiting */
 describe('Social Links', () => {
   beforeEach(() => {
     cy.visit('/login');
