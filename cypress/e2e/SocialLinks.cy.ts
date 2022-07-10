@@ -11,9 +11,16 @@ describe('Social Links', () => {
     cy.wait(500);
   });
 
+  it('create google social link', () => {
+    cy.contains('დაამატე ახალი').click();
+    cy.get('#social-name').type('google');
+    cy.get('#url').type('https://google.com');
+    cy.contains('დაამატე სოციალური').click();
+  });
+
   it('visitors CAN ADD socials and try uploading image', () => {
     cy.contains('დაამატე ახალი').click();
-    cy.get('#social-name').type('Google');
+    cy.get('#social-name').type('google');
     cy.get('#url').type('https://google.com');
     Cypress.on('uncaught:exception', () => false);
     cy.intercept(
@@ -39,28 +46,13 @@ describe('Social Links', () => {
       'POST',
       'https://folksoul-api.nina.redberryinternship.ge/addd-social',
       {
-        statusCode: 422,
+        statusCode: 409,
       }
     );
     cy.contains('დაამატე სოციალური').click();
-    // cy.url().should('include', '/socials');
+    cy.url().should('not.be', '/socials');
   });
 
-  it('visitors CAN NOT EDIT social links', () => {
-    cy.get('#yellowButton').click();
-    cy.get('#social-name').clear().type('google');
-    Cypress.on('uncaught:exception', () => false);
-    cy.intercept(
-      'PATCH',
-      'https://folksoul-api.nina.redberryinternship.ge/edit-social/id',
-      {
-        statusCode: 422,
-      }
-    );
-    cy.contains('განაახლე').click();
-  });
-
-  //boloshi iyo
   it('visitors CAN EDIT social links', () => {
     cy.get('#yellowButton').click();
     cy.get('#social-name').clear().type('Facebook');
@@ -73,6 +65,7 @@ describe('Social Links', () => {
       }
     );
     cy.contains('განაახლე').click();
+    cy.url().should('contain', '/socials');
   });
 
   it('upload social image', () => {

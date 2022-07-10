@@ -17,7 +17,7 @@ const NewMember = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors },
   } = useForm<AddNewMember>({
     mode: 'onChange',
     defaultValues: {
@@ -43,10 +43,7 @@ const NewMember = () => {
       navigate('/dashoboard/band-members');
 
       return;
-    } catch (error: any) {
-      setError(error.response.status);
-      throw new Error('Request failed!');
-    }
+    } catch (error: any) {}
   };
 
   const addNewBandMemberHandler = async (data: AddNewMember) => {
@@ -96,7 +93,7 @@ const NewMember = () => {
                 {errors.name?.message}
               </p>
             ) : null}
-            {error && !isSubmitSuccessful ? (
+            {error ? (
               <p className='text-red text-[12px] 2xl:text-[16px] pt-1'>
                 უკვე არსებობს სხვა ამ მეტსახელით
               </p>
