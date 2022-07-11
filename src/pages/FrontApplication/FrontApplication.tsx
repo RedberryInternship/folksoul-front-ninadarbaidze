@@ -1,4 +1,4 @@
-import { BandLogo, sun, memberIcon } from 'assets/images';
+import { BandLogo, sun, memberIcon, youtube } from 'assets/images';
 import { Link } from 'react-router-dom';
 import { SocialsTypes, BandMemberTypes } from 'components';
 import { Circles } from 'pages/FrontApplication/components';
@@ -29,7 +29,6 @@ const FrontApplication = () => {
       const aboutSocialsResponse = await axios.get(
         `${process.env.REACT_APP_DOMAIN}/social-media`
       );
-
       setSocials(aboutSocialsResponse.data);
     } catch (error: any) {}
   }, []);
@@ -65,6 +64,8 @@ const FrontApplication = () => {
       return `${process.env.REACT_APP_DOMAIN}/${selectedMember.image[0].imageUrl}`;
     }
   };
+
+  // console.log(socials.name);
 
   return (
     <>
@@ -104,7 +105,7 @@ const FrontApplication = () => {
               />
             ))}
           </div>
-          <div className='relative w-1/2 ml-[18%] h-[28rem] 2xl:h-[38rem] bg-yellow rounded-2xl '>
+          <div className='relative w-1/2 ml-[18%] h-[26rem] 2xl:h-[34rem] bg-yellow rounded-2xl '>
             <div className='absolute bg-grad2 w-5 h-5 top-2 right-2 rounded-full'></div>
             <div className='absolute bg-grad2 w-5 h-5 top-2 left-2 rounded-full'></div>
             <div className='flex flex-col justify-between'>
@@ -116,20 +117,20 @@ const FrontApplication = () => {
                 />
               </div>
               <div className=''>
-                <p className='mt-32 2xl:mt-48 text-sm 2xl:text-xl mx-[10%] overflow-auto h-[250px] 2xl:h-[400px] text-justify '>
+                <p className='mt-32 2xl:mt-48 text-sm 2xl:text-xl mx-[10%] overflow-auto h-[250px] 2xl:h-[320px] text-justify '>
                   {selectedMember ? selectedMember.biography : bandInfo}
                 </p>
               </div>
-              <div className='flex justify-center items-center mt-24 2xl:mt-10 gap-4'>
+              <div className='flex justify-center items-center mt-16 2xl:mt-14 gap-4'>
                 {socials.map((social) => (
                   <a href={social.url} target='_blank' rel='noreferrer'>
                     <img
                       src={
                         social.image.length > 0
                           ? `${process.env.REACT_APP_DOMAIN}/${social.image[0].imageUrl}`
-                          : memberIcon
+                          : youtube
                       }
-                      className='max-h-[3rem] cursor-pointer'
+                      className='h-[2rem] cursor-pointer'
                       alt='social-icon'
                       key={social._id}
                     />

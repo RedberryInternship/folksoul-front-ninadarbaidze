@@ -53,8 +53,8 @@ const AboutBand = () => {
         <ImageUploadModal {...data} setImageModalState={setImageModalState} />
       )}
       <AdminPanelActionWrapper className=' gap-12' header='ბენდის შესახებ'>
-        <div className='flex flex-col justify-center items-center overflow-auto'>
-          <div className='flex flex-col justify-center items-center relative rounded-full bg-backdrop mt-4 w-[10rem] h-[10rem]  2xl:w-[16rem] 2xl:h-[16rem] drop-shadow-5xl'>
+        <div className='flex flex-col  justify-center items-center overflow-auto absolute w-[100%] bottom-10 left-0'>
+          <div className=' flex flex-col justify-center items-center relative rounded-full bg-backdrop mt-4 w-[10rem] h-[10rem]  2xl:w-[16rem] 2xl:h-[16rem] drop-shadow-5xl'>
             <img
               src={
                 data.image.length > 0

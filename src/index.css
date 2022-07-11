@@ -24,6 +24,13 @@ button {
   font-family: "BPG Nino Mtavruli", sans-serif;
 }
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
 
+.no-scrollbar {
+  -ms-overflow-style: none;  
+  scrollbar-width: none; 
+}
   
   

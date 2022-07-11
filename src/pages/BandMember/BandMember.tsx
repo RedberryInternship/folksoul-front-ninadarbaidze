@@ -34,7 +34,7 @@ const BandMember = () => {
   return (
     <>
       <AdminPanelActionWrapper
-        className='gap-20 2xl:gap-32'
+        className='items-center gap-20 2xl:gap-28'
         header='ჯგუფის წევრები'
       >
         <div className='flex gap-10'>
@@ -57,7 +57,7 @@ const BandMember = () => {
           ))}
         </div>
 
-        <button className=' text-link text-base 2xl:text-2xl font-bold underline  mt-[-20px]'>
+        <button className='absolute bottom-10 text-link text-base 2xl:text-2xl font-bold underline'>
           <NavLink to='new-member'>ახალი წევრი გვყავს?</NavLink>
         </button>
       </AdminPanelActionWrapper>

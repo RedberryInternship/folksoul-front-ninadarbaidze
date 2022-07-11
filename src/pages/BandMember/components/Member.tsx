@@ -58,7 +58,7 @@ const Member: React.FC<MemberData> = (props) => {
         <ImageUploadModal {...props} setImageModalState={setImageModalState} />
       )}
 
-      <div className='flex flex-col justify-between items-center w-[10rem] h-[13rem] 2xl:w-[15rem] 2xl:h-[20rem] bg-dark50 border-[1px] rounded-sm drop-shadow-4xl'>
+      <div className='flex flex-col justify-between items-center w-[10rem] h-[13rem] 2xl:w-[15rem] 2xl:h-[20rem] bg-dark50 border-[1px] rounded-md drop-shadow-4xl'>
         <div
           style={{ backgroundColor: `${props.color}` }}
           className={`flex flex-col justify-center items-center relative rounded-full  border-[1px] mt-4 border-white w-[7rem] h-[7rem] 2xl:w-[11rem] 2xl:h-[11rem]`}

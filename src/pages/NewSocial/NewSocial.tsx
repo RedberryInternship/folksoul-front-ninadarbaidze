@@ -125,7 +125,7 @@ const NewMember = () => {
               </p>
             ) : null}
           </div>
-          <nav className='flex flex-col mt-10'>
+          <nav className='absolute bottom-10 flex flex-col mt-10'>
             <FormButton
               buttonText={!state ? 'დაამატე სოციალური ბმული' : 'განაახლე ბმული'}
             />

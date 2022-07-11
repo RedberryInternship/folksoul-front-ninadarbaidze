@@ -35,15 +35,17 @@ const Main = () => {
         <h1 className='text-2xl 2xl:text-3xl '>დილამშვიდობისა!</h1>
         <div className='flex flex-col items-center pt-20'>
           <TvSatelite />
-          <img
-            src={
-              data.image.length > 0
-                ? `${process.env.REACT_APP_DOMAIN}/${data.image[0].imageUrl}`
-                : band
-            }
-            alt=''
-            className='h-[15vw] border-[16px]'
-          />
+          <div className='flex flex-col justify-center h-[15vw] w-[25vw] bg-[#000000] border-[16px] overflow-clip'>
+            <img
+              src={
+                data.image.length > 0
+                  ? `${process.env.REACT_APP_DOMAIN}/${data.image[0].imageUrl}`
+                  : band
+              }
+              alt=''
+              className='h-[15vw] object-cover'
+            />
+          </div>
           <TvFeet />
         </div>
       </div>

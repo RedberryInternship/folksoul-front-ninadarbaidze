@@ -152,7 +152,7 @@ const NewMember = () => {
             <div className='flex flex-col items-center'>
               <Input
                 fieldName='color'
-                type='text'
+                type='color'
                 register={register}
                 placeholder={'ფერი'}
                 id={'color'}
@@ -162,8 +162,8 @@ const NewMember = () => {
                 minValue={7}
                 class={
                   errors.color
-                    ? 'border-red w-[10vw] h-[3rem] 2xl:h-[4rem] text-center  focus:outline-none bg-white placeholder:placeholder text-[14px] 2xl:text-xl font-normal  border-[1px] 2xl:border-[1.5px] rounded-[5px]  pl-[8%] '
-                    : 'border-blue2 w-[10vw] h-[3rem] 2xl:h-[4rem] text-center  focus:outline-none bg-white placeholder:placeholder text-[14px] 2xl:text-xl font-normal  border-[1px] 2xl:border-[1.5px] rounded-[5px]  pl-[8%]'
+                    ? 'border-red w-[10vw] h-[3rem] 2xl:h-[4rem] text-center  focus:outline-none bg-white placeholder:placeholder text-[14px] 2xl:text-xl font-normal  border-[1px] 2xl:border-[1.5px] rounded-[5px]  p-2 '
+                    : 'border-blue2 w-[10vw] h-[3rem] 2xl:h-[4rem] text-center  focus:outline-none bg-white placeholder:placeholder text-[14px] 2xl:text-xl font-normal  border-[1px] 2xl:border-[1.5px] rounded-[5px]  p-2'
                 }
               />
               {errors.color ? (
@@ -191,15 +191,17 @@ const NewMember = () => {
               </p>
             ) : null}
           </div>
-          <FormButton
-            buttonText={!state ? 'დაამატე წევრი' : 'განაახლე წევრი'}
-          />
-          <button
-            className=' text-link text-base 2xl:text-2xl font-bold underline '
-            onClick={() => navigate('/dashoboard/band-members')}
-          >
-            გადი უკან
-          </button>
+          <div className='flex flex-col space-y-4 absolute bottom-10'>
+            <FormButton
+              buttonText={!state ? 'დაამატე წევრი' : 'განაახლე წევრი'}
+            />
+            <button
+              className=' text-link text-base 2xl:text-2xl font-bold underline '
+              onClick={() => navigate('/dashoboard/band-members')}
+            >
+              გადი უკან
+            </button>
+          </div>
         </form>
       </AdminPanelActionWrapper>
     </div>
