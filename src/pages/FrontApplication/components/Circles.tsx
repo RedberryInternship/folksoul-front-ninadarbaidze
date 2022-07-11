@@ -35,7 +35,7 @@ const Circles: React.FC<CirclesTypes> = (props) => {
   return (
     <>
       <div
-        className={`inset-0 m-auto right-[50%] z-[-98] border-yellow2  border-dashed border-[3px] rounded-full border-black absolute  `}
+        className={`inset-0 m-auto right-[50%] z-[-98] border-yellow2  border-dashed border-[2px] rounded-full border-black absolute  `}
         style={{
           width: `${props.size}px`,
           height: `${props.size}px`,
