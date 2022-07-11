@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Close } from 'components/svgs';
 import axios from 'axios';
-import AuthContext from 'store/AuthContext';
+import { AuthContext } from 'store';
 import { memberIcon } from 'assets/images';
 import { Image, ImageUploadData, ImageUploadModalForm } from 'components';
 

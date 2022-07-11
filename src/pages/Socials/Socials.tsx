@@ -1,6 +1,6 @@
 import { useState, useContext, useCallback, useEffect } from 'react';
 import { AdminPanelActionWrapper, SocialsTypes } from 'components';
-import AuthContext from 'store/AuthContext';
+import { AuthContext } from 'store';
 import axios from 'axios';
 import { Social } from 'pages/Socials/components';
 import { Outlet, NavLink } from 'react-router-dom';

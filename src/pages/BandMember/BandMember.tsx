@@ -3,7 +3,7 @@ import { AdminPanelActionWrapper, BandMemberData } from 'components';
 import { Member } from 'pages/BandMember/components';
 import { Outlet, NavLink } from 'react-router-dom';
 import axios from 'axios';
-import AuthContext from 'store/AuthContext';
+import { AuthContext } from 'store';
 
 const BandMember = () => {
   const [data, setData] = useState<BandMemberData[]>([]);

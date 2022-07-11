@@ -52,7 +52,7 @@ const Social: React.FC<Socials> = (props) => {
                 : youtube
             }
             alt='social-icon'
-            className='w-[4rem] 2xl:w-[5rem]'
+            className='max-w-[2rem] 2xl:w-[5rem]'
           />
 
           <EditPhoto

@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Input, Button, LoginValueTypes } from 'components';
 import { LoginModal } from 'pages/Login/components';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import AuthContext from 'store/AuthContext';
+import { AuthContext } from 'store';
 import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';

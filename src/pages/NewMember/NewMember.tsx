@@ -3,7 +3,7 @@ import { AdminPanelActionWrapper, AddNewMember, Input } from 'components';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Textarea, FormButton } from 'pages/NewMember/components';
 import { useNavigate, useLocation } from 'react-router-dom';
-import AuthContext from 'store/AuthContext';
+import { AuthContext } from 'store';
 
 import axios from 'axios';
 

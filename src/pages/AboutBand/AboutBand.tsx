@@ -4,7 +4,7 @@ import { EditPhoto, EditIcon } from 'components/svgs';
 import { ImageUploadModal } from 'pages/AboutBand/components';
 import { band } from 'assets/images';
 import axios from 'axios';
-import AuthContext from 'store/AuthContext';
+import { AuthContext } from 'store';
 import { Outlet, useNavigate } from 'react-router-dom';
 
 const AboutBand = () => {

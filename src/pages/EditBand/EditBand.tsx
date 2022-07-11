@@ -3,7 +3,7 @@ import { AdminPanelActionWrapper, EditBandTypes } from 'components';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Textarea } from 'pages/EditBand/components';
 import { useNavigate, useLocation } from 'react-router-dom';
-import AuthContext from 'store/AuthContext';
+import { AuthContext } from 'store';
 import axios from 'axios';
 
 const EditBand = () => {

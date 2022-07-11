@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Close } from 'components/svgs';
 import axios from 'axios';
-import AuthContext from 'store/AuthContext';
+import { AuthContext } from 'store';
 import { youtube } from 'assets/images';
 import { BandImage, ImageUploadBand, ImageUploadModalForm } from 'components';
 

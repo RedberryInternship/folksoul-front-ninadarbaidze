@@ -1,7 +1,7 @@
 import { BandLogo, sun, memberIcon, youtube } from 'assets/images';
 import { Link } from 'react-router-dom';
 import { SocialsTypes, BandMemberTypes } from 'components';
-import { Circles } from 'pages/FrontApplication/components';
+import { Circles } from 'pages/ApplicationMainPage/components';
 import { useState, useCallback, useEffect } from 'react';
 import axios from 'axios';
 
