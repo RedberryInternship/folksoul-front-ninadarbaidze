@@ -25,7 +25,7 @@ const Modal: React.FC<ModalDataMembers> = (props) => {
             <img
               src={
                 props.image.length > 0
-                  ? `http://localhost:3000/${props.image[0].imageUrl}`
+                  ? `${process.env.REACT_APP_DOMAIN}/${props.image[0].imageUrl}`
                   : memberIcon
               }
               alt=''
