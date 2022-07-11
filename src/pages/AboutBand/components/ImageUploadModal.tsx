@@ -72,7 +72,7 @@ const ImageUploadModal: React.FC<ImageUploadBand> = (props) => {
             <div className='flex flex-col justify-center items-center py-16 '>
               <img
                 src={imagePreviewHandler()}
-                alt=''
+                alt='band-icon'
                 className='w-[8rem] 2xl:min-w-[15rem]'
               />
             </div>

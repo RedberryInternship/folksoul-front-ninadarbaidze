@@ -42,7 +42,7 @@ const Main = () => {
                   ? `${process.env.REACT_APP_DOMAIN}/${data.image[0].imageUrl}`
                   : band
               }
-              alt=''
+              alt='band-member-logo'
               className='h-[15vw] object-cover'
             />
           </div>

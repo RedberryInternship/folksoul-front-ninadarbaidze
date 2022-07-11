@@ -28,7 +28,7 @@ const Modal: React.FC<ModalDataMembers> = (props) => {
                   ? `${process.env.REACT_APP_DOMAIN}/${props.image[0].imageUrl}`
                   : memberIcon
               }
-              alt=''
+              alt='member-icon'
               className='w-[6rem] 2xl:w-[8rem]'
             />
           </div>

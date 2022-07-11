@@ -69,7 +69,7 @@ const Member: React.FC<MemberData> = (props) => {
                 ? `${process.env.REACT_APP_DOMAIN}/${props.image[0].imageUrl}`
                 : memberIcon
             }
-            alt=''
+            alt='band-member-icon'
             className='h-[6rem] 2xl:h-[8rem]'
           />
           <EditPhoto

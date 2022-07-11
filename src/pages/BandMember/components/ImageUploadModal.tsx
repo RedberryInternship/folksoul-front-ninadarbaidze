@@ -74,7 +74,7 @@ const ImageUploadModal: React.FC<ImageUploadData> = (props) => {
             <div className='flex flex-col justify-center items-center py-16 rounded-full bg-backdrop border-[3px]  mb-6 border-white w-[15rem] h-[15rem] 2xl:w-[20rem] 2xl:h-[20rem] drop-shadow-5xl'>
               <img
                 src={imagePreviewHandler()}
-                alt=''
+                alt='band-member-icon'
                 className='w-[10rem] 2xl:w-[12rem] '
               />
             </div>

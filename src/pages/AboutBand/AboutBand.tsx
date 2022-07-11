@@ -61,7 +61,7 @@ const AboutBand = () => {
                   ? `${process.env.REACT_APP_DOMAIN}/${data.image[0].imageUrl}`
                   : band
               }
-              alt=''
+              alt='band-icon'
               className='w-[10rem] h-[10rem] 2xl:w-[16rem] 2xl:h-[16rem] object-cover border-[5px] 2xl:border-[8px] border-blue3  rounded-full'
             />
 
