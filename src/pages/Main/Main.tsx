@@ -30,23 +30,24 @@ const Main = () => {
 
   return (
     <>
-      <div className='fixed bg-backdrop w-screen h-screen'></div>
-      <div className='flex flex-col pt-20 items-center w-[70%] h-[80%] absolute top-[10%] left-[25%] bg-white rounded-[20px] shadow-innerSh'>
-        <h1 className='text-2xl 2xl:text-3xl '>დილამშვიდობისა!</h1>
-        <div className='flex flex-col items-center pt-20'>
-          <TvSatelite />
-          <div className='flex flex-col justify-center h-[15vw] w-[25vw] bg-[#000000] border-[16px] overflow-clip'>
-            <img
-              src={
-                data.image.length > 0
-                  ? `${process.env.REACT_APP_DOMAIN}/${data.image[0].imageUrl}`
-                  : band
-              }
-              alt='band-member-logo'
-              className='h-[15vw] object-cover'
-            />
+      <div className='bg-backdrop w-screen h-screen'>
+        <div className='flex flex-col pt-20 items-center w-[70%] h-[80%] absolute top-[10%] left-[25%] bg-white rounded-[20px] shadow-innerSh'>
+          <h1 className='text-2xl 2xl:text-3xl '>დილამშვიდობისა!</h1>
+          <div className='flex flex-col items-center pt-20'>
+            <TvSatelite />
+            <div className='flex flex-col justify-center h-[15vw] w-[25vw] bg-[#000000] border-[16px] overflow-clip'>
+              <img
+                src={
+                  data.image.length > 0
+                    ? `${process.env.REACT_APP_DOMAIN}/${data.image[0].imageUrl}`
+                    : band
+                }
+                alt='band-member-logo'
+                className='h-[15vw] object-cover'
+              />
+            </div>
+            <TvFeet />
           </div>
-          <TvFeet />
         </div>
       </div>
     </>

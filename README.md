@@ -70,14 +70,14 @@ Folksoul application is test driven. It uses E2E testing framework Cypress.
 npm install
 ```
 
-2. Create cypress.json file.
+2. Create cypress.congif.ts file.
 
 This JSON file is used to store any configuration values you supply. The default behavior of Cypress can be modified by supplying any of the [following](https://docs.cypress.io/guides/references/configuration#Global) configuration options.
 
-You can create and copy initial values from cypress.json.example with following command:
+You can create and copy initial values from cypress.config.example with following command:
 
 ```
-cp cypress.json.example cypress.json
+cp cypress.config.example cypress.config.ts
 ```
 
 
