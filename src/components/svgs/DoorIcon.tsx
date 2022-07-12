@@ -1,7 +1,7 @@
 const DoorIcon = () => {
   return (
     <svg
-      className='w-[30px] h-[30px] 2xl:w-[40px] 2xl:h-[40px]'
+      className='w-[30px] h-[30px] 2xl:w-[37px] 2xl:h-[37px]'
       viewBox='0 0 26 26'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'

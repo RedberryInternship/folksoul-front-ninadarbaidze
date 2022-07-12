@@ -27,7 +27,7 @@ const ImageUploadModalForm: React.FC<ImageUploadFormTypes> = (props) => {
               fileRef.current!.click();
               props.setShowSubmitButton(true);
             }}
-            className='w-[150px] h-[50px] 2xl:w-[250px] 2xl:h-[60px] rounded-[5px] text-white text-base 2xl:text-2xl bg-backdrop'
+            className='w-40 h-12 2xl:w-52 2xl:h-16 rounded-[5px] text-white text-base 2xl:text-2xl bg-backdrop'
           >
             ატვირთე
           </button>
@@ -36,7 +36,7 @@ const ImageUploadModalForm: React.FC<ImageUploadFormTypes> = (props) => {
         {props.showSubmitButton && (
           <button
             type='submit'
-            className='w-[150px] h-[50px] 2xl:w-[250px] 2xl:h-[60px] rounded-[5px] text-white text-base 2xl:text-2xl bg-green'
+            className='w-40 h-12 2xl:w-52 2xl:h-16  rounded-[5px] text-white text-base 2xl:text-2xl bg-green'
           >
             შეინახე
           </button>

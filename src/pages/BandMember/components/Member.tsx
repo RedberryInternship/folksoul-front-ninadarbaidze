@@ -74,7 +74,7 @@ const Member: React.FC<MemberData> = (props) => {
           />
           <EditPhoto
             onClick={openImagePickerHandler}
-            className='w-[30px] 2xl:w-[40px] absolute ml-20 mt-20 2xl:ml-32 2xl:mt-24 cursor-pointer'
+            className='w-8 2xl:w-12 absolute ml-20 mt-20 2xl:ml-32 2xl:mt-24 cursor-pointer'
           />
         </div>
         <h1 className='text-white text-base 2xl:text-2xl'>{props.name}</h1>

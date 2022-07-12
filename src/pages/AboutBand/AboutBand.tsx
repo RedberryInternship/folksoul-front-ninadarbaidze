@@ -67,14 +67,14 @@ const AboutBand = () => {
 
             <EditPhoto
               onClick={openImagePickerHandler}
-              className='w-[40px] 2xl:w-[60px] absolute ml-28 mt-32 2xl:ml-44 2xl:mt-48 cursor-pointer'
+              className='w-10 2xl:w-16 absolute ml-28 mt-32 2xl:ml-44 2xl:mt-48 cursor-pointer'
             />
           </div>
           <div className='flex justify-center gap-12 items-center w-[100%]'>
             <div className='bg-dark10 relative w-8 h-8 2xl:w-12 2xl:h-12 border-[1px]  rounded-full cursor-pointer'>
               <EditIcon onClick={editBandInfoHandler} />
             </div>
-            <p className='w-[70%] text-sm 2xl:text-xl mt-12 mr-[5%] h-[200px] 2xl:h-[300px]'>
+            <p className='w-[70%] text-sm 2xl:text-xl mt-10 mr-[5%] h-48 2xl:h-60'>
               {data!.about}
             </p>
           </div>
