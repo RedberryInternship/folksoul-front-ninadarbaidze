@@ -102,18 +102,48 @@ npx cypress open
 ├─── public
 ├─── src     
 │   ├─── assets     
-│   ├─── components    
+│   ├─── components  
+│   ├───├───svgs
 │   ├─── pages 
 │   ├───├─── AboutBand
+│   ├───├───|─── components
+│   ├───├───|─── AboutBand.tsx
+│   ├───├───|─── index.ts
 │   ├───├─── BandMember
+│   ├───├───|─── components
+│   ├───├───|─── BandMember.tsx
+│   ├───├───|─── index.ts
 │   ├───├─── Dashboard
+│   ├───├───|─── components
+│   ├───├───|─── Dashboard.tsx
+│   ├───├───|─── index.ts
 │   ├───├─── EditBand
-│   ├───├─── FrontApplication
+│   ├───├───|─── components
+│   ├───├───|─── EditBand.tsx
+│   ├───├───|─── index.ts
+│   ├───├─── ApplicationMainPage
+│   ├───├───|─── components
+│   ├───├───|─── ApplicationMainPage.tsx
+│   ├───├───|─── index.ts
 │   ├───├─── Login
+│   ├───├───|─── components
+│   ├───├───|─── Login.tsx
+│   ├───├───|─── index.ts
 │   ├───├─── Main
+│   ├───├───|─── Main.tsx
+│   ├───├───|─── index.ts
 │   ├───├─── NewMember
+│   ├───├───|─── components
+│   ├───├───|─── NewMember.tsx
+│   ├───├───|─── index.ts
 │   ├───├─── NewSocial
+│   ├───├───|─── components
+│   ├───├───|─── NewSocial.tsx
+│   ├───├───|─── index.ts
 │   ├───├─── Socials
+│   ├───├───|─── components
+│   ├───├───|─── Socials.tsx
+│   ├───├───|─── index.ts
 │   ├─── store
 │   ├───├─── auth-context
 
@@ -121,7 +151,8 @@ npx cypress open
 - .prettierrc.json
 - tsconfig.json     
 - package-lock.json 
-- package.json       
+- package.json    
+- cypress.config.ts
 - App.jsx     
 - postcss.config.js
 - tailwind.config.js
