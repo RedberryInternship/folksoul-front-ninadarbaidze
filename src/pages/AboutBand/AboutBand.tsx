@@ -40,7 +40,7 @@ const AboutBand = () => {
   }, [fetchData, authCtx.refreshBand]);
 
   const editBandInfoHandler = () => {
-    navigate('/dashoboard/about-band/edit-band', {
+    navigate('/dashboard/about-band/edit-band', {
       state: {
         id: data._id,
         about: data.about,

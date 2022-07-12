@@ -37,7 +37,7 @@ const NewMember = () => {
         }
       );
       authCtx.refreshSocials();
-      navigate('/dashoboard/socials');
+      navigate('/dashboard/socials');
 
       return;
     } catch (error: any) {}
@@ -53,7 +53,7 @@ const NewMember = () => {
       throw new Error('Request failed!');
     }
     authCtx.refreshSocials();
-    navigate('/dashoboard/socials');
+    navigate('/dashboard/socials');
   };
 
   const onSubmit: SubmitHandler<AddNewSocial> = async (data) => {
@@ -131,7 +131,7 @@ const NewMember = () => {
             />
             <button
               className=' text-link text-base 2xl:text-2xl font-bold underline mt-[20px]'
-              onClick={() => navigate('/dashoboard/socials')}
+              onClick={() => navigate('/dashboard/socials')}
             >
               გადი უკან
             </button>

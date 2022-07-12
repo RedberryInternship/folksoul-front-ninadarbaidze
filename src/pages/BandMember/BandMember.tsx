@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useContext } from 'react';
+import { useState, useEffect, useCallback, useContext } from 'react';
 import { AdminPanelActionWrapper, BandMemberData } from 'components';
 import { Member } from 'pages/BandMember/components';
 import { Outlet, NavLink } from 'react-router-dom';
@@ -24,8 +24,9 @@ const BandMember = () => {
       );
       setData(response.data.bandMembers);
       setNumberOfPages(response.data.total);
+      console.log(pages);
     } catch (error: any) {}
-  }, [token, pageNumber]);
+  }, [pageNumber, token]);
 
   useEffect(() => {
     fetchData();
@@ -39,7 +40,14 @@ const BandMember = () => {
       >
         <div className='flex gap-10'>
           {data.map((data) => (
-            <Member {...data} key={data._id} fetchData={fetchData} />
+            <Member
+              {...data}
+              // pageNumber={pageNumber}
+              setPageNumber={setPageNumber}
+              pages={pages}
+              key={data._id}
+              fetchData={fetchData}
+            />
           ))}
         </div>
         <div className='flex justify-center gap-5'>

@@ -47,6 +47,8 @@ const Member: React.FC<MemberData> = (props) => {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
+      props.setPageNumber(0);
+      console.log(props.pages);
       props.fetchData();
     } catch (error: any) {}
   };

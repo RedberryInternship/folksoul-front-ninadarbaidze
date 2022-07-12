@@ -40,7 +40,7 @@ const NewMember = () => {
         }
       );
       authCtx.refreshMembers();
-      navigate('/dashoboard/band-members');
+      navigate('/dashboard/band-members');
 
       return;
     } catch (error: any) {}
@@ -56,7 +56,7 @@ const NewMember = () => {
       throw new Error('Request failed!');
     }
     authCtx.refreshMembers();
-    navigate('/dashoboard/band-members');
+    navigate('/dashboard/band-members');
   };
 
   const onSubmit: SubmitHandler<AddNewMember> = async (data) => {
@@ -157,9 +157,6 @@ const NewMember = () => {
                 placeholder={'ფერი'}
                 id={'color'}
                 isRequired={true}
-                pattern={/^#(?:[0-9A-F]{3}){1,2}$/}
-                patternValueMessage={'არასწორი ფორმატი'}
-                minValue={7}
                 class={
                   errors.color
                     ? 'border-red w-[10vw] h-[3rem] 2xl:h-[4rem] text-center  focus:outline-none bg-white placeholder:placeholder text-[14px] 2xl:text-xl font-normal  border-[1px] 2xl:border-[1.5px] rounded-[5px]  p-2 '
@@ -197,7 +194,7 @@ const NewMember = () => {
             />
             <button
               className=' text-link text-base 2xl:text-2xl font-bold underline '
-              onClick={() => navigate('/dashoboard/band-members')}
+              onClick={() => navigate('/dashboard/band-members')}
             >
               გადი უკან
             </button>
