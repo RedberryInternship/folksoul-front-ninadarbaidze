@@ -102,7 +102,7 @@ export type ModalDataMembers = {
   orbitLength: number;
   color: string;
   biography: string;
-  image: [image];
+  image: any;
   setModalState: any;
 };
 

@@ -22,9 +22,18 @@ const App = () => {
     <>
       <Routes>
         <Route path='/' element={<ApplicationMainPage />} />
-        <Route path='login' element={<Login />} />
         <Route
-          path='dashoboard'
+          path='login'
+          element={
+            authCtx.isLoggedIn ? (
+              <Navigate replace to='/dashboard/main' />
+            ) : (
+              <Login />
+            )
+          }
+        />
+        <Route
+          path='dashboard'
           element={
             authCtx.isLoggedIn ? (
               <Dashboard />

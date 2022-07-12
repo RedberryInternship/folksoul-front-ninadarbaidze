@@ -40,7 +40,7 @@ const LoginForm = () => {
       setError(error.response.status);
       throw new Error('Request failed!');
     }
-    navigate('/dashoboard/main');
+    navigate('/dashboard/main');
   };
   return (
     <LoginModal>

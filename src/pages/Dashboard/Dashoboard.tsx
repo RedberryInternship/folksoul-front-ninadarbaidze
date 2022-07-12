@@ -38,7 +38,7 @@ const Dashoboard = () => {
           <h2 className='text-[20px] 2xl:text-[24px]  pt-1'>ბენდის შესახებ</h2>
         </DashboardNavs>
 
-        <DashboardNavs destination={'/login'} onClick={() => authCtx.logout()}>
+        <DashboardNavs destination={'/'} onClick={() => authCtx.logout()}>
           <DoorIcon />
           <h2 className='text-[20px] 2xl:text-[24px]  pt-1'>გადი გარეთ</h2>
         </DashboardNavs>
