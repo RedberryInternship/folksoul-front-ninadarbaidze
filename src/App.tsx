@@ -10,6 +10,7 @@ import {
   NewSocial,
   EditBand,
   ApplicationMainPage,
+  NotFound,
 } from 'pages';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
@@ -54,6 +55,7 @@ const App = () => {
             <Route path='edit-band' element={<EditBand />} />
           </Route>
         </Route>
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </>
   );

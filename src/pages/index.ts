@@ -8,3 +8,4 @@ export { default as NewMember } from './NewMember';
 export { default as NewSocial } from './NewSocial';
 export { default as EditBand } from './EditBand';
 export { default as ApplicationMainPage } from './ApplicationMainPage';
+export { default as NotFound } from './NotFound';
