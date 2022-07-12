@@ -25,15 +25,13 @@ const NewMember = () => {
     },
   });
 
-  const token = localStorage.getItem('token');
-
   const updateSocialHandler = async (data: AddNewSocial) => {
     try {
       await axios.patch(
         `${process.env.REACT_APP_DOMAIN}/edit-social/${state.id}`,
         data,
         {
-          headers: { Authorization: `Bearer ${token}` },
+          headers: { Authorization: `Bearer ${authCtx.token}` },
         }
       );
       authCtx.refreshSocials();
@@ -46,7 +44,7 @@ const NewMember = () => {
   const addNewSocialHandler = async (data: AddNewSocial) => {
     try {
       await axios.post(`${process.env.REACT_APP_DOMAIN}/add-social`, data, {
-        headers: { Authorization: `Bearer ${token}` },
+        headers: { Authorization: `Bearer ${authCtx.token}` },
       });
     } catch (error: any) {
       setError(error.response.status);

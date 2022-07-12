@@ -1,28 +1,29 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useContext } from 'react';
 import { TvFeet, TvSatelite } from 'components/svgs';
 import { AboutBandTypes } from 'components';
 import { band } from 'assets/images';
 import axios from 'axios';
+import { AuthContext } from 'store';
 
 const Main = () => {
+  const authCtx = useContext(AuthContext);
   const [data, setData] = useState<AboutBandTypes>({
     _id: '',
     about: '',
     image: [],
   });
 
-  const token = localStorage.getItem('token');
   const fetchData = useCallback(async () => {
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_DOMAIN}/bands`,
         {
-          headers: { Authorization: `Bearer ${token}` },
+          headers: { Authorization: `Bearer ${authCtx.token}` },
         }
       );
       setData(response.data);
     } catch (error: any) {}
-  }, [token]);
+  }, [authCtx.token]);
 
   useEffect(() => {
     fetchData();

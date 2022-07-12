@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RedButton, YellowButton, EditPhoto } from 'components/svgs';
 import { ImageUploadModal } from 'pages/Socials/components';
 import axios from 'axios';
 import { youtube } from 'assets/images';
 import { Socials } from 'components';
+import { AuthContext } from 'store';
 
 const Social: React.FC<Socials> = (props) => {
+  const authCtx = useContext(AuthContext);
   const navigate = useNavigate();
   const [imageModalState, setImageModalState] = useState(false);
 
@@ -25,12 +27,11 @@ const Social: React.FC<Socials> = (props) => {
   };
 
   const deleteMemberHandler = async () => {
-    const token = localStorage.getItem('token');
     try {
       await axios.delete(
         `${process.env.REACT_APP_DOMAIN}/delete-social/${props._id}`,
         {
-          headers: { Authorization: `Bearer ${token}` },
+          headers: { Authorization: `Bearer ${authCtx.token}` },
         }
       );
       props.fetchData();

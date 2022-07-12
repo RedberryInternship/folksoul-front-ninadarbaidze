@@ -44,7 +44,6 @@ const ImageUploadModal: React.FC<ImageUploadDataSocials> = (props) => {
 
   const submitImage = async (e: any) => {
     e.preventDefault();
-    const token = localStorage.getItem('token');
 
     const formData = new FormData();
     formData.append('image', memberImage.image);
@@ -55,7 +54,7 @@ const ImageUploadModal: React.FC<ImageUploadDataSocials> = (props) => {
         `${process.env.REACT_APP_DOMAIN}/change-social-icon`,
         formData,
         {
-          headers: { Authorization: `Bearer ${token}` },
+          headers: { Authorization: `Bearer ${authCtx.token}` },
         }
       );
     } catch (error: any) {

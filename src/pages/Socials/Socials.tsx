@@ -13,19 +13,18 @@ const Socials = () => {
 
   const pages = new Array(numberOfPages).fill(null).map((v, i) => i);
 
-  const token = localStorage.getItem('token');
   const fetchData = useCallback(async () => {
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_DOMAIN}/social-media?page=${pageNumber}`,
         {
-          headers: { Authorization: `Bearer ${token}` },
+          headers: { Authorization: `Bearer ${authCtx.token}` },
         }
       );
       setData(response.data.socials);
       setNumberOfPages(response.data.total);
     } catch (error: any) {}
-  }, [token, pageNumber]);
+  }, [authCtx.token, pageNumber]);
 
   useEffect(() => {
     fetchData();

@@ -40,7 +40,6 @@ const ImageUploadModal: React.FC<ImageUploadBand> = (props) => {
 
   const submitImage = async (e: any) => {
     e.preventDefault();
-    const token = localStorage.getItem('token');
 
     const formData = new FormData();
     formData.append('image', bandImage.image);
@@ -51,7 +50,7 @@ const ImageUploadModal: React.FC<ImageUploadBand> = (props) => {
         `${process.env.REACT_APP_DOMAIN}/change-band-logo`,
         formData,
         {
-          headers: { Authorization: `Bearer ${token}` },
+          headers: { Authorization: `Bearer ${authCtx.token}` },
         }
       );
     } catch (error: any) {}

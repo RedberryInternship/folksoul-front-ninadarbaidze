@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   RedButton,
@@ -10,8 +10,10 @@ import { memberIcon } from 'assets/images';
 import { Modal, MemberData } from 'components';
 import { ImageUploadModal } from 'pages/BandMember/components';
 import axios from 'axios';
+import { AuthContext } from 'store';
 
 const Member: React.FC<MemberData> = (props) => {
+  const authCtx = useContext(AuthContext);
   const navigate = useNavigate();
   const [modalState, setModalState] = useState(false);
   const [imageModalState, setImageModalState] = useState(false);
@@ -38,13 +40,11 @@ const Member: React.FC<MemberData> = (props) => {
   };
 
   const deleteMemberHandler = async () => {
-    const token = localStorage.getItem('token');
-
     try {
       await axios.delete(
         `${process.env.REACT_APP_DOMAIN}/delete-member/${props._id}`,
         {
-          headers: { Authorization: `Bearer ${token}` },
+          headers: { Authorization: `Bearer ${authCtx.token}` },
         }
       );
       if (props.data.length === 1) props.setPageNumber(props.pageNumber - 1);

@@ -28,7 +28,6 @@ const NewMember = () => {
       biography: state ? state.biography : '',
     },
   });
-  const token = localStorage.getItem('token');
 
   const updateBandMemberHandler = async (data: AddNewMember) => {
     try {
@@ -36,7 +35,7 @@ const NewMember = () => {
         `${process.env.REACT_APP_DOMAIN}/edit-member/${state.id}`,
         data,
         {
-          headers: { Authorization: `Bearer ${token}` },
+          headers: { Authorization: `Bearer ${authCtx.token}` },
         }
       );
       authCtx.refreshMembers();
@@ -49,7 +48,7 @@ const NewMember = () => {
   const addNewBandMemberHandler = async (data: AddNewMember) => {
     try {
       await axios.post(`${process.env.REACT_APP_DOMAIN}/new-member`, data, {
-        headers: { Authorization: `Bearer ${token}` },
+        headers: { Authorization: `Bearer ${authCtx.token}` },
       });
     } catch (error: any) {
       setError(error.response.status);

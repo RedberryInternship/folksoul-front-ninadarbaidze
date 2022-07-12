@@ -13,19 +13,18 @@ const BandMember = () => {
 
   const pages = new Array(numberOfPages).fill(null).map((v, i) => i);
 
-  const token = localStorage.getItem('token');
   const fetchData = useCallback(async () => {
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_DOMAIN}/band-members?page=${pageNumber}`,
         {
-          headers: { Authorization: `Bearer ${token}` },
+          headers: { Authorization: `Bearer ${authCtx.token}` },
         }
       );
       setData(response.data.bandMembers);
       setNumberOfPages(response.data.total);
     } catch (error: any) {}
-  }, [pageNumber, token]);
+  }, [pageNumber, authCtx.token]);
 
   useEffect(() => {
     fetchData();

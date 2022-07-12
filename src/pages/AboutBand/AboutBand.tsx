@@ -22,18 +22,17 @@ const AboutBand = () => {
     setImageModalState(true);
   };
 
-  const token = localStorage.getItem('token');
   const fetchData = useCallback(async () => {
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_DOMAIN}/bands`,
         {
-          headers: { Authorization: `Bearer ${token}` },
+          headers: { Authorization: `Bearer ${authCtx.token}` },
         }
       );
       setData(response.data);
     } catch (error: any) {}
-  }, [token]);
+  }, [authCtx.token]);
 
   useEffect(() => {
     fetchData();

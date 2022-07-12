@@ -19,7 +19,6 @@ const EditBand = () => {
       about: state ? state.about : '',
     },
   });
-  const token = localStorage.getItem('token');
 
   const onSubmit: SubmitHandler<EditBandTypes> = async (data) => {
     try {
@@ -27,11 +26,11 @@ const EditBand = () => {
         `${process.env.REACT_APP_DOMAIN}/edit-band/${state.id}`,
         data,
         {
-          headers: { Authorization: `Bearer ${token}` },
+          headers: { Authorization: `Bearer ${authCtx.token}` },
         }
       );
       authCtx.refreshBand();
-      navigate('/dashoboard/about-band');
+      navigate('/dashboard/about-band');
 
       return;
     } catch (error: any) {}
@@ -65,7 +64,7 @@ const EditBand = () => {
             </button>
             <button
               className=' text-link text-base 2xl:text-2xl font-bold underline '
-              onClick={() => navigate('/dashoboard/about-band')}
+              onClick={() => navigate('/dashboard/about-band')}
             >
               გადი უკან
             </button>

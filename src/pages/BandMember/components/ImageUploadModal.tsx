@@ -40,7 +40,6 @@ const ImageUploadModal: React.FC<ImageUploadData> = (props) => {
 
   const submitImage = async (e: any) => {
     e.preventDefault();
-    const token = localStorage.getItem('token');
 
     const formData = new FormData();
     formData.append('image', memberImage.image);
@@ -51,7 +50,7 @@ const ImageUploadModal: React.FC<ImageUploadData> = (props) => {
         `${process.env.REACT_APP_DOMAIN}/change-avatar`,
         formData,
         {
-          headers: { Authorization: `Bearer ${token}` },
+          headers: { Authorization: `Bearer ${authCtx.token}` },
         }
       );
     } catch (error: any) {}
