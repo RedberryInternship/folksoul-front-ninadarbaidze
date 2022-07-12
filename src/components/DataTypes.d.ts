@@ -164,8 +164,9 @@ export type MemberData = {
   biography: string;
   image: any;
   fetchData: () => void;
-  pages: any;
+  data: BandMemberData[];
   setPageNumber: any;
+  pageNumber: number;
 };
 
 export type BandMemberData = {

@@ -188,7 +188,7 @@ const NewMember = () => {
               </p>
             ) : null}
           </div>
-          <div className='flex flex-col space-y-4 absolute bottom-10'>
+          <div className='flex flex-col space-y-4 absolute bottom-5'>
             <FormButton
               buttonText={!state ? 'დაამატე წევრი' : 'განაახლე წევრი'}
             />

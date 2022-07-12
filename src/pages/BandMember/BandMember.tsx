@@ -24,7 +24,6 @@ const BandMember = () => {
       );
       setData(response.data.bandMembers);
       setNumberOfPages(response.data.total);
-      console.log(pages);
     } catch (error: any) {}
   }, [pageNumber, token]);
 
@@ -39,13 +38,13 @@ const BandMember = () => {
         header='ჯგუფის წევრები'
       >
         <div className='flex gap-10'>
-          {data.map((data) => (
+          {data.map((member) => (
             <Member
-              {...data}
-              // pageNumber={pageNumber}
+              {...member}
+              pageNumber={pageNumber}
               setPageNumber={setPageNumber}
-              pages={pages}
-              key={data._id}
+              data={data}
+              key={member._id}
               fetchData={fetchData}
             />
           ))}
