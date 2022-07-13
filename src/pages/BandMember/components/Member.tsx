@@ -7,7 +7,8 @@ import {
   EditPhoto,
 } from 'components/svgs';
 import { memberIcon } from 'assets/images';
-import { Modal, MemberData, DeleteDialog } from 'components';
+import { Modal, DeleteDialog } from 'components';
+import { MemberData } from 'types';
 import { ImageUploadModal } from 'pages/BandMember/components';
 import axios from 'axios';
 import { AuthContext } from 'store';

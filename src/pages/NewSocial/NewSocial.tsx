@@ -1,9 +1,10 @@
 import { useContext, useState } from 'react';
-import { AdminPanelActionWrapper, AddNewSocial, Input } from 'components';
+import { AdminPanelActionWrapper, Input } from 'components';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { FormButton } from 'pages/NewMember/components';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext } from 'store';
+import { AddNewSocial } from 'types';
 import axios from 'axios';
 
 const NewMember = () => {

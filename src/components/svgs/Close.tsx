@@ -1,5 +1,5 @@
 import React from 'react';
-import { OnClick } from 'components';
+import { OnClick } from 'types';
 
 const Close: React.FC<OnClick> = (props) => {
   return (

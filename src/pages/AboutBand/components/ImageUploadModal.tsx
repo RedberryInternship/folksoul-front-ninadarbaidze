@@ -3,7 +3,8 @@ import { Close } from 'components/svgs';
 import axios from 'axios';
 import { AuthContext } from 'store';
 import { youtube } from 'assets/images';
-import { BandImage, ImageUploadBand, ImageUploadModalForm } from 'components';
+import { ImageUploadModalForm } from 'components';
+import { BandImage, ImageUploadBand } from 'types';
 
 const ImageUploadModal: React.FC<ImageUploadBand> = (props) => {
   const authCtx = useContext(AuthContext);

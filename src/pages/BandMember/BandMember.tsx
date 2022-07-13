@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useContext } from 'react';
-import { AdminPanelActionWrapper, BandMemberData } from 'components';
+import { AdminPanelActionWrapper } from 'components';
+import { BandMemberData } from 'types';
 import { Member } from 'pages/BandMember/components';
 import { Outlet, NavLink } from 'react-router-dom';
 import axios from 'axios';

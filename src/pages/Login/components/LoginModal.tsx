@@ -1,5 +1,5 @@
 import React from 'react';
-import { Children } from 'components';
+import { Children } from 'types';
 
 const LoginModal: React.FC<Children> = (props) => {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { DeleteModal } from 'components';
+import { DeleteModal } from 'types';
 
 const Modal: React.FC<DeleteModal> = (props) => {
   return (

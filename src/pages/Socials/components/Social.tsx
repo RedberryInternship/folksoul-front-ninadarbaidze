@@ -4,8 +4,9 @@ import { RedButton, YellowButton, EditPhoto } from 'components/svgs';
 import { ImageUploadModal } from 'pages/Socials/components';
 import axios from 'axios';
 import { youtube } from 'assets/images';
-import { Socials, DeleteDialog } from 'components';
+import { DeleteDialog } from 'components';
 import { AuthContext } from 'store';
+import { Socials } from 'types';
 
 const Social: React.FC<Socials> = (props) => {
   const authCtx = useContext(AuthContext);

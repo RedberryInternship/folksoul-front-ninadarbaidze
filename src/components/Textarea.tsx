@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextareaField } from 'components';
+import { TextareaField } from 'types';
 
 const Textarea: React.FC<TextareaField> = (props) => {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChildrenClassesTypes } from 'components';
+import { ChildrenClassesTypes } from 'types';
 
 const Button: React.FC<ChildrenClassesTypes> = (props) => {
   return (

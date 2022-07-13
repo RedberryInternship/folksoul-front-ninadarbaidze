@@ -3,7 +3,8 @@ import { Close } from 'components/svgs';
 import axios from 'axios';
 import { AuthContext } from 'store';
 import { memberIcon } from 'assets/images';
-import { Image, ImageUploadData, ImageUploadModalForm } from 'components';
+import { ImageUploadModalForm } from 'components';
+import { Image, ImageUploadData } from 'types';
 
 const ImageUploadModal: React.FC<ImageUploadData> = (props) => {
   const authCtx = useContext(AuthContext);

@@ -1,5 +1,6 @@
 import { useState, useContext, useCallback, useEffect } from 'react';
-import { AdminPanelActionWrapper, SocialsTypes } from 'components';
+import { AdminPanelActionWrapper } from 'components';
+import { SocialsTypes } from 'types';
 import { AuthContext } from 'store';
 import axios from 'axios';
 import { Social } from 'pages/Socials/components';

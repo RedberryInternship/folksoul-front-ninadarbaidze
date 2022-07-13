@@ -1,5 +1,5 @@
 import React from 'react';
-import { AdminPanelWrapper } from 'components';
+import { AdminPanelWrapper } from 'types';
 
 const AdminPanelActionWrapper: React.FC<AdminPanelWrapper> = (props) => {
   return (

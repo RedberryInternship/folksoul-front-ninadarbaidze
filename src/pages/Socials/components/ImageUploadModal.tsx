@@ -2,12 +2,9 @@ import React, { useState, useContext } from 'react';
 import { Close } from 'components/svgs';
 import axios from 'axios';
 import { AuthContext } from 'store';
+import { Socialmage, ImageUploadDataSocials } from 'types';
 import { youtube } from 'assets/images';
-import {
-  Socialmage,
-  ImageUploadDataSocials,
-  ImageUploadModalForm,
-} from 'components';
+import { ImageUploadModalForm } from 'components';
 
 const ImageUploadModal: React.FC<ImageUploadDataSocials> = (props) => {
   const authCtx = useContext(AuthContext);

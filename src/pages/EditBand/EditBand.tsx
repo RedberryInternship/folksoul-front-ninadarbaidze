@@ -1,8 +1,9 @@
 import { useContext } from 'react';
-import { AdminPanelActionWrapper, EditBandTypes, Textarea } from 'components';
+import { AdminPanelActionWrapper, Textarea } from 'components';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext } from 'store';
+import { EditBandTypes } from 'types';
 import axios from 'axios';
 
 const EditBand = () => {

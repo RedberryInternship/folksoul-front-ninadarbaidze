@@ -1,12 +1,6 @@
 import { useContext, useState } from 'react';
-import {
-  AdminPanelActionWrapper,
-  AddNewMember,
-  Input,
-  Textarea,
-  MinMaxInputProps,
-  // MinMaxInputProps,
-} from 'components';
+import { AdminPanelActionWrapper, Input, Textarea } from 'components';
+import { AddNewMember, MinMaxInputProps } from 'types';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { FormButton } from 'pages/NewMember/components';
 import { useNavigate, useLocation } from 'react-router-dom';

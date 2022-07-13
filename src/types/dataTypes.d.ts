@@ -1,59 +1,3 @@
-type InputProps = {
-  labelName?: string;
-  type?: string;
-  register: any;
-  fieldName: string;
-  placeholder: string;
-  isRequired?: boolean;
-  minValue?: number;
-  id?: string;
-  patternValueMessage?: string;
-  class?: string;
-  pattern?: any;
-  minMaxProps?: MinMaxInputProps;
-};
-
-type MinMaxInputProps = {
-  min?: number;
-  minMessage?: string;
-  max?: number;
-  maxMessage?: string;
-};
-
-export type TextareaField = {
-  labelName?: string;
-  register: any;
-  fieldName: string;
-  errorMessage?: string;
-  id?: string;
-  placeholder: string;
-  class?: string;
-  isRequired?: boolean;
-  pattern?: any;
-  patternValueMessage?: string;
-};
-
-export type OnClick = {
-  onClick: () => void;
-};
-
-export type ClassName = {
-  className?: string;
-};
-
-export type Children = {
-  children: React.ReactNode;
-};
-
-export type ButtonText = {
-  buttonText: string;
-};
-
-export type ChildrenClassesTypes = {
-  children: React.ReactNode;
-  className?: string;
-};
-
 export type Data = {
   _id: string;
   name: string;
@@ -76,18 +20,6 @@ export type ContextData = {
   bandIsEdited: boolean;
 };
 
-export type DashboartNavs = {
-  destination: string;
-  children: React.ReactNode;
-  onClick?: () => void;
-};
-
-type AdminPanelWrapper = {
-  children: React.ReactNode;
-  header: string;
-  className?: string;
-};
-
 export type ModalDataMembers = {
   _id: string;
   name: string;
@@ -99,32 +31,11 @@ export type ModalDataMembers = {
   setModalState: any;
 };
 
-export type DeleteModal = {
-  setDeleteImageModalState: (boolean) => void;
-  deleteMemberHandler: () => void;
-  cancelDeleting: () => void;
-};
-
 export type ModalDataSocial = {
   id: props._id;
   name: props.name;
   url: props.url;
   setModalState: any;
-};
-
-export type Image = {
-  image: string;
-  memberId: string;
-};
-
-export type Socialmage = {
-  image: string;
-  socialId: string;
-};
-
-export type BandImage = {
-  image: string;
-  bandId: string;
 };
 
 export type ImageUploadData = {
@@ -144,13 +55,6 @@ export type ImageUploadDataSocials = {
   url: string;
   image: any;
   fetchData: () => void;
-  setImageModalState: any;
-};
-
-export type ImageUploadBand = {
-  _id: string;
-  about: string;
-  image: any;
   setImageModalState: any;
 };
 
@@ -176,38 +80,6 @@ export type BandMemberData = {
   color: string;
   biography: string;
   image: Image[];
-};
-
-export type LoginValueTypes = {
-  username: string;
-  password: string;
-};
-
-export type AddNewMember = {
-  id: string;
-  name: string;
-  instrument: string;
-  orbitLength: number | string;
-  color: string;
-  biography: string;
-};
-
-export type AddNewSocial = {
-  id: string;
-  name: string;
-  url: string;
-};
-
-export type EditBandTypes = {
-  about: any;
-  id: string;
-  name: string;
-  url: string;
-};
-
-export type EditBand = {
-  id: string;
-  about: string;
 };
 
 type SocialsTypes = {
@@ -244,11 +116,6 @@ type CirclesTypes = {
   onClick: any;
   setMemberIsSelected: any;
   memberIsSelected: boolean;
-};
-
-type EditPhotoTypes = {
-  className: string;
-  onClick: () => void;
 };
 
 type Socials = {

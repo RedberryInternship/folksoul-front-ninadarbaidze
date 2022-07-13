@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { DashboartNavs } from 'components';
+import { DashboartNavs } from 'types';
 
 const DashboardNavs: React.FC<DashboartNavs> = (props) => {
   return (

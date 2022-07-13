@@ -1,8 +1,9 @@
 import React, { useContext, useState } from 'react';
-import { Input, Button, LoginValueTypes } from 'components';
+import { Input, Button } from 'components';
 import { LoginModal } from 'pages/Login/components';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { AuthContext } from 'store';
+import { LoginValueTypes } from 'types';
 import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';

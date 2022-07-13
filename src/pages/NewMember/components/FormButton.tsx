@@ -1,5 +1,5 @@
 import React from 'react';
-import { ButtonText } from 'components';
+import { ButtonText } from 'types';
 
 const FormButton: React.FC<ButtonText> = (props) => {
   return (

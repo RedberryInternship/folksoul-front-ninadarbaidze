@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback, useContext } from 'react';
 import { TvFeet, TvSatelite } from 'components/svgs';
-import { AboutBandTypes } from 'components';
+import { AboutBandTypes } from 'types';
 import { band } from 'assets/images';
 import axios from 'axios';
 import { AuthContext } from 'store';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { EditPhotoTypes } from 'components';
+import { EditPhotoTypes } from 'types';
 
 const EditPhoto: React.FC<EditPhotoTypes> = (props) => {
   return (

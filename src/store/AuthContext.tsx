@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ContextData, Children } from 'components';
+import { ContextData, Children } from 'types';
 
 const AuthContext = React.createContext({
   token: '',
