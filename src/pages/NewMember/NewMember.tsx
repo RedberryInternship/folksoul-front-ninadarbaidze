@@ -1,7 +1,12 @@
 import { useContext, useState } from 'react';
-import { AdminPanelActionWrapper, AddNewMember, Input } from 'components';
+import {
+  AdminPanelActionWrapper,
+  AddNewMember,
+  Input,
+  Textarea,
+} from 'components';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { Textarea, FormButton } from 'pages/NewMember/components';
+import { FormButton } from 'pages/NewMember/components';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext } from 'store';
 
@@ -178,7 +183,9 @@ const NewMember = () => {
               pattern={/[\u10A0-\u10FF]/}
               patternValueMessage={'წერე ქართულად!'}
               class={
-                errors.biography ? 'border-red  ' : 'border-blue2 w-[10vw]'
+                errors.biography
+                  ? 'border-red  w-[40vw] h-[6vw] text-center  focus:outline-none bg-white placeholder:placeholder text-[14px] 2xl:text-xl font-normal  border-[1px] 2xl:border-[1.5px] rounded-[5px]  pl-[1%]  '
+                  : 'border-blue2 w-[40vw] h-[6vw] text-center  focus:outline-none bg-white placeholder:placeholder text-[14px] 2xl:text-xl font-normal  border-[1px] 2xl:border-[1.5px] rounded-[5px]  pl-[1%]  '
               }
             />
             {errors.biography ? (
