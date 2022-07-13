@@ -17,7 +17,7 @@ const Social: React.FC<Socials> = (props) => {
   };
 
   const editMemberHandler = () => {
-    navigate('/dashoboard/socials/new-social', {
+    navigate('/dashboard/socials/new-social', {
       state: {
         id: props._id,
         name: props.name,
@@ -67,7 +67,7 @@ const Social: React.FC<Socials> = (props) => {
             {props.url}
           </a>
         </p>
-        <div className='flex justify-end items-center pr-[5%] w-[20rem] gap-14'>
+        <div className='flex justify-end absolute right-0 items-center pr-[5%] w-[20rem] gap-14'>
           <YellowButton onClick={editMemberHandler} />
           <RedButton onClick={deleteMemberHandler} />
         </div>

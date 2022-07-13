@@ -106,6 +106,12 @@ export type ModalDataMembers = {
   setModalState: any;
 };
 
+export type DeleteModal = {
+  setDeleteImageModalState: (boolean) => void;
+  deleteMemberHandler: () => void;
+  cancelDeleting: () => void;
+};
+
 export type ModalDataSocial = {
   id: props._id;
   name: props.name;

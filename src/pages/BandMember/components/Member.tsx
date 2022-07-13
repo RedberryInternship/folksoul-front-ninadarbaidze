@@ -7,7 +7,7 @@ import {
   EditPhoto,
 } from 'components/svgs';
 import { memberIcon } from 'assets/images';
-import { Modal, MemberData } from 'components';
+import { Modal, MemberData, DeleteDialog } from 'components';
 import { ImageUploadModal } from 'pages/BandMember/components';
 import axios from 'axios';
 import { AuthContext } from 'store';
@@ -17,6 +17,7 @@ const Member: React.FC<MemberData> = (props) => {
   const navigate = useNavigate();
   const [modalState, setModalState] = useState(false);
   const [imageModalState, setImageModalState] = useState(false);
+  const [deleteModalState, setDeleteImageModalState] = useState(false);
 
   const openImagePickerHandler = () => {
     setImageModalState(true);
@@ -27,7 +28,7 @@ const Member: React.FC<MemberData> = (props) => {
   };
 
   const editMemberHandler = () => {
-    navigate('/dashoboard/band-members/new-member', {
+    navigate('/dashboard/band-members/new-member', {
       state: {
         id: props._id,
         name: props.name,
@@ -49,11 +50,24 @@ const Member: React.FC<MemberData> = (props) => {
       );
       if (props.data.length === 1) props.setPageNumber(props.pageNumber - 1);
       props.fetchData();
+      setDeleteImageModalState(false);
     } catch (error: any) {}
+  };
+
+  const cancelDeleting = () => {
+    setDeleteImageModalState(false);
   };
 
   return (
     <>
+      {deleteModalState && (
+        <DeleteDialog
+          setDeleteImageModalState={setDeleteImageModalState}
+          deleteMemberHandler={deleteMemberHandler}
+          cancelDeleting={cancelDeleting}
+        />
+      )}
+
       {modalState && <Modal {...props} setModalState={setModalState} />}
       {imageModalState && (
         <ImageUploadModal {...props} setImageModalState={setImageModalState} />
@@ -82,7 +96,7 @@ const Member: React.FC<MemberData> = (props) => {
         <div className='flex justify-center items-center gap-10 2xl:gap-14 border-t-[1px] h-8 2xl:h-12 w-full drop-shadow-4xl'>
           <GreenButton onClick={showMemberHandler} />
           <YellowButton onClick={editMemberHandler} />
-          <RedButton onClick={deleteMemberHandler} />
+          <RedButton onClick={() => setDeleteImageModalState(true)} />
         </div>
       </div>
     </>
