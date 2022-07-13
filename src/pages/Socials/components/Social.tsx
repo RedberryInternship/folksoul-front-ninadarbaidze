@@ -4,13 +4,14 @@ import { RedButton, YellowButton, EditPhoto } from 'components/svgs';
 import { ImageUploadModal } from 'pages/Socials/components';
 import axios from 'axios';
 import { youtube } from 'assets/images';
-import { Socials } from 'components';
+import { Socials, DeleteDialog } from 'components';
 import { AuthContext } from 'store';
 
 const Social: React.FC<Socials> = (props) => {
   const authCtx = useContext(AuthContext);
   const navigate = useNavigate();
   const [imageModalState, setImageModalState] = useState(false);
+  const [deleteModalState, setDeleteImageModalState] = useState(false);
 
   const openImagePickerHandler = () => {
     setImageModalState(true);
@@ -35,11 +36,23 @@ const Social: React.FC<Socials> = (props) => {
         }
       );
       props.fetchData();
+      setDeleteImageModalState(false);
     } catch (error: any) {}
+  };
+
+  const cancelDeleting = () => {
+    setDeleteImageModalState(false);
   };
 
   return (
     <>
+      {deleteModalState && (
+        <DeleteDialog
+          setDeleteImageModalState={setDeleteImageModalState}
+          deleteMemberHandler={deleteMemberHandler}
+          cancelDeleting={cancelDeleting}
+        />
+      )}
       {imageModalState && (
         <ImageUploadModal {...props} setImageModalState={setImageModalState} />
       )}
@@ -69,7 +82,7 @@ const Social: React.FC<Socials> = (props) => {
         </p>
         <div className='flex justify-end absolute right-0 items-center pr-[5%] w-[20rem] gap-14'>
           <YellowButton onClick={editMemberHandler} />
-          <RedButton onClick={deleteMemberHandler} />
+          <RedButton onClick={() => setDeleteImageModalState(true)} />
         </div>
       </div>
     </>

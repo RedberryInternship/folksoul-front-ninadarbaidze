@@ -2,9 +2,6 @@ import React from 'react';
 import { DeleteModal } from 'components';
 
 const Modal: React.FC<DeleteModal> = (props) => {
-  // const modalStateHandler = () => {
-  //   props.setModalState(false);
-  // };
   return (
     <>
       <div className='fixed inset-0 z-40 opacity-60 bg-backdrop w-screen h-screen'></div>
