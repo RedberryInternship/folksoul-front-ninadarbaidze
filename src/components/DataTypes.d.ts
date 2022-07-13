@@ -5,22 +5,15 @@ type InputProps = {
   fieldName: string;
   placeholder: string;
   isRequired?: boolean;
-  requiredMessage?: string;
   minValue?: number;
-  minValueMessage?: string;
-  errorMessage?: string;
   id?: string;
   patternValueMessage?: string;
-  classes?: string;
-  callBack?: () => void;
-  callBackMessage?: string;
   class?: string;
-  isValidInput?: Boolean;
-  pass?: string;
-  repeatPass?: string;
-  error?: any;
   pattern?: any;
-  isNum?: boolean;
+  minMaxProps?: MinMaxInputProps;
+};
+
+type MinMaxInputProps = {
   min?: number;
   minMessage?: string;
   max?: number;

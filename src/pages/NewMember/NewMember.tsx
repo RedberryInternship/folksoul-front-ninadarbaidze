@@ -4,6 +4,8 @@ import {
   AddNewMember,
   Input,
   Textarea,
+  MinMaxInputProps,
+  // MinMaxInputProps,
 } from 'components';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { FormButton } from 'pages/NewMember/components';
@@ -66,6 +68,13 @@ const NewMember = () => {
   const onSubmit: SubmitHandler<AddNewMember> = async (data) => {
     if (state) updateBandMemberHandler(data);
     else addNewBandMemberHandler(data);
+  };
+
+  const minMaxProps: MinMaxInputProps = {
+    min: 300,
+    max: 700,
+    minMessage: 'სიგრძე მინ. 300 ',
+    maxMessage: 'სიგრძე მაქს. 700 ',
   };
 
   return (
@@ -137,10 +146,11 @@ const NewMember = () => {
                 id={'orbitLength'}
                 pattern={/^[0-9]*$/}
                 patternValueMessage={'შეიყვანე რიცხვი'}
-                min={300}
-                minMessage={'სიგრძე მინ. 300 '}
-                max={700}
-                maxMessage={'სიგრძე მაქს. 700 '}
+                minMaxProps={minMaxProps}
+                // min={300}
+                // minMessage={'სიგრძე მინ. 300 '}
+                // max={700}
+                // maxMessage={'სიგრძე მაქს. 700 '}
                 class={
                   errors.orbitLength
                     ? 'border-red w-[10vw] h-[3rem] 2xl:h-[4rem] text-center  focus:outline-none bg-white placeholder:placeholder text-[14px] 2xl:text-xl font-normal  border-[1px] 2xl:border-[1.5px] rounded-[5px]  pl-[8%] '

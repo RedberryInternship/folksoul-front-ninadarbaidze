@@ -2,6 +2,7 @@ import React from 'react';
 import { InputProps } from 'components';
 
 const Input: React.FC<InputProps> = (props) => {
+  console.log(props);
   return (
     <div className={`flex flex-col`}>
       <label htmlFor={props.fieldName} className='text-dark100 font-extrabold'>
@@ -27,12 +28,12 @@ const Input: React.FC<InputProps> = (props) => {
               message: props.patternValueMessage,
             },
             min: {
-              value: props.min,
-              message: props.minMessage,
+              value: props.minMaxProps?.min,
+              message: props.minMaxProps?.minMessage,
             },
             max: {
-              value: props.max,
-              message: props.maxMessage,
+              value: props.minMaxProps?.max,
+              message: props.minMaxProps?.maxMessage,
             },
           })}
         />
