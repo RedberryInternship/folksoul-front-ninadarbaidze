@@ -31,6 +31,9 @@ const Social: React.FC<Socials> = (props) => {
   const deleteMemberHandler = async () => {
     try {
       await deleteSocial(authCtx.token, props._id);
+      console.log(props.data);
+
+      if (props.data.length === 1) props.setPageNumber(props.pageNumber - 1);
       props.fetchData();
       setDeleteImageModalState(false);
     } catch (error: any) {}

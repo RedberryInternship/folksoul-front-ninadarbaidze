@@ -32,8 +32,15 @@ const Socials = () => {
         header='სოციალური ბმულები'
       >
         <div className='flex flex-col justify-between px-8 py-3 h-full items-center gap-8'>
-          {data.map((data) => (
-            <Social {...data} key={data._id} fetchData={fetchData} />
+          {data.map((social) => (
+            <Social
+              {...social}
+              key={social._id}
+              pageNumber={pageNumber}
+              setPageNumber={setPageNumber}
+              data={data}
+              fetchData={fetchData}
+            />
           ))}
         </div>
         <div className='flex justify-center absolute bottom-32 gap-5'>

@@ -124,4 +124,7 @@ type Socials = {
   url: string;
   image: any;
   fetchData: () => void;
+  data: any;
+  setPageNumber: any;
+  pageNumber: number;
 };
