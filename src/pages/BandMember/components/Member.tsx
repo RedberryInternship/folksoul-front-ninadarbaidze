@@ -10,7 +10,7 @@ import { memberIcon } from 'assets/images';
 import { Modal, DeleteDialog } from 'components';
 import { MemberData } from 'types';
 import { ImageUploadModal } from 'pages/BandMember/components';
-import axios from 'axios';
+import { deleteMember } from 'services';
 import { AuthContext } from 'store';
 
 const Member: React.FC<MemberData> = (props) => {
@@ -43,12 +43,7 @@ const Member: React.FC<MemberData> = (props) => {
 
   const deleteMemberHandler = async () => {
     try {
-      await axios.delete(
-        `${process.env.REACT_APP_DOMAIN}/delete-member/${props._id}`,
-        {
-          headers: { Authorization: `Bearer ${authCtx.token}` },
-        }
-      );
+      await deleteMember(authCtx.token, props._id);
       if (props.data.length === 1) props.setPageNumber(props.pageNumber - 1);
       props.fetchData();
       setDeleteImageModalState(false);

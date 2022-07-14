@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { Close } from 'components/svgs';
-import axios from 'axios';
 import { AuthContext } from 'store';
 import { youtube } from 'assets/images';
 import { ImageUploadModalForm } from 'components';
 import { BandImage, ImageUploadBand } from 'types';
+import { changeBandLogo } from 'services';
 
 const ImageUploadModal: React.FC<ImageUploadBand> = (props) => {
   const authCtx = useContext(AuthContext);
@@ -47,13 +47,7 @@ const ImageUploadModal: React.FC<ImageUploadBand> = (props) => {
     formData.append('bandId', bandImage.bandId);
 
     try {
-      await axios.post(
-        `${process.env.REACT_APP_DOMAIN}/change-band-logo`,
-        formData,
-        {
-          headers: { Authorization: `Bearer ${authCtx.token}` },
-        }
-      );
+      await changeBandLogo(authCtx.token, formData);
     } catch (error: any) {
       throw new Error('Request failed!');
     }

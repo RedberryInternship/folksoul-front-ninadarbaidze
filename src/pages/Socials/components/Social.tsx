@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RedButton, YellowButton, EditPhoto } from 'components/svgs';
 import { ImageUploadModal } from 'pages/Socials/components';
-import axios from 'axios';
+import { deleteSocial } from 'services';
 import { youtube } from 'assets/images';
 import { DeleteDialog } from 'components';
 import { AuthContext } from 'store';
@@ -30,12 +30,7 @@ const Social: React.FC<Socials> = (props) => {
 
   const deleteMemberHandler = async () => {
     try {
-      await axios.delete(
-        `${process.env.REACT_APP_DOMAIN}/delete-social/${props._id}`,
-        {
-          headers: { Authorization: `Bearer ${authCtx.token}` },
-        }
-      );
+      await deleteSocial(authCtx.token, props._id);
       props.fetchData();
       setDeleteImageModalState(false);
     } catch (error: any) {}

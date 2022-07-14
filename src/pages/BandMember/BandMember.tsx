@@ -3,8 +3,8 @@ import { AdminPanelActionWrapper } from 'components';
 import { BandMemberData } from 'types';
 import { Member } from 'pages/BandMember/components';
 import { Outlet, NavLink } from 'react-router-dom';
-import axios from 'axios';
 import { AuthContext } from 'store';
+import { getBandMemebrs } from 'services';
 
 const BandMember = () => {
   const [data, setData] = useState<BandMemberData[]>([]);
@@ -16,16 +16,11 @@ const BandMember = () => {
 
   const fetchData = useCallback(async () => {
     try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_DOMAIN}/band-members?page=${pageNumber}`,
-        {
-          headers: { Authorization: `Bearer ${authCtx.token}` },
-        }
-      );
+      const response = await getBandMemebrs(pageNumber);
       setData(response.data.bandMembers);
       setNumberOfPages(response.data.total);
     } catch (error: any) {}
-  }, [pageNumber, authCtx.token]);
+  }, [pageNumber]);
 
   useEffect(() => {
     fetchData();

@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { Close } from 'components/svgs';
-import axios from 'axios';
 import { AuthContext } from 'store';
 import { memberIcon } from 'assets/images';
 import { ImageUploadModalForm } from 'components';
 import { Image, ImageUploadData } from 'types';
+import { changeMemberAvatar } from 'services';
 
 const ImageUploadModal: React.FC<ImageUploadData> = (props) => {
   const authCtx = useContext(AuthContext);
@@ -47,13 +47,7 @@ const ImageUploadModal: React.FC<ImageUploadData> = (props) => {
     formData.append('memberId', memberImage.memberId);
 
     try {
-      await axios.post(
-        `${process.env.REACT_APP_DOMAIN}/change-avatar`,
-        formData,
-        {
-          headers: { Authorization: `Bearer ${authCtx.token}` },
-        }
-      );
+      await changeMemberAvatar(authCtx.token, formData);
     } catch (error: any) {}
     authCtx.refreshMembers();
     props.setImageModalState(false);

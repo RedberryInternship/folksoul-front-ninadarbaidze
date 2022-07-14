@@ -1,12 +1,11 @@
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { Input, Button } from 'components';
 import { LoginModal } from 'pages/Login/components';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { AuthContext } from 'store';
 import { LoginValueTypes } from 'types';
 import { useNavigate } from 'react-router-dom';
-
-import axios from 'axios';
+import { login } from 'services';
 
 const Login = () => {
   const [error, setError] = useState(null);
@@ -31,10 +30,7 @@ const Login = () => {
 
   const onSubmit: SubmitHandler<LoginValueTypes> = async (data) => {
     try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_DOMAIN}/auth`,
-        data
-      );
+      const response = await login(data);
       const getData = await response;
       authCtx.login(getData.data.token);
     } catch (error: any) {

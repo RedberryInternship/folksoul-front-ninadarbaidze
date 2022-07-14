@@ -2,7 +2,7 @@ import { useState, useContext, useCallback, useEffect } from 'react';
 import { AdminPanelActionWrapper } from 'components';
 import { SocialsTypes } from 'types';
 import { AuthContext } from 'store';
-import axios from 'axios';
+import { getSocialMediaWithPagination } from 'services';
 import { Social } from 'pages/Socials/components';
 import { Outlet, NavLink } from 'react-router-dom';
 
@@ -16,16 +16,11 @@ const Socials = () => {
 
   const fetchData = useCallback(async () => {
     try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_DOMAIN}/social-media?page=${pageNumber}`,
-        {
-          headers: { Authorization: `Bearer ${authCtx.token}` },
-        }
-      );
+      const response = await getSocialMediaWithPagination(pageNumber);
       setData(response.data.socials);
       setNumberOfPages(response.data.total);
     } catch (error: any) {}
-  }, [authCtx.token, pageNumber]);
+  }, [pageNumber]);
 
   useEffect(() => {
     fetchData();

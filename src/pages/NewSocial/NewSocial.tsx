@@ -5,7 +5,7 @@ import { FormButton } from 'pages/NewMember/components';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext } from 'store';
 import { AddNewSocial } from 'types';
-import axios from 'axios';
+import { editSocial, addSocial } from 'services';
 
 const NewMember = () => {
   const authCtx = useContext(AuthContext);
@@ -28,13 +28,7 @@ const NewMember = () => {
 
   const updateSocialHandler = async (data: AddNewSocial) => {
     try {
-      await axios.patch(
-        `${process.env.REACT_APP_DOMAIN}/edit-social/${state.id}`,
-        data,
-        {
-          headers: { Authorization: `Bearer ${authCtx.token}` },
-        }
-      );
+      await editSocial(authCtx.token, state.id, data);
       authCtx.refreshSocials();
       navigate('/dashboard/socials');
 
@@ -44,9 +38,7 @@ const NewMember = () => {
 
   const addNewSocialHandler = async (data: AddNewSocial) => {
     try {
-      await axios.post(`${process.env.REACT_APP_DOMAIN}/add-social`, data, {
-        headers: { Authorization: `Bearer ${authCtx.token}` },
-      });
+      await addSocial(authCtx.token, data);
     } catch (error: any) {
       setError(error.response.status);
       throw new Error('Request failed!');

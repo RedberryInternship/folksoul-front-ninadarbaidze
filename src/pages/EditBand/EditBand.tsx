@@ -4,7 +4,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext } from 'store';
 import { EditBandTypes } from 'types';
-import axios from 'axios';
+import { editBand } from 'services';
 
 const EditBand = () => {
   const authCtx = useContext(AuthContext);
@@ -22,13 +22,8 @@ const EditBand = () => {
 
   const onSubmit: SubmitHandler<EditBandTypes> = async (data) => {
     try {
-      await axios.patch(
-        `${process.env.REACT_APP_DOMAIN}/edit-band/${state.id}`,
-        data,
-        {
-          headers: { Authorization: `Bearer ${authCtx.token}` },
-        }
-      );
+      await editBand(authCtx.token, state.id, data);
+
       authCtx.refreshBand();
       navigate('/dashboard/about-band');
 

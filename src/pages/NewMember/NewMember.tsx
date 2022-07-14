@@ -5,8 +5,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { FormButton } from 'pages/NewMember/components';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext } from 'store';
-
-import axios from 'axios';
+import { editMember, addMember } from 'services';
 
 const NewMember = () => {
   const authCtx = useContext(AuthContext);
@@ -32,13 +31,7 @@ const NewMember = () => {
 
   const updateBandMemberHandler = async (data: AddNewMember) => {
     try {
-      await axios.patch(
-        `${process.env.REACT_APP_DOMAIN}/edit-member/${state.id}`,
-        data,
-        {
-          headers: { Authorization: `Bearer ${authCtx.token}` },
-        }
-      );
+      await editMember(authCtx.token, state.id, data);
       authCtx.refreshMembers();
       navigate('/dashboard/band-members');
 
@@ -48,9 +41,7 @@ const NewMember = () => {
 
   const addNewBandMemberHandler = async (data: AddNewMember) => {
     try {
-      await axios.post(`${process.env.REACT_APP_DOMAIN}/new-member`, data, {
-        headers: { Authorization: `Bearer ${authCtx.token}` },
-      });
+      await addMember(authCtx.token, data);
     } catch (error: any) {
       setError(error.response.status);
       throw new Error('Request failed!');

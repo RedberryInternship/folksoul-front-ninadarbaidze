@@ -4,9 +4,9 @@ import { AboutBandTypes } from 'types';
 import { EditPhoto, EditIcon } from 'components/svgs';
 import { ImageUploadModal } from 'pages/AboutBand/components';
 import { band } from 'assets/images';
-import axios from 'axios';
 import { AuthContext } from 'store';
 import { Outlet, useNavigate } from 'react-router-dom';
+import { getAboutBandInfo } from 'services';
 
 const AboutBand = () => {
   const [data, setData] = useState<AboutBandTypes>({
@@ -25,15 +25,10 @@ const AboutBand = () => {
 
   const fetchData = useCallback(async () => {
     try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_DOMAIN}/bands`,
-        {
-          headers: { Authorization: `Bearer ${authCtx.token}` },
-        }
-      );
+      const response = await getAboutBandInfo();
       setData(response.data);
     } catch (error: any) {}
-  }, [authCtx.token]);
+  }, []);
 
   useEffect(() => {
     fetchData();

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Close } from 'components/svgs';
-import axios from 'axios';
+import { changeSocialLogo } from 'services';
 import { AuthContext } from 'store';
 import { Socialmage, ImageUploadDataSocials } from 'types';
 import { youtube } from 'assets/images';
@@ -47,13 +47,7 @@ const ImageUploadModal: React.FC<ImageUploadDataSocials> = (props) => {
     formData.append('socialId', memberImage.socialId);
 
     try {
-      await axios.post(
-        `${process.env.REACT_APP_DOMAIN}/change-social-icon`,
-        formData,
-        {
-          headers: { Authorization: `Bearer ${authCtx.token}` },
-        }
-      );
+      await changeSocialLogo(authCtx.token, formData);
     } catch (error: any) {
       throw new Error('Request failed!');
     }

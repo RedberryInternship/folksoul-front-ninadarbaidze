@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom';
 import { SocialsTypes, BandMemberTypes } from 'types';
 import { Circles } from 'pages/ApplicationMainPage/components';
 import { useState, useCallback, useEffect } from 'react';
-import axios from 'axios';
+import {
+  getAboutBandInfo,
+  getSocialMediaLinks,
+  getBandMemebrsWithoutPagination,
+} from 'services';
 
 const FrontApplication = () => {
   const [bandLogo, setbandLogo] = useState<string>('');
@@ -16,30 +20,24 @@ const FrontApplication = () => {
 
   const fetchBand = useCallback(async () => {
     try {
-      const aboutBandResponse = await axios.get(
-        `${process.env.REACT_APP_DOMAIN}/bands`
-      );
-      setbandLogo(aboutBandResponse.data.image[0].imageUrl);
-      setbandInfo(aboutBandResponse.data.about);
+      const response = await getAboutBandInfo();
+
+      setbandLogo(response.data.image[0].imageUrl);
+      setbandInfo(response.data.about);
     } catch (error: any) {}
   }, []);
 
   const fetchSocials = useCallback(async () => {
     try {
-      const aboutSocialsResponse = await axios.get(
-        `${process.env.REACT_APP_DOMAIN}/social-media`
-      );
-      setSocials(aboutSocialsResponse.data);
+      const response = await getSocialMediaLinks();
+      setSocials(response.data);
     } catch (error: any) {}
   }, []);
 
   const fetchBandMembers = useCallback(async () => {
     try {
-      const members = await axios.get(
-        `${process.env.REACT_APP_DOMAIN}/band-members`
-      );
-
-      setBandMembers(members.data);
+      const response = await getBandMemebrsWithoutPagination();
+      setBandMembers(response.data);
     } catch (error: any) {}
   }, []);
 
@@ -67,7 +65,7 @@ const FrontApplication = () => {
 
   return (
     <>
-      <div className='flex flex-col -z-[99] overflow-clip  h-screen w-screen bg-gradient-radial-to-tr  from-grad1 to-grad2'>
+      <div className='flex flex-col -z-[99] overflow-y-clip h-screen w-screen bg-gradient-radial-to-tr  from-grad1 to-grad2'>
         <header className='flex items-center justify-between px-[5%] pt-[1%]'>
           <img src={BandLogo} alt='band-logo' className='w-48 2xl:w-60' />
           <h2 className='text-white text-xl '>
