@@ -58,7 +58,10 @@ const Socials = () => {
             ></button>
           ))}
         </div>
-        <button className='absolute bottom-10 text-link text-base 2xl:text-2xl font-bold underline mt-[2rem] 2xl:mt-[5rem]'>
+        <button
+          className='absolute bottom-10 text-link text-base 2xl:text-2xl font-bold underline mt-[2rem] 2xl:mt-[5rem]'
+          id='addNewSocial'
+        >
           <NavLink to='new-social'>დაამატე ახალი სოციალური ბმული</NavLink>
         </button>
       </AdminPanelActionWrapper>

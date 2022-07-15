@@ -9,6 +9,7 @@ declare global {
        * @example cy.dataCy('greeting')
        */
       deleteBandMember(value: string): Chainable<Element>;
+      deleteSocial(value: string): Chainable<Element>;
     }
   }
 }
