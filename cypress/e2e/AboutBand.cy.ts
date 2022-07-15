@@ -5,7 +5,6 @@ describe('Social Links', () => {
     cy.visit('/login');
     cy.get('#login-usr').type('nina');
     cy.get('#password').type('nina');
-    Cypress.on('uncaught:exception', () => false);
     cy.get('#loginBtn').click();
   });
   afterEach(() => {
@@ -59,7 +58,7 @@ describe('Social Links', () => {
       statusCode: 200,
     });
     cy.get('#saveBtn').click();
-    cy.wait(500);
+    cy.wait(800);
     cy.url().should('include', '/about-band');
     cy.get('#editPhoto').click();
     cy.get('#closeButton').click();
