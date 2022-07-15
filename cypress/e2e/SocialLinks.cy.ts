@@ -5,8 +5,8 @@ describe('Social Links', () => {
     cy.visit('/login');
     cy.get('#login-usr').type('nina');
     cy.get('#password').type('nina');
-    cy.contains('შემობრძანდი').click();
-    cy.contains('სოციალური ბმულები').click();
+    cy.get('#loginBtn').click();
+    cy.get('#socialsNav').click();
   });
   afterEach(() => {
     cy.wait(500);
@@ -16,7 +16,7 @@ describe('Social Links', () => {
     cy.contains('დაამატე ახალი').click();
     cy.get('#social-name').type('google');
     cy.get('#url').type('https://google.com');
-    cy.contains('დაამატე სოციალური').click();
+    cy.get('#addUpdateBtn').click();
   });
 
   it('visitors CAN ADD socials and try uploading image', () => {
@@ -26,15 +26,16 @@ describe('Social Links', () => {
     Cypress.on('uncaught:exception', () => false);
     cy.intercept(
       'POST',
-      'https://folksoul-api.nina.redberryinternship.ge/add-social',
+      `${Cypress.env('url')}/add-social`,
+
       {
         statusCode: 201,
       }
     );
-    cy.contains('დაამატე სოციალური').click();
+    cy.get('#addUpdateBtn').click();
     cy.get('#editPhoto').click();
-    cy.contains('ატვირთე').click();
-    cy.contains('შეინახე').click();
+    cy.get('#uploadBtn').click();
+    cy.get('#saveBtn').click();
     cy.url().should('include', '/socials');
   });
 
@@ -45,12 +46,13 @@ describe('Social Links', () => {
     Cypress.on('uncaught:exception', () => false);
     cy.intercept(
       'POST',
-      'https://folksoul-api.nina.redberryinternship.ge/addd-social',
+      `${Cypress.env('url')}/addd-social`,
+
       {
         statusCode: 409,
       }
     );
-    cy.contains('დაამატე სოციალური').click();
+    cy.get('#addUpdateBtn').click();
     cy.url().should('not.be', '/socials');
   });
 
@@ -60,12 +62,13 @@ describe('Social Links', () => {
     Cypress.on('uncaught:exception', () => false);
     cy.intercept(
       'PATCH',
-      'https://folksoul-api.nina.redberryinternship.ge/edit-social/id',
+      `${Cypress.env('url')}/edit-social/id`,
+
       {
         statusCode: 200,
       }
     );
-    cy.contains('განაახლე').click();
+    cy.get('#addUpdateBtn').click();
     cy.url().should('contain', '/socials');
   });
 
@@ -76,8 +79,8 @@ describe('Social Links', () => {
     cy.get('input[type=file]')
       .invoke('removeClass', 'file_input_hidden')
       .attachFile('Vano.png');
-    cy.contains('ატვირთე').click();
-    cy.contains('შეინახე').click();
+    cy.get('#uploadBtn').click();
+    cy.get('#saveBtn').click();
     cy.wait(500);
     cy.get('#editPhoto').click();
     cy.contains('შეცვალე სოციალური ბმულის ხატულა').should('be.visible');
@@ -91,17 +94,18 @@ describe('Social Links', () => {
 
   it('visitors CAN NOT ADD social links', () => {
     cy.contains('დაამატე ახალი').click();
-    cy.contains('დაამატე სოციალური').click();
+    cy.get('#addUpdateBtn').click();
     cy.contains('სავალდებულო').should('be.visible');
     cy.contains('გადი უკან').click();
-    cy.url().should('include', 'dashoboard/socials');
+    cy.url().should('include', 'dashboard/socials');
   });
 
   it('visitors CAN DELETE social link', () => {
     Cypress.on('uncaught:exception', () => false);
     cy.intercept(
       'DELETE',
-      'https://folksoul-api.nina.redberryinternship.ge/delete-member/id',
+      `${Cypress.env('url')}/delete-member/id`,
+
       {
         statusCode: 200,
       }

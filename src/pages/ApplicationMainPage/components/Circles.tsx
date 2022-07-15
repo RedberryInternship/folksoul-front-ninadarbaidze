@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { memberIcon } from 'assets/images';
+import { memberIcon } from 'assets';
 import { CirclesTypes } from 'types';
 
 const Circles: React.FC<CirclesTypes> = (props) => {

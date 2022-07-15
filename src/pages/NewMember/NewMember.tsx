@@ -57,9 +57,9 @@ const NewMember = () => {
 
   const minMaxProps: MinMaxInputProps = {
     min: 300,
-    max: 700,
+    max: 500,
     minMessage: 'სიგრძე მინ. 300 ',
-    maxMessage: 'სიგრძე მაქს. 700 ',
+    maxMessage: 'სიგრძე მაქს. 500 ',
   };
 
   return (

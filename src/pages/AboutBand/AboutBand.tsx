@@ -1,7 +1,6 @@
 import { useState, useContext, useCallback, useEffect } from 'react';
-import { AdminPanelActionWrapper } from 'components';
+import { AdminPanelActionWrapper, EditPhoto, EditIcon } from 'components';
 import { AboutBandTypes } from 'types';
-import { EditPhoto, EditIcon } from 'components/svgs';
 import { ImageUploadModal } from 'pages/AboutBand/components';
 import { band } from 'assets/images';
 import { AuthContext } from 'store';

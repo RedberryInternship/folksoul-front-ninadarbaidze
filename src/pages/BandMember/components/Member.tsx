@@ -5,9 +5,10 @@ import {
   YellowButton,
   GreenButton,
   EditPhoto,
-} from 'components/svgs';
-import { memberIcon } from 'assets/images';
-import { Modal, DeleteDialog } from 'components';
+  Modal,
+  DeleteDialog,
+} from 'components';
+import { memberIcon } from 'assets';
 import { MemberData } from 'types';
 import { ImageUploadModal } from 'pages/BandMember/components';
 import { deleteMember } from 'services';

@@ -11,12 +11,14 @@ const Modal: React.FC<DeleteModal> = (props) => {
           <button
             className='w-16 h-8 bg-red text-base rounded-2xl text-white'
             onClick={props.deleteMemberHandler}
+            id='deletebtn'
           >
             კი
           </button>
           <button
             className='w-16 h-8 bg-green text-base rounded-2xl text-white'
             onClick={props.cancelDeleting}
+            id='cancelbtn'
           >
             არა
           </button>

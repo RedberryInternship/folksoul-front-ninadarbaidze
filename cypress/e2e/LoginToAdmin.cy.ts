@@ -8,19 +8,15 @@ describe('login', () => {
     cy.get('#login-usr').type('nina');
     cy.get('#password').type('shemishvi');
     Cypress.on('uncaught:exception', () => false);
-    cy.intercept(
-      'POST',
-      'https://folksoul-api.nina.redberryinternship.ge/auth',
-      {
-        statusCode: 422,
-      }
-    );
-    cy.contains('შემობრძანდი').click();
+    cy.intercept('POST', `${Cypress.env('url')}/auth`, {
+      statusCode: 422,
+    });
+    cy.get('#loginBtn').click();
     cy.url().should('include', 'login');
   });
 
   it('visitors CANT proceed to another page if inputs are INVALID', () => {
-    cy.contains('შემობრძანდი').click();
+    cy.get('#loginBtn').click();
     cy.contains('სავალდებულო').should('be.visible');
     cy.url().should('include', 'login');
   });
@@ -28,9 +24,9 @@ describe('login', () => {
   it('visitor CAN proceed to next page if inputs are VALID and then logout sucessfully', () => {
     cy.get('#login-usr').type('nina');
     cy.get('#password').type('nina');
-    cy.contains('შემობრძანდი').click();
-    cy.url().should('include', 'dashoboard/main');
-    cy.contains('გადი გარეთ').click();
-    cy.url().should('include', '/login');
+    cy.get('#loginBtn').click();
+    cy.url().should('include', 'dashboard/main');
+    cy.get('#logoutNav').click();
+    cy.url().should('include', '/');
   });
 });

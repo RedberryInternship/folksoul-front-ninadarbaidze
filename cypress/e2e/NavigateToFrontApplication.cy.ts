@@ -9,21 +9,21 @@ describe('Front Application', () => {
     cy.visit('/login');
     cy.get('#login-usr').type('nina');
     cy.get('#password').type('nina');
-    cy.contains('შემობრძანდი').click();
-    cy.contains('ჯგუფის წევრები').click();
-    cy.contains('ახალი წევრი').click();
+    cy.get('#loginBtn').click();
+    cy.get('#membersNav').click();
+    cy.get('#newMemberBtn').click();
     cy.get('#name').type('ქეთო');
     cy.get('#instrument').type('ვიოლინო');
     cy.get('#orbitLength').type('700');
     cy.get('#color').type('#000098');
     cy.get('#biography').type('მე ვარ ქეთო და მიყვარს ვიოლინო');
-    cy.contains('დაამატე წევრი').click();
+    cy.get('#addUpdateBtn').click();
     cy.get('#editPhoto').click();
-    cy.contains('ატვირთე').click();
+    cy.get('#uploadBtn').click();
     cy.get('input[type=file]')
       .invoke('removeClass', 'file_input_hidden')
       .attachFile('Vano.png');
-    cy.contains('შეინახე').click();
+    cy.get('#saveBtn').click();
     cy.wait(500);
     cy.url().should('include', '/band-members');
   });
@@ -32,15 +32,15 @@ describe('Front Application', () => {
     cy.visit('/login');
     cy.get('#login-usr').type('nina');
     cy.get('#password').type('nina');
-    cy.contains('შემობრძანდი').click();
-    cy.contains('ჯგუფის წევრები').click();
-    cy.contains('ახალი წევრი').click();
+    cy.get('#loginBtn').click();
+    cy.get('#membersNav').click();
+    cy.get('#newMemberBtn').click();
     cy.get('#name').type('კოტე');
     cy.get('#instrument').type('გიტარა');
     cy.get('#orbitLength').type('600');
     cy.get('#color').type('#000098');
     cy.get('#biography').type('მე ვარ კოტე და მიყვარს გიტარა');
-    cy.contains('დაამატე წევრი').click();
+    cy.get('#addUpdateBtn').click();
     cy.url().should('include', '/band-members');
   });
 
@@ -48,12 +48,12 @@ describe('Front Application', () => {
     cy.visit('/login');
     cy.get('#login-usr').type('nina');
     cy.get('#password').type('nina');
-    cy.contains('შემობრძანდი').click();
-    cy.contains('სოციალური ბმულები').click();
+    cy.get('#loginBtn').click();
+    cy.get('#socialsNav').click();
     cy.contains('დაამატე ახალი').click();
     cy.get('#social-name').type('twitter');
     cy.get('#url').type('https://twitter.com');
-    cy.contains('დაამატე სოციალური').click();
+    cy.get('#addUpdateBtn').click();
   });
 
   it('test individual band members', () => {

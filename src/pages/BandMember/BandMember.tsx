@@ -17,6 +17,7 @@ const BandMember = () => {
   const fetchData = useCallback(async () => {
     try {
       const response = await getBandMemebrs(pageNumber);
+      // console.log(response);
       setData(response.data.bandMembers);
       setNumberOfPages(response.data.total);
     } catch (error: any) {}
@@ -59,7 +60,10 @@ const BandMember = () => {
           ))}
         </div>
 
-        <button className='absolute bottom-10 text-link text-base 2xl:text-2xl font-bold underline'>
+        <button
+          className='absolute bottom-10 text-link text-base 2xl:text-2xl font-bold underline'
+          id='newMemberBtn'
+        >
           <NavLink to='new-member'>ახალი წევრი გვყავს?</NavLink>
         </button>
       </AdminPanelActionWrapper>

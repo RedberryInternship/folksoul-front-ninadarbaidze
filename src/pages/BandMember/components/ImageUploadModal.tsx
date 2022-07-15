@@ -1,8 +1,7 @@
 import React, { useState, useContext } from 'react';
-import { Close } from 'components/svgs';
 import { AuthContext } from 'store';
-import { memberIcon } from 'assets/images';
-import { ImageUploadModalForm } from 'components';
+import { memberIcon } from 'assets';
+import { ImageUploadModalForm, Close } from 'components';
 import { Image, ImageUploadData } from 'types';
 import { changeMemberAvatar } from 'services';
 

@@ -4,8 +4,8 @@ describe('Band Members', () => {
     cy.visit('/login');
     cy.get('#login-usr').type('nina');
     cy.get('#password').type('nina');
-    cy.contains('შემობრძანდი').click();
-    cy.contains('ჯგუფის წევრები').click();
+    cy.get('#loginBtn').click();
+    cy.get('#membersNav').click();
   });
 
   it('create band member with name -ანი-', () => {
@@ -33,7 +33,7 @@ describe('Band Members', () => {
   });
 
   it('create band member with name -ბეჟო-', () => {
-    cy.contains('ახალი წევრი').click();
+    cy.get('#newMemberBtn').click();
     cy.get('#name').type('ქეთი');
     cy.get('#instrument').type('სალამური');
     cy.get('#orbitLength').type('350');

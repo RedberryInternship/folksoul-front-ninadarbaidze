@@ -1,8 +1,7 @@
 import React, { useState, useContext } from 'react';
-import { Close } from 'components/svgs';
 import { AuthContext } from 'store';
 import { youtube } from 'assets/images';
-import { ImageUploadModalForm } from 'components';
+import { ImageUploadModalForm, Close } from 'components';
 import { BandImage, ImageUploadBand } from 'types';
 import { changeBandLogo } from 'services';
 

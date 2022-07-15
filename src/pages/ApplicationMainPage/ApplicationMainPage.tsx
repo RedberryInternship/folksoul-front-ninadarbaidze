@@ -1,4 +1,4 @@
-import { BandLogo, sun, memberIcon, youtube } from 'assets/images';
+import { BandLogo, sun, memberIcon, youtube } from 'assets';
 import { Link } from 'react-router-dom';
 import { SocialsTypes, BandMemberTypes } from 'types';
 import { Circles } from 'pages/ApplicationMainPage/components';
@@ -65,7 +65,7 @@ const FrontApplication = () => {
 
   return (
     <>
-      <div className='flex flex-col -z-[99] overflow-y-clip h-screen w-screen bg-gradient-radial-to-tr  from-grad1 to-grad2'>
+      <div className='flex flex-col -z-[99] overflow-clip h-screen w-screen bg-gradient-radial-to-tr  from-grad1 to-grad2'>
         <header className='flex items-center justify-between px-[5%] pt-[1%]'>
           <img src={BandLogo} alt='band-logo' className='w-48 2xl:w-60' />
           <h2 className='text-white text-xl '>
@@ -74,7 +74,7 @@ const FrontApplication = () => {
         </header>
         <body className='px-[5%] z-50'>
           <div className='flex justify-between mt-[10%]'>
-            <div className='w-1/2  flex items-center justify-center'>
+            <div className='w-1/2 overflow-clip flex items-center justify-center'>
               <img
                 src={sun}
                 onClick={manageAppStateHandler}

@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
-import { TvFeet, TvSatelite } from 'components/svgs';
+import { TvFeet, TvSatelite } from 'components';
 import { AboutBandTypes } from 'types';
-import { band } from 'assets/images';
+import { band } from 'assets';
 import { getAboutBandInfo } from 'services';
 
 const Main = () => {

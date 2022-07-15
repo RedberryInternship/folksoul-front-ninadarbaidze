@@ -1,10 +1,9 @@
 import React, { useState, useContext } from 'react';
-import { Close } from 'components/svgs';
 import { changeSocialLogo } from 'services';
 import { AuthContext } from 'store';
 import { Socialmage, ImageUploadDataSocials } from 'types';
-import { youtube } from 'assets/images';
-import { ImageUploadModalForm } from 'components';
+import { youtube } from 'assets';
+import { ImageUploadModalForm, Close } from 'components';
 
 const ImageUploadModal: React.FC<ImageUploadDataSocials> = (props) => {
   const authCtx = useContext(AuthContext);

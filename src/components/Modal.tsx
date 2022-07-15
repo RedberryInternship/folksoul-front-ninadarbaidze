@@ -1,5 +1,5 @@
 import React from 'react';
-import { Close } from 'components/svgs';
+import { Close } from 'components';
 import { memberIcon } from 'assets/images';
 import { ModalDataMembers } from 'types';
 

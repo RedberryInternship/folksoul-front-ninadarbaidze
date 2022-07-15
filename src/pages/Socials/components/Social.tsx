@@ -1,10 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { RedButton, YellowButton, EditPhoto } from 'components/svgs';
+import { RedButton, YellowButton, EditPhoto, DeleteDialog } from 'components';
 import { ImageUploadModal } from 'pages/Socials/components';
 import { deleteSocial } from 'services';
-import { youtube } from 'assets/images';
-import { DeleteDialog } from 'components';
+import { youtube } from 'assets';
 import { AuthContext } from 'store';
 import { Socials } from 'types';
 
@@ -31,8 +30,6 @@ const Social: React.FC<Socials> = (props) => {
   const deleteMemberHandler = async () => {
     try {
       await deleteSocial(authCtx.token, props._id);
-      console.log(props.data);
-
       if (props.data.length === 1) props.setPageNumber(props.pageNumber - 1);
       props.fetchData();
       setDeleteImageModalState(false);
