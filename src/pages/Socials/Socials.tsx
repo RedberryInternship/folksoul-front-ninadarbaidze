@@ -17,7 +17,6 @@ const Socials = () => {
   const fetchData = useCallback(async () => {
     try {
       const response = await getSocialMediaWithPagination(pageNumber);
-      console.log(response);
       setData(response.data.socials);
       setNumberOfPages(response.data.total);
     } catch (error: any) {}

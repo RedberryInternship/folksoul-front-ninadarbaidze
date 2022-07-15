@@ -62,4 +62,20 @@ describe('Front Application', () => {
     cy.contains('კოტე').click({ force: true });
     cy.get('#sun').click();
   });
+
+  it('delete band members and socials', () => {
+    cy.wait(500);
+    cy.visit('/login');
+    cy.get('#login-usr').type('nina');
+    cy.get('#password').type('nina');
+    cy.get('#loginBtn').click();
+    cy.get('#socialsNav').click();
+    cy.deleteSocial('#socialsNav');
+    cy.wait(1000);
+    cy.get('#membersNav').click();
+    cy.deleteBandMember('#membersNav');
+    cy.wait(2000);
+    cy.deleteBandMember('#membersNav');
+    cy.wait(2000);
+  });
 });

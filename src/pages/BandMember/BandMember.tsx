@@ -17,7 +17,6 @@ const BandMember = () => {
   const fetchData = useCallback(async () => {
     try {
       const response = await getBandMemebrs(pageNumber);
-      // console.log(response);
       setData(response.data.bandMembers);
       setNumberOfPages(response.data.total);
     } catch (error: any) {}
