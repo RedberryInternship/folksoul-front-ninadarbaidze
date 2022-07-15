@@ -5,14 +5,15 @@ describe('Social Links', () => {
     cy.visit('/login');
     cy.get('#login-usr').type('nina');
     cy.get('#password').type('nina');
+    Cypress.on('uncaught:exception', () => false);
     cy.get('#loginBtn').click();
-    cy.get('#aboutNav').click();
   });
   afterEach(() => {
     cy.wait(500);
   });
 
   it('upload band image', () => {
+    cy.get('#aboutNav').click();
     cy.get('#editPhoto').click();
     cy.get('#closeButton').click();
     cy.get('#editPhoto').click();
@@ -20,11 +21,14 @@ describe('Social Links', () => {
       .invoke('removeClass', 'file_input_hidden')
       .attachFile('tamar.png');
     cy.get('#uploadBtn').click();
-    cy.contains('შეინახე').click();
+    cy.get('#saveBtn').click();
+    cy.wait(500);
     cy.url().should('include', '/about-band');
+    cy.get('#logoutNav').click();
   });
 
   it('CAN NOT upload band image', () => {
+    cy.get('#aboutNav').click();
     cy.get('#editPhoto').click();
     cy.get('#closeButton').click();
     cy.get('#editPhoto').click();
@@ -37,10 +41,13 @@ describe('Social Links', () => {
     });
     cy.get('#uploadBtn').click();
     cy.get('#saveBtn').click();
+    cy.get('#closeButton').click();
     cy.url().should('include', '/about-band');
+    cy.get('#logoutNav').click();
   });
 
   it('visitors CAN EDIT band about', () => {
+    cy.get('#aboutNav').click();
     cy.get('#editIcon').click();
     cy.contains('გადი უკან').click();
     cy.get('#editIcon').click();
@@ -51,7 +58,7 @@ describe('Social Links', () => {
     cy.intercept('PATCH', `${process.env.REACT_APP_DOMAIN}/edit-band/id`, {
       statusCode: 200,
     });
-    cy.contains('შეინახე').click();
+    cy.get('#saveBtn').click();
     cy.wait(500);
     cy.url().should('include', '/about-band');
     cy.get('#editPhoto').click();

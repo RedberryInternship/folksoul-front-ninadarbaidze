@@ -57,6 +57,7 @@ const EditBand = () => {
             <button
               type='submit'
               className='w-40 h-12 2xl:w-52 2xl:h-16 rounded-[5px] text-white text-lg 2xl:text-2xl bg-green'
+              id='saveBtn'
             >
               შეინახე
             </button>
