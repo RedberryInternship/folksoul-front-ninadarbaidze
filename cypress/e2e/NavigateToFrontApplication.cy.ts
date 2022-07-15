@@ -14,7 +14,7 @@ describe('Front Application', () => {
     cy.get('#newMemberBtn').click();
     cy.get('#name').type('ქეთო');
     cy.get('#instrument').type('ვიოლინო');
-    cy.get('#orbitLength').type('700');
+    cy.get('#orbitLength').type('500');
     cy.get('#color').type('#000098');
     cy.get('#biography').type('მე ვარ ქეთო და მიყვარს ვიოლინო');
     cy.get('#addUpdateBtn').click();
@@ -37,7 +37,7 @@ describe('Front Application', () => {
     cy.get('#newMemberBtn').click();
     cy.get('#name').type('კოტე');
     cy.get('#instrument').type('გიტარა');
-    cy.get('#orbitLength').type('600');
+    cy.get('#orbitLength').type('400');
     cy.get('#color').type('#000098');
     cy.get('#biography').type('მე ვარ კოტე და მიყვარს გიტარა');
     cy.get('#addUpdateBtn').click();
