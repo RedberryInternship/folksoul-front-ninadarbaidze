@@ -41,13 +41,13 @@ const EditBand = () => {
           onSubmit={handleSubmit(onSubmit)}
           className='flex flex-col mt-2 justify-center items-center gap-4 2xl:gap-8'
         >
-          <div className='flex flex-col items-center'>
+          <div className='flex flex-col items-center '>
             <Textarea
               fieldName='about'
               register={register}
               id={'about-band'}
               class={
-                'w-[48vw] h-[20vw] text-justify  focus:outline-none bg-dark25 placeholder:placeholder text-sm 2xl:text-lg font-normal text-blue2 py-[2%] px-[4%] drop-shadow-4xl  rounded-[10px]'
+                'scrollbar w-[48vw] h-[20vw] text-justify  focus:outline-none bg-dark25 placeholder:placeholder text-sm 2xl:text-lg font-normal text-blue2 py-[2%] px-[4%] drop-shadow-4xl  rounded-[10px]'
               }
               isRequired={true}
               placeholder={'ბენდის შესახებ'}

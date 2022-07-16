@@ -17,7 +17,7 @@ const Modal: React.FC<ModalDataMembers> = (props) => {
           {props.name}~{props.instrument}
         </h1>
         <div className='flex flex-col justify-between w-[80%] mb-4 items-center ml-[50%] mr-[50%] border-b-[1px] border-dark50 h-6 '></div>
-        <div className='flex flex-col items-center mt-4 overflow-x-clip overflow-y-auto'>
+        <div className='scrollbar flex flex-col items-center my-4 mx-4 overflow-x-clip overflow-y-auto'>
           <div
             className='flex flex-col justify-center items-center py-16 rounded-full  border-[1px] mt-2  mb-6 border-white w-[8rem] h-[8rem] 2xl:w-[10rem] 2xl:h-[10rem] drop-shadow-5xl'
             style={{ backgroundColor: props.color }}
