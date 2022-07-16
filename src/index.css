@@ -16,13 +16,25 @@ button {
   font-family: "BPG Nino Mtavruli", sans-serif;
 }
 
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
+  
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
 
-.no-scrollbar {
-  -ms-overflow-style: none;  
-  scrollbar-width: none; 
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: #143B52;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: #87AEC5;
+    border-radius: 100vh;
+    border: 3px solid #87AEC5;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #c0a0b9;
+  }
 }
-  
-  
