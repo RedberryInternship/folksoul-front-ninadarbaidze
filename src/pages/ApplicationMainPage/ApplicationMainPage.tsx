@@ -112,8 +112,8 @@ const FrontApplication = () => {
                     className='max-w-[10rem] 2xl:max-w-[12rem]'
                   />
                 </div>
-                <div className='scrollbar overflow-y-scroll h-64 2xl:h-80 mt-32 2xl:mt-48 mx-[1rem]'>
-                  <p className=' text-sm 2xl:text-xl mx-[10%] text-justify '>
+                <div>
+                  <p className='h-64 2xl:h-80 mt-32 2xl:mt-48 pr-[6%] scrollbar overflow-y-auto overflow-hidden text-sm 2xl:text-xl mx-[10%] text-justify '>
                     {selectedMember ? selectedMember.biography : bandInfo}
                   </p>
                 </div>
