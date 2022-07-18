@@ -54,7 +54,10 @@ const ImageUploadModal: React.FC<ImageUploadData> = (props) => {
 
   return (
     <>
-      <div className='fixed inset-0 z-40 opacity-95 bg-backdrop w-screen h-screen'></div>
+      <div
+        onClick={modalStateHandler}
+        className='fixed inset-0 z-40 opacity-95 bg-backdrop w-screen h-screen'
+      ></div>
 
       <div className='flex flex-col items-center  pt-16 w-[35rem] h-[35rem] 2xl:w-[50rem] 2xl:h-[50rem] opacity-100 z-50 fixed rounded-lg bg-white top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%]'>
         <Close onClick={modalStateHandler} />
