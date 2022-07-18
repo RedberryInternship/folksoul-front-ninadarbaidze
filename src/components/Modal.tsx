@@ -1,6 +1,6 @@
 import React from 'react';
 import { Close } from 'components';
-import { memberIcon } from 'assets/images';
+import { memberIcon } from 'assets';
 import { ModalDataMembers } from 'types';
 
 const Modal: React.FC<ModalDataMembers> = (props) => {

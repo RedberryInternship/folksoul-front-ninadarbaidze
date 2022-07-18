@@ -48,7 +48,7 @@ describe('Social Links', () => {
   it('visitors CAN EDIT band about', () => {
     cy.get('#aboutNav').click();
     cy.get('#editIcon').click();
-    cy.contains('გადი უკან').click();
+    cy.get('#goBackBtn').click();
     cy.get('#editIcon').click();
     cy.get('#about').type(
       'დაწყვილების პერიოდი ზომიერ და არქტიკულ რეგიონებში მობინადრე დათვებისთვის, ჩვეულებრივ, გაზაფხულია. მაკეობა ხანმოკლეა, თუმცა იმის გამო, რომ დათვი არ მშობიარობს მანამ, სანამ ზამთრის შუა ძილში არ იქნება, განაყოფიერებული კვერცხუჯრედის საშვილოსნოში.'

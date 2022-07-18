@@ -12,6 +12,7 @@ const NotFound = () => {
         <button
           className=' text-link text-base 2xl:text-2xl font-bold underline '
           onClick={() => navigate('/')}
+          id='goBackToMainBtn'
         >
           დაბრუნდი მთავარ გვერდზე
         </button>

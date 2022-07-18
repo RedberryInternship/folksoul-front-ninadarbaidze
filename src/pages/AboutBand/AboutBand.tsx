@@ -2,7 +2,7 @@ import { useState, useContext, useCallback, useEffect } from 'react';
 import { AdminPanelActionWrapper, EditPhoto, EditIcon } from 'components';
 import { AboutBandTypes } from 'types';
 import { ImageUploadModal } from 'pages/AboutBand/components';
-import { band } from 'assets/images';
+import { band } from 'assets';
 import { AuthContext } from 'store';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { getAboutBandInfo } from 'services';

@@ -195,6 +195,7 @@ const NewMember = () => {
             />
             <button
               className=' text-link text-base 2xl:text-2xl font-bold underline '
+              id='goBackBtn'
               onClick={() => navigate('/dashboard/band-members')}
             >
               გადი უკან

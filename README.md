@@ -15,18 +15,18 @@ This is a Folksoul app, where we can add/remove/edit/delete band members and soc
 - [Resources](#Resources)
 
 ### Prerequisites
-<img src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1280px-Node.js_logo.svg.png' width="25" style="position: relative; top: 8px"/> *Node JS v16.X*  
-<img src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Npm-logo.svg/540px-Npm-logo.svg.png' width="25" style="position: relative; top: 8px"/> *npm v8.X*  
-<img src='https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1024px-Typescript_logo_2020.svg.png' width="25" style="position: relative; top: 8px"/> *Typescript v4.X*
+:large_blue_circle: *Node JS v16.X*  
+:large_blue_circle: *npm v8.X*  
+:large_blue_circle: *Typescript v4.X*
 
 ---
 
 
 ### Tech Stack
-<img src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png' width="25" style="position: relative; top: 8px"/> *React v18.0.0*  
-<img src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/2048px-Tailwind_CSS_Logo.svg.png' width="25" style="position: relative; top: 8px"/> *Taiwlind v3.X*  
-<img src='https://i0.wp.com/blog.knoldus.com/wp-content/uploads/2022/03/cypress.png?fit=364%2C364&ssl=1' width="25" style="position: relative; top: 8px"/> *Cypress v9.X*  
-<img src='https://pbs.twimg.com/profile_images/1373527896472489987/YjVZynHb_400x400.jpg' width="25" style="position: relative; top: 8px"/> *React Hook Form v7.X*  
+:large_blue_circle: *React v18.0.0*  
+:large_blue_circle: *Taiwlind v3.X*  
+:large_blue_circle: *Cypress v9.X*  
+:large_blue_circle: *React Hook Form v7.X*  
 
 ---
 
@@ -70,14 +70,14 @@ Folksoul application is test driven. It uses E2E testing framework Cypress.
 npm install
 ```
 
-2. Create cypress.congif.ts file.
+2. Copy cypress.config.ts file.
 
 This JSON file is used to store any configuration values you supply. The default behavior of Cypress can be modified by supplying any of the [following](https://docs.cypress.io/guides/references/configuration#Global) configuration options.
 
-You can create and copy initial values from cypress.config.example with following command:
+You copy initial values from cypress.config.ts.example with following command:
 
 ```
-cp cypress.config.example cypress.config.ts
+cp cypress.config.ts.example cypress.config.ts
 ```
 
 
@@ -103,46 +103,15 @@ npx cypress open
 ├─── src     
 │   ├─── assets     
 │   ├─── components  
-│   ├───├───svgs
+│   ├───├─── svgs
+│   ├───├─── component-file.tsx
+│   ├───├─── index.tsx
 │   ├─── pages 
-│   ├───├─── AboutBand
+│   ├───├─── page-folder
 │   ├───├───|─── components
-│   ├───├───|─── AboutBand.tsx
-│   ├───├───|─── index.ts
-│   ├───├─── BandMember
-│   ├───├───|─── components
-│   ├───├───|─── BandMember.tsx
-│   ├───├───|─── index.ts
-│   ├───├─── Dashboard
-│   ├───├───|─── components
-│   ├───├───|─── Dashboard.tsx
-│   ├───├───|─── index.ts
-│   ├───├─── EditBand
-│   ├───├───|─── components
-│   ├───├───|─── EditBand.tsx
-│   ├───├───|─── index.ts
-│   ├───├─── ApplicationMainPage
-│   ├───├───|─── components
-│   ├───├───|─── ApplicationMainPage.tsx
-│   ├───├───|─── index.ts
-│   ├───├─── Login
-│   ├───├───|─── components
-│   ├───├───|─── Login.tsx
-│   ├───├───|─── index.ts
-│   ├───├─── Main
-│   ├───├───|─── Main.tsx
-│   ├───├───|─── index.ts
-│   ├───├─── NewMember
-│   ├───├───|─── components
-│   ├───├───|─── NewMember.tsx
-│   ├───├───|─── index.ts
-│   ├───├─── NewSocial
-│   ├───├───|─── components
-│   ├───├───|─── NewSocial.tsx
-│   ├───├───|─── index.ts
-│   ├───├─── Socials
-│   ├───├───|─── components
-│   ├───├───|─── Socials.tsx
+│   ├───├───|───|─── page-componenet.tsx
+│   ├───├───|───|─── index.tsx
+│   ├───├───|─── page-folder.tsx
 │   ├───├───|─── index.ts
 │   ├─── store
 │   ├───├─── auth-context

@@ -50,7 +50,7 @@ describe('Front Application', () => {
     cy.get('#password').type('nina');
     cy.get('#loginBtn').click();
     cy.get('#socialsNav').click();
-    cy.contains('დაამატე ახალი').click();
+    cy.get('#addNewSocial').click();
     cy.get('#social-name').type('twitter');
     cy.get('#url').type('https://twitter.com');
     cy.get('#addUpdateBtn').click();

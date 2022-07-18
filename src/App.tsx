@@ -14,7 +14,7 @@ import {
 } from 'pages';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
-import AuthContext from 'store/AuthContext';
+import { AuthContext } from 'store';
 
 const App = () => {
   const authCtx = useContext(AuthContext);

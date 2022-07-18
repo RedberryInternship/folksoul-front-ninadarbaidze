@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import { AuthContextProvider } from 'store/AuthContext';
+import { AuthContextProvider } from 'store';
 
 import './index.css';
 import App from './App';

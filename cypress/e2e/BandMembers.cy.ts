@@ -164,7 +164,7 @@ describe('Band Members', () => {
     cy.get('#newMemberBtn').click();
     cy.get('#addUpdateBtn').click();
     cy.contains('სავალდებულო').should('be.visible');
-    cy.contains('გადი უკან').click();
+    cy.get('#goBackBtn').click();
     cy.url().should('include', 'dashboard/band-members');
   });
 

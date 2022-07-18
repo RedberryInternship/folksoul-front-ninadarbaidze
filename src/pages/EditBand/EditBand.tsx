@@ -63,6 +63,7 @@ const EditBand = () => {
             </button>
             <button
               className=' text-link text-base 2xl:text-2xl font-bold underline '
+              id='goBackBtn'
               onClick={() => navigate('/dashboard/about-band')}
             >
               გადი უკან

@@ -133,7 +133,7 @@ describe('Social Links', () => {
     cy.get('#addNewSocial').click();
     cy.get('#addUpdateBtn').click();
     cy.contains('სავალდებულო').should('be.visible');
-    cy.contains('გადი უკან').click();
+    cy.get('#goBackBtn').click();
     cy.url().should('include', 'dashboard/socials');
   });
 
