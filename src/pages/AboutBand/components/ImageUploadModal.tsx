@@ -7,7 +7,7 @@ import { changeBandLogo } from 'services';
 
 const ImageUploadModal: React.FC<ImageUploadBand> = (props) => {
   const authCtx = useContext(AuthContext);
-
+  const [error, setError] = useState<number | null>(null);
   const [showSubmitButton, setShowSubmitButton] = useState<boolean>(false);
   const [imagePreview, setImagePreview] = useState<string>('');
   const [bandImage, setBandImage] = useState<BandImage>({
@@ -48,6 +48,7 @@ const ImageUploadModal: React.FC<ImageUploadBand> = (props) => {
     try {
       await changeBandLogo(authCtx.token, formData);
     } catch (error: any) {
+      setError(error);
       throw new Error('Request failed!');
     }
     authCtx.refreshBand();
@@ -61,10 +62,7 @@ const ImageUploadModal: React.FC<ImageUploadBand> = (props) => {
         className='fixed inset-0 z-40 opacity-95 bg-backdrop w-screen h-screen'
       ></div>
 
-      <div
-        onClick={modalStateHandler}
-        className='flex flex-col items-center pt-16  w-[35rem] h-[35rem] 2xl:w-[50rem] 2xl:h-[50rem]  opacity-100 z-50 fixed rounded-lg bg-white top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%]'
-      >
+      <div className='flex flex-col items-center pt-16  w-[35rem] h-[35rem] 2xl:w-[50rem] 2xl:h-[50rem]  opacity-100 z-50 fixed rounded-lg bg-white top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%]'>
         <Close onClick={modalStateHandler} />
         <h1 className='text-base 2xl:text-2xl'>შეცვალე ბენდის პორტრეტი</h1>
         <div className='flex flex-col justify-between w-[80%] mb-4 items-center ml-[50%] mr-[50%] border-b-[1px] border-dark50 h-6 '></div>
@@ -78,6 +76,14 @@ const ImageUploadModal: React.FC<ImageUploadBand> = (props) => {
               />
             </div>
           </div>
+          {error ? (
+            <p className=' absolute bottom-10 text-red text-sm'>
+              მოხდა შეცდომა, გთხოვ სცადო თავიდან
+            </p>
+          ) : (
+            ''
+          )}
+
           <ImageUploadModalForm
             onSubmit={submitImage}
             onChange={imageChangeHandler}

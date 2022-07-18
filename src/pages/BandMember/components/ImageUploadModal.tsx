@@ -7,7 +7,7 @@ import { changeMemberAvatar } from 'services';
 
 const ImageUploadModal: React.FC<ImageUploadData> = (props) => {
   const authCtx = useContext(AuthContext);
-
+  const [error, setError] = useState<number | null>(null);
   const [showSubmitButton, setShowSubmitButton] = useState<boolean>(false);
   const [imagePreview, setImagePreview] = useState<string>('');
   const [memberImage, setMemberImage] = useState<Image>({
@@ -47,7 +47,9 @@ const ImageUploadModal: React.FC<ImageUploadData> = (props) => {
 
     try {
       await changeMemberAvatar(authCtx.token, formData);
-    } catch (error: any) {}
+    } catch (error: any) {
+      setError(error);
+    }
     authCtx.refreshMembers();
     props.setImageModalState(false);
   };
@@ -75,6 +77,13 @@ const ImageUploadModal: React.FC<ImageUploadData> = (props) => {
               />
             </div>
           </div>
+          {error ? (
+            <p className=' absolute bottom-8 text-red text-sm'>
+              მოხდა შეცდომა, გთხოვ სცადო თავიდან
+            </p>
+          ) : (
+            ''
+          )}
           <ImageUploadModalForm
             onSubmit={submitImage}
             onChange={imageChangeHandler}

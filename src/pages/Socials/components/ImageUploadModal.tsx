@@ -7,7 +7,7 @@ import { ImageUploadModalForm, Close } from 'components';
 
 const ImageUploadModal: React.FC<ImageUploadDataSocials> = (props) => {
   const authCtx = useContext(AuthContext);
-
+  const [error, setError] = useState<number | null>(null);
   const [showSubmitButton, setShowSubmitButton] = useState<boolean>(false);
   const [imagePreview, setImagePreview] = useState<string>('');
   const [memberImage, setMemberImage] = useState<Socialmage>({
@@ -48,6 +48,7 @@ const ImageUploadModal: React.FC<ImageUploadDataSocials> = (props) => {
     try {
       await changeSocialLogo(authCtx.token, formData);
     } catch (error: any) {
+      setError(error);
       throw new Error('Request failed!');
     }
     authCtx.refreshSocials();
@@ -70,7 +71,7 @@ const ImageUploadModal: React.FC<ImageUploadDataSocials> = (props) => {
         <div className='flex flex-col items-center gap-10 2xl:gap-20'>
           <div className='flex flex-col items-center mt-4 2xl:mt-16 w-[30rem]'>
             <h1 className='text-xl 2xl:text-3xl'>{props.name}</h1>
-            <div className='flex flex-col justify-center items-center py-16 '>
+            <div className='flex flex-col justify-center items-center py-16 h-48'>
               <img
                 src={imagePreviewHandler()}
                 alt='social-icon'
@@ -78,6 +79,13 @@ const ImageUploadModal: React.FC<ImageUploadDataSocials> = (props) => {
               />
             </div>
           </div>
+          {error ? (
+            <p className=' absolute bottom-10 text-red text-sm'>
+              მოხდა შეცდომა, გთხოვ სცადო თავიდან
+            </p>
+          ) : (
+            ''
+          )}
           <ImageUploadModalForm
             onSubmit={submitImage}
             onChange={imageChangeHandler}
