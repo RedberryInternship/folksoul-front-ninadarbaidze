@@ -1,13 +1,11 @@
 import React from 'react';
-import { OnClick } from 'types';
 
-const EditIcon: React.FC<OnClick> = (props) => {
+const EditIcon = () => {
   return (
     <svg
       viewBox='0 0 46 41'
       fill='none'
       id='editIcon'
-      onClick={props.onClick}
       className='absolute left-1.5 top-2 2xl:left-3 2xl:top-3 w-[20px] h-[15px] 2xl:w-[30px] 2xl:h-[25px]'
       xmlns='http://www.w3.org/2000/svg'
     >
