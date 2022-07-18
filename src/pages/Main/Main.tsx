@@ -36,7 +36,7 @@ const Main = () => {
                   : band
               }
               alt='band-member-logo'
-              className='h-[15vw] object-cover'
+              className='h-[11vw] object-contain '
             />
           </div>
           <TvFeet />
