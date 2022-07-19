@@ -2,7 +2,6 @@ import React from 'react';
 import { InputProps } from 'types';
 
 const Input: React.FC<InputProps> = (props) => {
-  console.log(props);
   return (
     <div className={`flex flex-col`}>
       <label htmlFor={props.fieldName} className='text-dark100 font-extrabold'>
