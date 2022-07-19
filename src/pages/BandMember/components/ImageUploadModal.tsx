@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, FormEvent } from 'react';
 import { AuthContext } from 'store';
 import { memberIcon } from 'assets';
 import { ImageUploadModalForm, Close } from 'components';
@@ -29,7 +29,7 @@ const ImageUploadModal: React.FC<ImageUploadData> = (props) => {
   };
 
   const imagePreviewHandler = () => {
-    if (props.image <= 0 && !imagePreview) {
+    if (props.image.length <= 0 && !imagePreview) {
       return memberIcon;
     } else if (!imagePreview) {
       return `${process.env.REACT_APP_DOMAIN}/${props.image[0].imageUrl}`;
@@ -38,7 +38,7 @@ const ImageUploadModal: React.FC<ImageUploadData> = (props) => {
     }
   };
 
-  const submitImage = async (e: any) => {
+  const submitImage = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const formData = new FormData();

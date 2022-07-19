@@ -19,7 +19,7 @@ const Socials = () => {
       const response = await getSocialMediaWithPagination(pageNumber);
       setData(response.data.socials);
       setNumberOfPages(response.data.total);
-    } catch (error: any) {}
+    } catch (error) {}
   }, [pageNumber]);
 
   useEffect(() => {

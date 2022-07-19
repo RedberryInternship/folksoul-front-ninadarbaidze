@@ -1,7 +1,7 @@
 type InputProps = {
   labelName?: string;
   type?: string;
-  register: any;
+  register: UseFormRegister;
   fieldName: string;
   placeholder: string;
   isRequired?: boolean;
@@ -24,7 +24,7 @@ type formRulesObject = {
 
 export type TextareaField = {
   labelName?: string;
-  register: any;
+  register: UseFormRegister;
   fieldName: string;
   errorMessage?: string;
   id?: string;

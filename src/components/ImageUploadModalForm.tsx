@@ -1,14 +1,14 @@
-import { useRef } from 'react';
+import { ChangeEvent, FormEvent, useRef } from 'react';
 
 type ImageUploadFormTypes = {
-  onSubmit: (e: any) => void;
-  onChange: (e: any) => void;
+  onSubmit: (e: FormEvent<HTMLFormElement>) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   showSubmitButton: boolean;
   setShowSubmitButton: (value: boolean) => void;
 };
 
 const ImageUploadModalForm: React.FC<ImageUploadFormTypes> = (props) => {
-  const fileRef = useRef<any>();
+  const fileRef = useRef<HTMLInputElement>(null);
 
   return (
     <div>

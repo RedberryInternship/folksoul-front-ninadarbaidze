@@ -33,7 +33,7 @@ const Social: React.FC<Socials> = (props) => {
       if (props.data.length === 1) props.setPageNumber(props.pageNumber - 1);
       props.fetchData();
       setDeleteImageModalState(false);
-    } catch (error: any) {}
+    } catch (error) {}
   };
 
   const cancelDeleting = () => {

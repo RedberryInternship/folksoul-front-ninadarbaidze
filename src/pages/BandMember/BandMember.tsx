@@ -19,7 +19,7 @@ const BandMember = () => {
       const response = await getBandMemebrs(pageNumber);
       setData(response.data.bandMembers);
       setNumberOfPages(response.data.total);
-    } catch (error: any) {}
+    } catch (error) {}
   }, [pageNumber]);
 
   useEffect(() => {

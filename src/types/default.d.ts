@@ -18,3 +18,7 @@ export type ChildrenClassesTypes = {
 export type ButtonText = {
   buttonText: string;
 };
+
+export type ImageTypes = {
+  imageUrl: string;
+};

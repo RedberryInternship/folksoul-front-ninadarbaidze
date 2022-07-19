@@ -24,21 +24,21 @@ const FrontApplication = () => {
 
       setbandLogo(response.data.image[0].imageUrl);
       setbandInfo(response.data.about);
-    } catch (error: any) {}
+    } catch (error) {}
   }, []);
 
   const fetchSocials = useCallback(async () => {
     try {
       const response = await getSocialMediaLinks();
       setSocials(response.data);
-    } catch (error: any) {}
+    } catch (error) {}
   }, []);
 
   const fetchBandMembers = useCallback(async () => {
     try {
       const response = await getBandMemebrsWithoutPagination();
       setBandMembers(response.data);
-    } catch (error: any) {}
+    } catch (error) {}
   }, []);
 
   useEffect(() => {

@@ -4,7 +4,7 @@ export type DashboartNavs = {
   onClick?: () => void;
 };
 
-type AdminPanelWrapper = {
+export type AdminPanelWrapper = {
   children: React.ReactNode;
   header: string;
   className?: string;
@@ -34,8 +34,8 @@ export type BandImage = {
 export type ImageUploadBand = {
   _id: string;
   about: string;
-  image: any;
-  setImageModalState: any;
+  image: ImageTypes[];
+  setImageModalState: (boolean) => void;
 };
 
 export type LoginValueTypes = {
@@ -59,7 +59,7 @@ export type AddNewSocial = {
 };
 
 export type EditBandTypes = {
-  about: any;
+  about: string;
   id: string;
   name: string;
   url: string;

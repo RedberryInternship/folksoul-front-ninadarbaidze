@@ -36,7 +36,7 @@ const NewMember = () => {
       navigate('/dashboard/band-members');
 
       return;
-    } catch (error: any) {}
+    } catch (error) {}
   };
 
   const addNewBandMemberHandler = async (data: AddNewMember) => {

@@ -1,19 +1,25 @@
 import { FolkSoulClient } from './axios.ts';
+import { AxiosResponse } from 'axios';
+import { AddNewMember, BandMemberData, BandMembersResponseTypes } from 'types';
 
-export const getBandMemebrs = async (pageNumber: number): Promise<any> => {
+export const getBandMemebrs = async (
+  pageNumber: number
+): Promise<AxiosResponse<BandMembersResponseTypes>> => {
   const response = await FolkSoulClient.get(`band-members?page=${pageNumber}`);
   return response;
 };
 
-export const getBandMemebrsWithoutPagination = async (): Promise<any> => {
+export const getBandMemebrsWithoutPagination = async (): Promise<
+  AxiosResponse<BandMemberData[]>
+> => {
   const response = await FolkSoulClient.get(`band-members`);
   return response;
 };
 
 export const changeMemberAvatar = async (
   token: string,
-  data: any
-): Promise<any> => {
+  data: FormData
+): Promise<FormData> => {
   const response = await FolkSoulClient.post(`change-avatar`, data, {
     headers: { Authorization: `Bearer ${token}` },
   });
@@ -22,21 +28,27 @@ export const changeMemberAvatar = async (
 export const editMember = async (
   token: string,
   id: string,
-  data: any
-): Promise<any> => {
+  data: AddNewMember
+): Promise<AddNewMember> => {
   const response = await FolkSoulClient.patch(`edit-member/${id}`, data, {
     headers: { Authorization: `Bearer ${token}` },
   });
   return response;
 };
-export const addMember = async (token: string, data: any): Promise<any> => {
+export const addMember = async (
+  token: string,
+  data: AddNewMember
+): Promise<AddNewMember> => {
   const response = await FolkSoulClient.post(`new-member`, data, {
     headers: { Authorization: `Bearer ${token}` },
   });
   return response;
 };
 
-export const deleteMember = async (token: string, id: string): Promise<any> => {
+export const deleteMember = async (
+  token: string,
+  id: string
+): Promise<string> => {
   const response = await FolkSoulClient.delete(`delete-member/${id}`, {
     headers: { Authorization: `Bearer ${token}` },
   });

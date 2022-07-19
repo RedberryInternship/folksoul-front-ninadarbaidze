@@ -5,10 +5,11 @@ export type Data = {
   orbitLength: number;
   color: string;
   biography: string;
+  image: ImageTypes[];
 };
 
 export type ContextData = {
-  token: any;
+  token: string;
   isLoggedIn: boolean;
   login: (token: string) => void;
   logout: () => void;
@@ -27,15 +28,25 @@ export type ModalDataMembers = {
   orbitLength: number;
   color: string;
   biography: string;
-  image: any;
-  setModalState: any;
+  image: ImageTypes[];
+  setModalState: (boolean) => void;
+};
+
+export type BandMembersResponseTypes = {
+  bandMembers: BandMemberData[];
+  total: number;
+};
+
+export type SocialsResponseTypes = {
+  socials: SocialsTypes[];
+  total: number;
 };
 
 export type ModalDataSocial = {
   id: props._id;
   name: props.name;
   url: props.url;
-  setModalState: any;
+  setModalState: (boolean) => void;
 };
 
 export type ImageUploadData = {
@@ -45,17 +56,17 @@ export type ImageUploadData = {
   orbitLength: number;
   color: string;
   biography: string;
-  image: any;
+  image: ImageTypes[];
   fetchData: () => void;
-  setImageModalState: any;
+  setImageModalState: (boolean) => void;
 };
 export type ImageUploadDataSocials = {
   _id: string;
   name: string;
   url: string;
-  image: any;
+  image: ImageTypes[];
   fetchData: () => void;
-  setImageModalState: any;
+  setImageModalState: (boolean) => void;
 };
 
 export type MemberData = {
@@ -65,10 +76,10 @@ export type MemberData = {
   orbitLength: number;
   color: string;
   biography: string;
-  image: any;
+  image: ImageTypes[];
   fetchData: () => void;
   data: BandMemberData[];
-  setPageNumber: any;
+  setPageNumber: (number) => void;
   pageNumber: number;
 };
 
@@ -79,19 +90,19 @@ export type BandMemberData = {
   orbitLength: number;
   color: string;
   biography: string;
-  image: Image[];
+  image: ImageTypes[];
 };
 
 type SocialsTypes = {
   _id: string;
   name: string;
   url: string;
-  image: any;
+  image: ImageTypes[];
 };
 type AboutBandTypes = {
   _id: string;
   about: string;
-  image: any;
+  image: ImageTypes[];
 };
 
 export type BandMemberTypes = {
@@ -101,20 +112,20 @@ export type BandMemberTypes = {
   orbitLength: number;
   color: string;
   biography: string;
-  image: any;
+  image: ImageTypes[];
 };
 
 type CirclesTypes = {
   size: number;
-  setIsSpinning: any;
+  setIsSpinning: (boolean) => void;
   isSpinning: boolean;
   duration: number;
   padding?: string;
   memberName: string;
   memberImage: string;
   memberColor: string;
-  onClick: any;
-  setMemberIsSelected: any;
+  onClick: () => void;
+  setMemberIsSelected: (boolean) => void;
   memberIsSelected: boolean;
 };
 
@@ -122,9 +133,9 @@ type Socials = {
   _id: string;
   name: string;
   url: string;
-  image: any;
+  image: ImageTypes[];
   fetchData: () => void;
-  data: any;
-  setPageNumber: any;
+  data: SocialsTypes[];
+  setPageNumber: (number) => void;
   pageNumber: number;
 };

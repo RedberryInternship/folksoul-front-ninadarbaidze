@@ -33,7 +33,7 @@ const NewMember = () => {
       navigate('/dashboard/socials');
 
       return;
-    } catch (error: any) {}
+    } catch (error) {}
   };
 
   const addNewSocialHandler = async (data: AddNewSocial) => {
