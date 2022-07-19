@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AdminPanelActionWrapper, Textarea } from 'components';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -8,6 +8,7 @@ import { editBand } from 'services';
 
 const EditBand = () => {
   const authCtx = useContext(AuthContext);
+  const [error, setError] = useState<number | null>(null);
   const location = useLocation();
   const state = location.state as EditBandTypes;
   const navigate = useNavigate();
@@ -28,7 +29,9 @@ const EditBand = () => {
       navigate('/dashboard/about-band');
 
       return;
-    } catch (error: any) {}
+    } catch (error: any) {
+      setError(error);
+    }
   };
 
   return (
@@ -47,12 +50,20 @@ const EditBand = () => {
               register={register}
               id={'about-band'}
               class={
-                'scrollbar w-[48vw] h-[20vw] text-justify  focus:outline-none bg-dark25 placeholder:placeholder text-sm 2xl:text-lg font-normal text-blue2 py-[2%] px-[4%] drop-shadow-4xl  rounded-[10px]'
+                'scrollbar w-[48vw] h-[17vw] text-justify  focus:outline-none bg-dark25 placeholder:placeholder text-sm 2xl:text-lg font-normal text-blue2 py-[2%] px-[4%] drop-shadow-4xl  rounded-[10px]'
               }
               isRequired={true}
               placeholder={'ბენდის შესახებ'}
             />
           </div>
+          {error ? (
+            <p className=' text-red text-sm'>
+              მოხდა შეცდომა, გთხოვ სცადო თავიდან
+            </p>
+          ) : (
+            ''
+          )}
+
           <div className='flex flex-col gap-5 absolute bottom-4'>
             <button
               type='submit'

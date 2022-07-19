@@ -39,6 +39,14 @@ const Login = () => {
     }
     navigate('/dashboard/main');
   };
+
+  const loginPatternRules = {
+    pattern: {
+      value: /^[a-z][a-z0-9]/,
+      message: 'გთხოვ შეიყვანე ვალიდური მეტსახელი',
+    },
+  };
+
   return (
     <LoginModal>
       <form
@@ -52,13 +60,12 @@ const Login = () => {
             placeholder={'მეტსახელი'}
             id={'login-usr'}
             isRequired={true}
-            pattern={/^[a-z][a-z0-9]/}
-            patternValueMessage={'გთხოვ შეიყვანე ვალიდური მეტსახელი'}
+            rules={loginPatternRules}
             minValue={3}
             class={
               errors.username || (error && !isSubmitSuccessful)
-                ? 'border-red border-2  w-[20rem] h-[4rem] 2xl:w-[28rem] 2xl:h-[5rem]  focus:outline-none bg-dark30 placeholder:text-brown text-base 2xl:text-2xl font-normal rounded-[2px]  pl-[8%]'
-                : ' w-[20rem] h-[4rem] 2xl:w-[28rem] 2xl:h-[5rem]  focus:outline-none bg-dark30 placeholder:text-brown text-base 2xl:text-2xl font-normal  border-0 rounded-[2px]  pl-[8%]'
+                ? 'border-red border-2  w-[20rem] h-[4rem] 2xl:w-[24rem] 2xl:h-[5rem] focus:outline-none bg-dark30 placeholder:text-brown text-base 2xl:text-2xl font-normal rounded-[2px]  pl-[8%]'
+                : ' w-[20rem] h-[4rem] 2xl:w-[24rem] 2xl:h-[5rem] focus:outline-none bg-dark30 placeholder:text-brown text-base 2xl:text-2xl font-normal  border-0 rounded-[2px]  pl-[8%]'
             }
           />
           {errors.username ? (
@@ -84,8 +91,8 @@ const Login = () => {
             minValue={3}
             class={
               errors.password
-                ? 'border-red border-2  w-[20rem] h-[4rem] 2xl:w-[28rem] 2xl:h-[5rem]  focus:outline-none bg-dark30 placeholder:text-brown text-base 2xl:text-2xl font-normal rounded-[2px]  pl-[8%]'
-                : ' w-[20rem] h-[4rem] 2xl:w-[28rem] 2xl:h-[5rem]  focus:outline-none bg-dark30 placeholder:text-brown text-base 2xl:text-2xl font-normal  border-0 rounded-[2px]  pl-[8%]'
+                ? 'border-red border-2  w-[20rem] h-[4rem] 2xl:w-[24rem] 2xl:h-[5rem] focus:outline-none bg-dark30 placeholder:text-brown text-base 2xl:text-2xl font-normal rounded-[2px]  pl-[8%]'
+                : ' w-[20rem] h-[4rem] 2xl:w-[24rem] 2xl:h-[5rem]  focus:outline-none bg-dark30 placeholder:text-brown text-base 2xl:text-2xl font-normal  border-0 rounded-[2px]  pl-[8%]'
             }
           />
           {errors.password ? (

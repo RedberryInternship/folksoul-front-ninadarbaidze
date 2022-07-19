@@ -15,10 +15,7 @@ const Textarea: React.FC<TextareaField> = (props) => {
               value: props.isRequired,
               message: '*სავალდებულო',
             },
-            pattern: {
-              value: props.pattern,
-              message: props.patternValueMessage,
-            },
+            ...props.rules,
           })}
         />
         <p className='text-base pl-[3%] mt-2 text-error'>

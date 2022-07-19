@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { AdminPanelActionWrapper, Input, Textarea } from 'components';
-import { AddNewMember, MinMaxInputProps } from 'types';
+import { AddNewMember } from 'types';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { FormButton } from 'pages/NewMember/components';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -55,11 +55,26 @@ const NewMember = () => {
     else addNewBandMemberHandler(data);
   };
 
-  const minMaxProps: MinMaxInputProps = {
-    min: 300,
-    max: 500,
-    minMessage: 'სიგრძე მინ. 300 ',
-    maxMessage: 'სიგრძე მაქს. 500 ',
+  const orbitLengthRules = {
+    min: {
+      value: 300,
+      message: 'სიგრძე მინ. 300 ',
+    },
+    max: {
+      value: 500,
+      message: 'სიგრძე მაქს. 500 ',
+    },
+    pattern: {
+      value: /^[0-9]*$/,
+      message: 'შეიყვანე რიცხვი',
+    },
+  };
+
+  const georgianPatternRules = {
+    pattern: {
+      value: /[\u10A0-\u10FF]/,
+      message: 'წერე ქართულად!',
+    },
   };
 
   return (
@@ -76,8 +91,7 @@ const NewMember = () => {
               register={register}
               placeholder={'სახელი'}
               id={'name'}
-              pattern={/[\u10A0-\u10FF]/}
-              patternValueMessage={'წერე ქართულად!'}
+              rules={georgianPatternRules}
               isRequired={true}
               minValue={3}
               class={
@@ -105,8 +119,7 @@ const NewMember = () => {
                 register={register}
                 placeholder={'ინსტრუმენტი'}
                 id={'instrument'}
-                pattern={/[\u10A0-\u10FF]/}
-                patternValueMessage={'წერე ქართულად!'}
+                rules={georgianPatternRules}
                 isRequired={true}
                 minValue={2}
                 class={
@@ -129,13 +142,7 @@ const NewMember = () => {
                 placeholder={'ორბიტის სიგანე'}
                 isRequired={true}
                 id={'orbitLength'}
-                pattern={/^[0-9]*$/}
-                patternValueMessage={'შეიყვანე რიცხვი'}
-                minMaxProps={minMaxProps}
-                // min={300}
-                // minMessage={'სიგრძე მინ. 300 '}
-                // max={700}
-                // maxMessage={'სიგრძე მაქს. 700 '}
+                rules={orbitLengthRules}
                 class={
                   errors.orbitLength
                     ? 'border-red w-[10vw] h-[3rem] 2xl:h-[4rem] text-center  focus:outline-none bg-white placeholder:placeholder text-[14px] 2xl:text-xl font-normal  border-[1px] 2xl:border-[1.5px] rounded-[5px]  pl-[8%] '
@@ -175,8 +182,7 @@ const NewMember = () => {
               register={register}
               placeholder={'ბიოგრაფია'}
               isRequired={true}
-              pattern={/[\u10A0-\u10FF]/}
-              patternValueMessage={'წერე ქართულად!'}
+              rules={georgianPatternRules}
               class={
                 errors.biography
                   ? 'border-red  w-[40vw] h-[6vw] text-center  focus:outline-none bg-white placeholder:placeholder text-[14px] 2xl:text-xl font-normal  border-[1px] 2xl:border-[1.5px] rounded-[5px]  pl-[1%]  '

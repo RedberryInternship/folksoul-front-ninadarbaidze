@@ -23,18 +23,8 @@ const Input: React.FC<InputProps> = (props) => {
               value: props.minValue ? props.minValue : 0,
               message: `მინ. ${props.minValue} სიმბოლო `,
             },
-            pattern: {
-              value: props.pattern,
-              message: props.patternValueMessage,
-            },
-            min: {
-              value: props.minMaxProps?.min,
-              message: props.minMaxProps?.minMessage,
-            },
-            max: {
-              value: props.minMaxProps?.max,
-              message: props.minMaxProps?.maxMessage,
-            },
+
+            ...props.rules,
           })}
         />
       </div>

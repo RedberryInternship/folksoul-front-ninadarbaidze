@@ -49,6 +49,7 @@ const ImageUploadModal: React.FC<ImageUploadData> = (props) => {
       await changeMemberAvatar(authCtx.token, formData);
     } catch (error: any) {
       setError(error);
+      throw new Error('Request failed!');
     }
     authCtx.refreshMembers();
     props.setImageModalState(false);

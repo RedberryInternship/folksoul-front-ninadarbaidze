@@ -7,17 +7,19 @@ type InputProps = {
   isRequired?: boolean;
   minValue?: number;
   id?: string;
-  patternValueMessage?: string;
   class?: string;
-  pattern?: any;
-  minMaxProps?: MinMaxInputProps;
+  rules?: RulePropsTypes;
 };
 
-type MinMaxInputProps = {
-  min?: number;
-  minMessage?: string;
-  max?: number;
-  maxMessage?: string;
+type RulePropsTypes = {
+  min?: formRulesObject;
+  max?: formRulesObject;
+  pattern?: formRulesObject;
+};
+
+type formRulesObject = {
+  value: number | string | RegExp;
+  message: string;
 };
 
 export type TextareaField = {
@@ -29,6 +31,5 @@ export type TextareaField = {
   placeholder: string;
   class?: string;
   isRequired?: boolean;
-  pattern?: any;
-  patternValueMessage?: string;
+  rules?: RulePropsTypes;
 };
