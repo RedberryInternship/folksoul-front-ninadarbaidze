@@ -64,17 +64,17 @@ const Login = () => {
             minValue={3}
             class={
               errors.username || (error && !isSubmitSuccessful)
-                ? 'border-red border-2  w-[20rem] h-[4rem] focus:outline-none bg-dark30 placeholder:text-brown text-base 2xl:text-2xl font-normal rounded-[2px]  pl-[8%]'
-                : ' w-[20rem] h-[4rem] focus:outline-none bg-dark30 placeholder:text-brown text-base 2xl:text-2xl font-normal  border-0 rounded-[2px]  pl-[8%]'
+                ? 'border-red border-2 w-[20rem] h-[4rem] focus:outline-none bg-dark30 placeholder:text-brown text-base  font-normal rounded-[2px]  pl-[8%]'
+                : ' w-[20rem] h-[4rem] focus:outline-none bg-dark30 placeholder:text-brown text-base  font-normal  border-0 rounded-[2px]  pl-[8%]'
             }
           />
           {errors.username ? (
-            <p className='text-red text-[15px] 2xl:text-[20px] pt-1'>
+            <p className='text-red text-[15px] pt-1'>
               {errors.username?.message}
             </p>
           ) : null}
           {error && !isSubmitSuccessful && username.length >= 3 ? (
-            <p className='text-red text-[15px] 2xl:text-[20px] pt-1'>
+            <p className='text-red text-[15px]  pt-1'>
               მეტსახელი ან პაროლი არასწორია
             </p>
           ) : null}
@@ -91,12 +91,12 @@ const Login = () => {
             minValue={3}
             class={
               errors.password
-                ? 'border-red border-2  w-[20rem] h-[4rem]  focus:outline-none bg-dark30 placeholder:text-brown text-base 2xl:text-2xl font-normal rounded-[2px]  pl-[8%]'
-                : ' w-[20rem] h-[4rem]  focus:outline-none bg-dark30 placeholder:text-brown text-base 2xl:text-2xl font-normal  border-0 rounded-[2px]  pl-[8%]'
+                ? 'border-red border-2  w-[20rem] h-[4rem]  focus:outline-none bg-dark30 placeholder:text-brown text-base  font-normal rounded-[2px]  pl-[8%]'
+                : ' w-[20rem] h-[4rem]  focus:outline-none bg-dark30 placeholder:text-brown text-base  font-normal  border-0 rounded-[2px]  pl-[8%]'
             }
           />
           {errors.password ? (
-            <p className='text-red text-[15px] 2xl:text-[20px] pt-1'>
+            <p className='text-red text-[15px]  pt-1'>
               {errors.password?.message}
             </p>
           ) : null}

@@ -8,9 +8,7 @@ const LoginModal: React.FC<Children> = (props) => {
         <div className='flex flex-col items-center w-[25rem] h-[30rem] border-[1px] rounded-[1px]  border-white bg-gradient-to-t  from-grad4 to-grad3'>
           <div className='flex justify-center items-center w-[12rem] h-[3rem]  2xl:h-[3.5rem]  before:block before:absolute before:-inset-1 before:-skew-x-[20deg] before:bg-red relative mt-16 drop-shadow-3xl'>
             <div>
-              <h1 className='relative font-bold xl:text-2xl 2xl:text-3xl'>
-                კარიბჭე
-              </h1>
+              <h1 className='relative font-bold text-2xl'>კარიბჭე</h1>
             </div>
           </div>
 
