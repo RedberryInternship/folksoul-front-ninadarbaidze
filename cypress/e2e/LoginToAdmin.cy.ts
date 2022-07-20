@@ -9,7 +9,7 @@ describe('login', () => {
     cy.get('#password').type('shemishvi');
     Cypress.on('uncaught:exception', () => false);
     cy.intercept('POST', `${Cypress.env('url')}/auth`, {
-      statusCode: 422,
+      statusCode: 401,
     });
     cy.get('#loginBtn').click();
     cy.url().should('include', 'login');
