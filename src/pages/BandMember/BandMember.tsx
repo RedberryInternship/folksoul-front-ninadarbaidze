@@ -4,7 +4,7 @@ import { BandMemberData } from 'types';
 import { Member } from 'pages/BandMember/components';
 import { Outlet, NavLink } from 'react-router-dom';
 import { AuthContext } from 'store';
-import { getBandMemebrs } from 'services';
+import { getBandMembers } from 'services';
 
 const BandMember = () => {
   const [data, setData] = useState<BandMemberData[]>([]);
@@ -16,7 +16,7 @@ const BandMember = () => {
 
   const fetchData = useCallback(async () => {
     try {
-      const response = await getBandMemebrs(pageNumber);
+      const response = await getBandMembers(pageNumber);
       setData(response.data.bandMembers);
       setNumberOfPages(response.data.total);
     } catch (error) {}

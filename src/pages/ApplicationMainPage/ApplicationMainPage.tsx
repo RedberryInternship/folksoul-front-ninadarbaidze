@@ -6,25 +6,25 @@ import { useState, useCallback, useEffect } from 'react';
 import {
   getAboutBandInfo,
   getSocialMediaLinks,
-  getBandMemebrsWithoutPagination,
+  getBandMembersWithoutPagination,
 } from 'services';
 
 const FrontApplication = () => {
-  const [bandLogo, setbandLogo] = useState<string>('');
-  const [bandInfo, setbandInfo] = useState<string>('');
+  const [bandLogo, setBandLogo] = useState<string>('');
+  const [bandInfo, setBandInfo] = useState<string>('');
   const [socials, setSocials] = useState<SocialsTypes[]>([]);
   const [bandMembers, setBandMembers] = useState<BandMemberTypes[]>([]);
   const [isSpinning, setIsSpinning] = useState<boolean>(true);
   const [memberIsSelected, setMemberIsSelected] = useState<boolean>(true);
-  const [selectedMember, setSelectedMemeber] =
+  const [selectedMember, setSelectedMember] =
     useState<BandMemberTypes | null>();
 
   const fetchBand = useCallback(async () => {
     try {
       const response = await getAboutBandInfo();
 
-      setbandLogo(response.data.image[0].imageUrl);
-      setbandInfo(response.data.about);
+      setBandLogo(response.data.image[0].imageUrl);
+      setBandInfo(response.data.about);
     } catch (error) {}
   }, []);
 
@@ -37,7 +37,7 @@ const FrontApplication = () => {
 
   const fetchBandMembers = useCallback(async () => {
     try {
-      const response = await getBandMemebrsWithoutPagination();
+      const response = await getBandMembersWithoutPagination();
       setBandMembers(response.data);
     } catch (error) {}
   }, []);
@@ -51,7 +51,7 @@ const FrontApplication = () => {
   const manageAppStateHandler = () => {
     setIsSpinning(true);
     setMemberIsSelected(false);
-    setSelectedMemeber(null);
+    setSelectedMember(null);
   };
 
   const showMemberIcon = () => {
@@ -96,7 +96,7 @@ const FrontApplication = () => {
                   memberName={member.name}
                   memberImage={member.image[0] ? member.image[0].imageUrl : ''}
                   memberColor={member.color}
-                  onClick={() => setSelectedMemeber(member)}
+                  onClick={() => setSelectedMember(member)}
                   setMemberIsSelected={setMemberIsSelected}
                   memberIsSelected={memberIsSelected}
                 />

@@ -81,7 +81,7 @@ const Circles: React.FC<CirclesTypes> = (props) => {
                 ? `${process.env.REACT_APP_DOMAIN}/${props.memberImage}`
                 : memberIcon
             }
-            alt='membericon'
+            alt='memberIcon'
             className='w-16'
           />
           <div

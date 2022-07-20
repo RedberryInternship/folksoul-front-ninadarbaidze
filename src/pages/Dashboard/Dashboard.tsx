@@ -10,7 +10,7 @@ import {
 } from 'components';
 import { DashboardWrapper, DashboardNavs } from 'pages/Dashboard/components';
 
-const Dashoboard = () => {
+const Dashboard = () => {
   const authCtx = useContext(AuthContext);
 
   return (
@@ -57,4 +57,4 @@ const Dashoboard = () => {
   );
 };
 
-export default Dashoboard;
+export default Dashboard;

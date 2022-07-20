@@ -1,7 +1,7 @@
 import React, { useState, useContext, FormEvent } from 'react';
 import { changeSocialLogo } from 'services';
 import { AuthContext } from 'store';
-import { Socialmage, ImageUploadDataSocials } from 'types';
+import { SocialImage, ImageUploadDataSocials } from 'types';
 import { youtube } from 'assets';
 import { ImageUploadModalForm, Close } from 'components';
 
@@ -10,7 +10,7 @@ const ImageUploadModal: React.FC<ImageUploadDataSocials> = (props) => {
   const [error, setError] = useState<number | null>(null);
   const [showSubmitButton, setShowSubmitButton] = useState<boolean>(false);
   const [imagePreview, setImagePreview] = useState<string>('');
-  const [memberImage, setMemberImage] = useState<Socialmage>({
+  const [memberImage, setMemberImage] = useState<SocialImage>({
     image: '',
     socialId: '',
   });

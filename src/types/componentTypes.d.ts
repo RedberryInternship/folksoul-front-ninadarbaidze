@@ -1,4 +1,4 @@
-export type DashboartNavs = {
+export type DashboardNavTypes = {
   destination: string;
   children: React.ReactNode;
   onClick?: () => void;
@@ -21,7 +21,7 @@ export type Image = {
   memberId: string;
 };
 
-export type Socialmage = {
+export type SocialImage = {
   image: string;
   socialId: string;
 };

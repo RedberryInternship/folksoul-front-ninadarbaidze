@@ -2,14 +2,14 @@ import { FolkSoulClient } from './axios.ts';
 import { AxiosResponse } from 'axios';
 import { AddNewMember, BandMemberData, BandMembersResponseTypes } from 'types';
 
-export const getBandMemebrs = async (
+export const getBandMembers = async (
   pageNumber: number
 ): Promise<AxiosResponse<BandMembersResponseTypes>> => {
   const response = await FolkSoulClient.get(`band-members?page=${pageNumber}`);
   return response;
 };
 
-export const getBandMemebrsWithoutPagination = async (): Promise<
+export const getBandMembersWithoutPagination = async (): Promise<
   AxiosResponse<BandMemberData[]>
 > => {
   const response = await FolkSoulClient.get(`band-members`);
