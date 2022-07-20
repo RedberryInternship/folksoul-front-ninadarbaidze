@@ -91,7 +91,7 @@ const NewMember = () => {
               register={register}
               placeholder={'სახელი'}
               id={'name'}
-              rules={georgianPatternRules}
+              RegisterOptions={georgianPatternRules}
               isRequired={true}
               minValue={3}
               class={
@@ -119,7 +119,7 @@ const NewMember = () => {
                 register={register}
                 placeholder={'ინსტრუმენტი'}
                 id={'instrument'}
-                rules={georgianPatternRules}
+                RegisterOptions={georgianPatternRules}
                 isRequired={true}
                 minValue={2}
                 class={
@@ -142,7 +142,7 @@ const NewMember = () => {
                 placeholder={'ორბიტის სიგანე'}
                 isRequired={true}
                 id={'orbitLength'}
-                rules={orbitLengthRules}
+                RegisterOptions={orbitLengthRules}
                 class={
                   errors.orbitLength
                     ? 'border-red w-[10vw] h-[3rem] 2xl:h-[4rem] text-center  focus:outline-none bg-white placeholder:placeholder text-[14px] 2xl:text-xl font-normal  border-[1px] 2xl:border-[1.5px] rounded-[5px]  pl-[8%] '
@@ -182,7 +182,7 @@ const NewMember = () => {
               register={register}
               placeholder={'ბიოგრაფია'}
               isRequired={true}
-              rules={georgianPatternRules}
+              RegisterOptions={georgianPatternRules}
               class={
                 errors.biography
                   ? 'border-red  w-[40vw] h-[6vw] text-center  focus:outline-none bg-white placeholder:placeholder text-[14px] 2xl:text-xl font-normal  border-[1px] 2xl:border-[1.5px] rounded-[5px]  pl-[1%]  '

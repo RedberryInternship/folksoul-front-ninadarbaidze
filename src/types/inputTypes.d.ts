@@ -1,3 +1,5 @@
+import { RegisterOptions } from 'react-hook-form';
+
 type InputProps = {
   labelName?: string;
   type?: string;
@@ -8,13 +10,7 @@ type InputProps = {
   minValue?: number;
   id?: string;
   class?: string;
-  rules?: RulePropsTypes;
-};
-
-type RulePropsTypes = {
-  min?: formRulesObject;
-  max?: formRulesObject;
-  pattern?: formRulesObject;
+  RegisterOptions?: RegisterOptions;
 };
 
 type formRulesObject = {
@@ -31,5 +27,5 @@ export type TextareaField = {
   placeholder: string;
   class?: string;
   isRequired?: boolean;
-  rules?: RulePropsTypes;
+  RegisterOptions?: RegisterOptions;
 };

@@ -22,3 +22,7 @@ export type ButtonText = {
 export type ImageTypes = {
   imageUrl: string;
 };
+
+export type TokenType = {
+  token: string;
+};

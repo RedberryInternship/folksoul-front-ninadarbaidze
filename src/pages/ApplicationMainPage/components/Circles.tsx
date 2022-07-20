@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { memberIcon } from 'assets';
 import { CirclesTypes } from 'types';
@@ -24,13 +24,13 @@ const Circles: React.FC<CirclesTypes> = (props) => {
     }),
   };
 
-  const seTScaleToFalse = () => {
+  const setScaleToFalse = useCallback(() => {
     if (props.isSpinning) setScale(false);
-  };
+  }, [props.isSpinning]);
 
   useEffect(() => {
-    seTScaleToFalse();
-  }, [props.isSpinning]);
+    setScaleToFalse();
+  }, [props.isSpinning, setScaleToFalse]);
 
   return (
     <>

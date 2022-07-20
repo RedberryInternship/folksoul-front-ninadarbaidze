@@ -60,7 +60,7 @@ const Login = () => {
             placeholder={'მეტსახელი'}
             id={'login-usr'}
             isRequired={true}
-            rules={loginPatternRules}
+            RegisterOptions={loginPatternRules}
             minValue={3}
             class={
               errors.username || (error && !isSubmitSuccessful)

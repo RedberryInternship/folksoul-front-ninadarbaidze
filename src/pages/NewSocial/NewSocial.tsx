@@ -107,7 +107,7 @@ const NewMember = () => {
               id={'url'}
               isRequired={true}
               minValue={2}
-              rules={socialUrlRules}
+              RegisterOptions={socialUrlRules}
               class={
                 errors.url
                   ? 'border-red w-[30rem] 2xl:w-[40rem] text-center  focus:outline-none bg-white placeholder:placeholder text-[14px] 2xl:text-xl font-normal  border-[1px] 2xl:border-[1.5px] rounded-[5px]  pl-[8%] '

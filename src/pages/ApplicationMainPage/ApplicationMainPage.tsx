@@ -16,7 +16,8 @@ const FrontApplication = () => {
   const [bandMembers, setBandMembers] = useState<BandMemberTypes[]>([]);
   const [isSpinning, setIsSpinning] = useState<boolean>(true);
   const [memberIsSelected, setMemberIsSelected] = useState<boolean>(true);
-  const [selectedMember, setSelectedMemeber] = useState<any>();
+  const [selectedMember, setSelectedMemeber] =
+    useState<BandMemberTypes | null>();
 
   const fetchBand = useCallback(async () => {
     try {

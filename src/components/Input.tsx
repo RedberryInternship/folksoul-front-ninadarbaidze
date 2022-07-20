@@ -23,7 +23,7 @@ const Input: React.FC<InputProps> = (props) => {
               message: `მინ. ${props.minValue} სიმბოლო `,
             },
 
-            ...props.rules,
+            ...props.RegisterOptions,
           })}
         />
       </div>
