@@ -78,7 +78,7 @@ const Circles: React.FC<CirclesTypes> = (props) => {
           <img
             src={
               props.memberImage
-                ? `${process.env.REACT_APP_DOMAIN}/${props.memberImage}`
+                ? `${process.env.REACT_APP_API_URL}/${props.memberImage}`
                 : memberIcon
             }
             alt='memberIcon'

@@ -7,7 +7,7 @@ module.exports = defineConfig({
       return config;
     },
      env: {
-      url: 'https://YOUR_DOMAIN.com',
+      url: 'https://API_URL.com',
     },
     baseUrl: 'http://localhost:3000',
   },

@@ -58,7 +58,7 @@ const Social: React.FC<Socials> = (props) => {
           <img
             src={
               props.image.length > 0
-                ? `${process.env.REACT_APP_DOMAIN}/${props.image[0].imageUrl}`
+                ? `${process.env.REACT_APP_API_URL}/${props.image[0].imageUrl}`
                 : youtube
             }
             alt='social-icon'
@@ -70,8 +70,10 @@ const Social: React.FC<Socials> = (props) => {
             className='absolute w-[1rem] 2xl:w-[1.5rem] top-[50%] left-[60%]  cursor-pointer'
           />
         </div>
-        <h1 className='text-white text-base 2xl:text-2xl'>{props.name}</h1>
-        <p className='text-link2 underline text-base 2xl:text-xl'>
+        <h1 className='truncate w-24 text-white text-base 2xl:text-2xl'>
+          {props.name}
+        </h1>
+        <p className='truncate w-48 text-link2 underline text-base 2xl:text-xl'>
           <a href={props.url} target='_blank' rel='noreferrer'>
             {props.url}
           </a>

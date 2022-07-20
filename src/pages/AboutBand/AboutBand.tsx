@@ -52,7 +52,7 @@ const AboutBand = () => {
             <img
               src={
                 data.image.length > 0
-                  ? `${process.env.REACT_APP_DOMAIN}/${data.image[0].imageUrl}`
+                  ? `${process.env.REACT_APP_API_URL}/${data.image[0].imageUrl}`
                   : band
               }
               alt='band-icon'

@@ -35,7 +35,7 @@ describe('Social Links', () => {
       .invoke('removeClass', 'file_input_hidden')
       .attachFile('toobig.png');
     Cypress.on('uncaught:exception', () => false);
-    cy.intercept('PATCH', `${process.env.REACT_APP_DOMAIN}/change-band-logo`, {
+    cy.intercept('PATCH', `${process.env.REACT_APP_API_URL}/change-band-logo`, {
       statusCode: 413,
     });
     cy.get('#uploadBtn').click();
@@ -54,7 +54,7 @@ describe('Social Links', () => {
       'დაწყვილების პერიოდი ზომიერ და არქტიკულ რეგიონებში მობინადრე დათვებისთვის, ჩვეულებრივ, გაზაფხულია. მაკეობა ხანმოკლეა, თუმცა იმის გამო, რომ დათვი არ მშობიარობს მანამ, სანამ ზამთრის შუა ძილში არ იქნება, განაყოფიერებული კვერცხუჯრედის საშვილოსნოში.'
     );
     Cypress.on('uncaught:exception', () => false);
-    cy.intercept('PATCH', `${process.env.REACT_APP_DOMAIN}/edit-band/id`, {
+    cy.intercept('PATCH', `${process.env.REACT_APP_API_URL}/edit-band/id`, {
       statusCode: 200,
     });
     cy.get('#saveBtn').click();

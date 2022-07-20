@@ -56,11 +56,11 @@ const FrontApplication = () => {
 
   const showMemberIcon = () => {
     if (!selectedMember) {
-      return `${process.env.REACT_APP_DOMAIN}/${bandLogo}`;
+      return `${process.env.REACT_APP_API_URL}/${bandLogo}`;
     } else if (selectedMember.image.length === 0) {
       return memberIcon;
     } else {
-      return `${process.env.REACT_APP_DOMAIN}/${selectedMember.image[0].imageUrl}`;
+      return `${process.env.REACT_APP_API_URL}/${selectedMember.image[0].imageUrl}`;
     }
   };
 
@@ -124,7 +124,7 @@ const FrontApplication = () => {
                       <img
                         src={
                           social.image.length > 0
-                            ? `${process.env.REACT_APP_DOMAIN}/${social.image[0].imageUrl}`
+                            ? `${process.env.REACT_APP_API_URL}/${social.image[0].imageUrl}`
                             : youtube
                         }
                         className='h-[2rem] cursor-pointer'

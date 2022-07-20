@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-export const FolkSoulClient = axios.create({
-  baseURL: `${process.env.REACT_APP_DOMAIN}/`,
+const Axios = axios.create({
+  baseURL: `${process.env.REACT_APP_API_URL}/`,
   timeout: 1000,
 });
+
+export default Axios;
