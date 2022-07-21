@@ -16,11 +16,11 @@ describe('Band Members', () => {
   it('visitors CAN ADD band member information and try uploading image', () => {
     cy.get('#membersNav').click();
     cy.get('#newMemberBtn').click();
-    cy.get('#name').type('შიშიკო');
+    cy.get('#name').type('გია');
     cy.get('#instrument').type('ვიოლინო');
     cy.get('#orbitLength').type('400');
     cy.get('#color').type('#000098');
-    cy.get('#biography').type('მე ვარ მიშიკო და მიყვარს ვიოლინო');
+    cy.get('#biography').type('მე ვარ გია და მიყვარს ვიოლინო');
     Cypress.on('uncaught:exception', () => false);
     cy.intercept('POST', `${Cypress.env('url')}/new-member`, {
       statusCode: 201,
