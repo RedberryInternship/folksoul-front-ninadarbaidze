@@ -2,12 +2,12 @@
 import 'cypress-file-upload';
 /* eslint-disable cypress/no-unnecessary-waiting */
 
-Cypress.Commands.add('deleteBandMember', (membersNav: string) => {
-  cy.get(membersNav).click();
+Cypress.Commands.add('deleteBandMember', (id: string) => {
+  cy.get('#membersNav').click();
   Cypress.on('uncaught:exception', () => false);
   cy.intercept(
     'DELETE',
-    `${Cypress.env('url')}/delete-member/id`,
+    `${Cypress.env('url')}/delete-member/${id}`,
 
     {
       statusCode: 200,

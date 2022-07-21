@@ -21,11 +21,10 @@ describe('Social Links', () => {
       .invoke('removeClass', 'file_input_hidden')
       .attachFile('tamar.png');
     Cypress.on('uncaught:exception', () => false);
-    cy.intercept('PATCH', `${Cypress.env('url')}/change-band-logo`, {
+    cy.intercept('POST', `${Cypress.env('url')}/change-band-logo`, {
       statusCode: 200,
     });
     cy.get('#uploadBtn').click();
-    cy.get('#saveBtn').click();
     cy.wait(500);
     cy.url().should('include', '/about-band');
     cy.get('#logoutNav').click();

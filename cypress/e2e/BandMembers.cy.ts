@@ -13,48 +13,6 @@ describe('Band Members', () => {
     cy.wait(1000);
   });
 
-  it('create band member with name -ემილი-', () => {
-    cy.get('#membersNav').click();
-    cy.get('#newMemberBtn').click();
-    cy.get('#name').type('ემილი');
-    cy.get('#instrument').type('ვიოლინო');
-    cy.get('#orbitLength').type('300');
-    cy.get('#color').type('#000098');
-    cy.get('#biography').type('მე ვარ ემილი და მიყვარს ვიოლინო');
-    cy.get('#addUpdateBtn').click();
-  });
-  it('create band member with name -თორნიკე-', () => {
-    cy.get('#membersNav').click();
-    cy.get('#newMemberBtn').click();
-    cy.get('#name').type('თორნიკე');
-    cy.get('#instrument').type('გიტარა');
-    cy.get('#orbitLength').type('400');
-    cy.get('#color').type('#000098');
-    cy.get('#biography').type('მე ვარ თორნიკე და მიყვარს გიტარა');
-    cy.get('#addUpdateBtn').click();
-  });
-  it('create band member with name -ვარსენი-', () => {
-    cy.get('#membersNav').click();
-    cy.get('#newMemberBtn').click();
-    cy.get('#name').type('ვარსენი');
-    cy.get('#instrument').type('ტამტამი');
-    cy.get('#orbitLength').type('500');
-    cy.get('#color').type('#000098');
-    cy.get('#biography').type('მე ვარ ვარსენი და მიყვარს ტამტამი');
-    cy.get('#addUpdateBtn').click();
-  });
-
-  it('create band member with name -ვეფხვია-', () => {
-    cy.get('#membersNav').click();
-    cy.get('#newMemberBtn').click();
-    cy.get('#name').type('ვეფხვია');
-    cy.get('#instrument').type('ვიოლინო');
-    cy.get('#orbitLength').type('400');
-    cy.get('#color').type('#000098');
-    cy.get('#biography').type('მე ვარ ვეფხვია და მიყვარს ვიოლინო');
-    cy.get('#addUpdateBtn').click();
-  });
-
   it('visitors CAN ADD band member information and try uploading image', () => {
     cy.get('#membersNav').click();
     cy.get('#newMemberBtn').click();
@@ -86,7 +44,7 @@ describe('Band Members', () => {
     Cypress.on('uncaught:exception', () => false);
     cy.intercept(
       'POST',
-      `${Cypress.env('url')}/addd-member`,
+      `${Cypress.env('url')}/new-member`,
 
       {
         statusCode: 409,
@@ -96,20 +54,25 @@ describe('Band Members', () => {
     cy.url().should('not.be', '/band-members');
   });
 
-  it('visitors CAN EDIT band members', () => {
+  it('visitors CAN EDIT band members and view image', () => {
     cy.get('#membersNav').click();
-    cy.get('#yellowButton').click();
+    cy.get('[data-cy="yellowBtn"]').click({ multiple: true, force: true });
     cy.get('#name').clear().type('იზოლდა');
     Cypress.on('uncaught:exception', () => false);
     cy.intercept(
       'PATCH',
-      `${Cypress.env('url')}/edit-social/id`,
+      `${Cypress.env('url')}/edit-member/62d93687da14c2df7bd9209c`,
 
       {
         statusCode: 200,
       }
     );
     cy.get('#addUpdateBtn').click();
+    cy.get('[data-cy="uploadImg"]')
+      .eq(1)
+      .click({ multiple: true, force: true });
+    cy.get('#closeButton').click();
+
     cy.url().should('contain', '/band-members');
   });
 
@@ -121,14 +84,17 @@ describe('Band Members', () => {
     cy.get('input[type=file]')
       .invoke('removeClass', 'file_input_hidden')
       .attachFile('Vano.png');
+    Cypress.on('uncaught:exception', () => false);
+    cy.intercept('POST', `${Cypress.env('url')}/change-avatar`, {
+      statusCode: 200,
+    });
     cy.get('#uploadBtn').click();
-    cy.get('#saveBtn').click();
     cy.wait(1000);
     cy.get('#editPhoto').click();
     cy.contains('შეცვალე ჯგუფის წევრის ავატარი').should('be.visible');
   });
 
-  it('view social image', () => {
+  it('view band member image', () => {
     cy.get('#membersNav').click();
     cy.get('#editPhoto').click();
     cy.contains('შეცვალე ჯგუფის წევრის ავატარი').should('be.visible');
@@ -143,22 +109,6 @@ describe('Band Members', () => {
     cy.url().should('include', '/band-members');
   });
 
-  it('visitors CAN EDIT band member information', () => {
-    cy.get('#membersNav').click();
-    cy.get('#yellowButton').click();
-    cy.get('#name').type('ნინელი');
-    Cypress.on('uncaught:exception', () => false);
-    cy.intercept(
-      'PATCH',
-      `${Cypress.env('url')}/edit-member/id`,
-
-      {
-        statusCode: 200,
-      }
-    );
-    cy.get('#addUpdateBtn').click();
-  });
-
   it('visitors CAN NOT ADD band member information', () => {
     cy.get('#membersNav').click();
     cy.get('#newMemberBtn').click();
@@ -170,25 +120,25 @@ describe('Band Members', () => {
 
   it('visitors CAN NOT DELETE band member information', () => {
     cy.get('#membersNav').click();
-    Cypress.on('uncaught:exception', () => false);
-    cy.intercept(
-      'DELETE',
-      `${Cypress.env('url')}/delete-member/id`,
-
-      {
-        statusCode: 200,
-      }
-    );
     cy.get('#redButton').click();
     cy.get('#cancelbtn').click();
     cy.url().should('include', '/band-members');
   });
 
   it('visitors CAN DELETE band member information', () => {
-    cy.deleteBandMember('#membersNav');
-    cy.wait(2000);
-    cy.deleteBandMember('#membersNav');
-    cy.deleteBandMember('#membersNav');
-    cy.deleteBandMember('#membersNav');
+    cy.get('#membersNav').click();
+    Cypress.on('uncaught:exception', () => false);
+    cy.intercept(
+      'DELETE',
+      `${Cypress.env('url')}/delete-member/62d93687da14c2df7bd9209c`,
+
+      {
+        statusCode: 200,
+      }
+    );
+    cy.get('#redButton').click();
+    cy.get('#deletebtn').click();
+    cy.wait(500);
+    cy.url().should('include', '/band-members');
   });
 });

@@ -8,6 +8,7 @@ const EditPhoto: React.FC<EditPhotoTypes> = (props) => {
       fill='none'
       onClick={props.onClick}
       id='editPhoto'
+      data-cy='uploadImg'
       xmlns='http://www.w3.org/2000/svg'
       className={props.className}
     >

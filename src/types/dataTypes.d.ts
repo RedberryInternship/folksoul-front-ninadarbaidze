@@ -116,6 +116,7 @@ export type BandMemberTypes = {
 };
 
 type CirclesTypes = {
+  id: string;
   size: number;
   setIsSpinning: (boolean) => void;
   isSpinning: boolean;

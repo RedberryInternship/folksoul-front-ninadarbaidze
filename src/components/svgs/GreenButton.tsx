@@ -7,6 +7,7 @@ const GreenButton: React.FC<OnClick> = (props) => {
       viewBox='0 0 24 24'
       fill='none'
       id='greenButton'
+      data-cy='greenBtn'
       className='cursor-pointer w-[20px] h-[20px] 2xl:w-[28px] 2xl:h-[28px]'
       onClick={props.onClick}
       xmlns='http://www.w3.org/2000/svg'

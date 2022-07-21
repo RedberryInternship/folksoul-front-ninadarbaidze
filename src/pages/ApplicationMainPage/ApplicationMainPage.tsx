@@ -88,6 +88,7 @@ const FrontApplication = () => {
               {bandMembers.map((member) => (
                 <Circles
                   key={member._id}
+                  id={member._id}
                   size={member.orbitLength}
                   setIsSpinning={setIsSpinning}
                   isSpinning={isSpinning}

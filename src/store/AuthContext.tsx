@@ -35,11 +35,6 @@ export const AuthContextProvider: React.FC<Children> = (props) => {
   const userIsLoggedIn = !!token;
 
   const loginHandler = (token: string) => {
-    setTimeout(() => {
-      setToken('');
-      localStorage.removeItem('token');
-    }, 1000 * 60 * 120);
-
     setToken(token);
     localStorage.setItem('token', token);
   };

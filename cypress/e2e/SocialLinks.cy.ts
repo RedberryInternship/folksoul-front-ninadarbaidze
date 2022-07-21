@@ -12,38 +12,6 @@ describe('Social Links', () => {
     cy.wait(1000);
   });
 
-  it('create facebook social link', () => {
-    cy.get('#socialsNav').click();
-    cy.get('#addNewSocial').click();
-    cy.get('#social-name').type('google');
-    cy.get('#url').type('https://google.com');
-    cy.get('#addUpdateBtn').click();
-  });
-
-  it('create facebook social link', () => {
-    cy.get('#socialsNav').click();
-    cy.get('#addNewSocial').click();
-    cy.get('#social-name').type('facebook');
-    cy.get('#url').type('https://facebook.com');
-    cy.get('#addUpdateBtn').click();
-  });
-
-  it('create twitter social link', () => {
-    cy.get('#socialsNav').click();
-    cy.get('#addNewSocial').click();
-    cy.get('#social-name').type('twitter');
-    cy.get('#url').type('https://twitter.com');
-    cy.get('#addUpdateBtn').click();
-  });
-
-  it('create tinder social link', () => {
-    cy.get('#socialsNav').click();
-    cy.get('#addNewSocial').click();
-    cy.get('#social-name').type('tinder');
-    cy.get('#url').type('https://tinder.com');
-    cy.get('#addUpdateBtn').click();
-  });
-
   it('visitors CAN ADD socials and try uploading image', () => {
     cy.get('#socialsNav').click();
     cy.get('#addNewSocial').click();
@@ -73,7 +41,7 @@ describe('Social Links', () => {
     Cypress.on('uncaught:exception', () => false);
     cy.intercept(
       'POST',
-      `${Cypress.env('url')}/addd-social`,
+      `${Cypress.env('url')}/add-social`,
 
       {
         statusCode: 409,
@@ -83,20 +51,25 @@ describe('Social Links', () => {
     cy.url().should('not.be', '/socials');
   });
 
-  it('visitors CAN EDIT social links', () => {
+  it('visitors CAN EDIT social links and view image', () => {
     cy.get('#socialsNav').click();
-    cy.get('#yellowButton').click();
+    cy.get('[data-cy="yellowBtn"]').click({ multiple: true, force: true });
     cy.get('#social-name').clear().type('tumblr');
     Cypress.on('uncaught:exception', () => false);
     cy.intercept(
       'PATCH',
-      `${Cypress.env('url')}/edit-social/id`,
+      `${Cypress.env('url')}/edit-social/62d93a5eda14c2df7bd92465`,
 
       {
         statusCode: 200,
       }
     );
     cy.get('#addUpdateBtn').click();
+    cy.get('[data-cy="uploadImg"]')
+      .eq(1)
+      .click({ multiple: true, force: true });
+    cy.get('#closeButton').click();
+
     cy.url().should('contain', '/socials');
   });
 
@@ -108,8 +81,11 @@ describe('Social Links', () => {
     cy.get('input[type=file]')
       .invoke('removeClass', 'file_input_hidden')
       .attachFile('Vano.png');
+    Cypress.on('uncaught:exception', () => false);
+    cy.intercept('POST', `${Cypress.env('url')}/change-social-icon`, {
+      statusCode: 200,
+    });
     cy.get('#uploadBtn').click();
-    cy.get('#saveBtn').click();
     cy.wait(1000);
     cy.get('#editPhoto').click();
     cy.contains('შეცვალე სოციალური ბმულის ხატულა').should('be.visible');
@@ -137,12 +113,12 @@ describe('Social Links', () => {
     cy.url().should('include', 'dashboard/socials');
   });
 
-  it('visitors CAN NOT DELETE band member information', () => {
+  it('visitors CAN NOT DELETE socials information', () => {
     cy.get('#socialsNav').click();
     Cypress.on('uncaught:exception', () => false);
     cy.intercept(
       'DELETE',
-      `${Cypress.env('url')}/delete-social/id`,
+      `${Cypress.env('url')}/delete-social/62d93a5eda14c2df7bd92465`,
 
       {
         statusCode: 200,
@@ -154,12 +130,19 @@ describe('Social Links', () => {
   });
 
   it('visitors CAN DELETE social link', () => {
-    cy.deleteSocial('#socialsNav');
-    cy.wait(1000);
-    cy.deleteSocial('#socialsNav');
-    cy.wait(1000);
-    cy.deleteSocial('#socialsNav');
-    cy.wait(1000);
-    cy.deleteSocial('#socialsNav');
+    cy.get('#socialsNav').click();
+    Cypress.on('uncaught:exception', () => false);
+    cy.intercept(
+      'DELETE',
+      `${Cypress.env('url')}/delete-social/62d93a5eda14c2df7bd92465`,
+
+      {
+        statusCode: 200,
+      }
+    );
+    cy.get('#redButton').click();
+    cy.get('#deletebtn').click();
+    cy.wait(500);
+    cy.url().should('include', '/socials');
   });
 });
