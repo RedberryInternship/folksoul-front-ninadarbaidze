@@ -5,11 +5,16 @@ describe('Social Links', () => {
     cy.visit('/login');
     cy.get('#login-usr').type('nina');
     cy.get('#password').type('nina');
+    cy.wait(1000);
+    Cypress.on('uncaught:exception', () => false);
+    cy.request('POST', `${Cypress.env('API_URL')}/auth`, {
+      username: 'nina',
+      password: 'nina',
+    });
     cy.get('#loginBtn').click();
-    cy.wait(500);
   });
   afterEach(() => {
-    cy.wait(500);
+    cy.wait(1000);
   });
 
   it('upload band image', () => {

@@ -24,6 +24,12 @@ describe('login', () => {
   it('visitor CAN proceed to next page if inputs are VALID and then logout sucessfully', () => {
     cy.get('#login-usr').type('nina');
     cy.get('#password').type('nina');
+    Cypress.on('uncaught:exception', () => false);
+    cy.request('POST', `${Cypress.env('API_URL')}/auth`, {
+      username: 'nina',
+      password: 'nina',
+    });
+    cy.get('#loginBtn').click();
     cy.get('#loginBtn').click();
     cy.url().should('include', 'dashboard/main');
     cy.get('#logoutNav').click();
