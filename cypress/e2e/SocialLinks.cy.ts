@@ -20,7 +20,7 @@ describe('Social Links', () => {
     Cypress.on('uncaught:exception', () => false);
     cy.intercept(
       'POST',
-      `${Cypress.env('url')}/add-social`,
+      `${Cypress.env('API_URL')}/add-social`,
 
       {
         statusCode: 201,
@@ -41,7 +41,7 @@ describe('Social Links', () => {
     Cypress.on('uncaught:exception', () => false);
     cy.intercept(
       'POST',
-      `${Cypress.env('url')}/add-social`,
+      `${Cypress.env('API_URL')}/add-social`,
 
       {
         statusCode: 409,
@@ -58,7 +58,7 @@ describe('Social Links', () => {
     Cypress.on('uncaught:exception', () => false);
     cy.intercept(
       'PATCH',
-      `${Cypress.env('url')}/edit-social/62d93a5eda14c2df7bd92465`,
+      `${Cypress.env('API_URL')}/edit-social/62d93a5eda14c2df7bd92465`,
 
       {
         statusCode: 200,
@@ -82,7 +82,7 @@ describe('Social Links', () => {
       .invoke('removeClass', 'file_input_hidden')
       .attachFile('Vano.png');
     Cypress.on('uncaught:exception', () => false);
-    cy.intercept('POST', `${Cypress.env('url')}/change-social-icon`, {
+    cy.intercept('POST', `${Cypress.env('API_URL')}/change-social-icon`, {
       statusCode: 200,
     });
     cy.get('#uploadBtn').click();
@@ -118,7 +118,7 @@ describe('Social Links', () => {
     Cypress.on('uncaught:exception', () => false);
     cy.intercept(
       'DELETE',
-      `${Cypress.env('url')}/delete-social/62d93a5eda14c2df7bd92465`,
+      `${Cypress.env('API_URL')}/delete-social/62d93a5eda14c2df7bd92465`,
 
       {
         statusCode: 200,
@@ -134,7 +134,7 @@ describe('Social Links', () => {
     Cypress.on('uncaught:exception', () => false);
     cy.intercept(
       'DELETE',
-      `${Cypress.env('url')}/delete-social/62d93a5eda14c2df7bd92465`,
+      `${Cypress.env('API_URL')}/delete-social/62d93a5eda14c2df7bd92465`,
 
       {
         statusCode: 200,

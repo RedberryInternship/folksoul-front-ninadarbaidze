@@ -8,7 +8,7 @@ describe('login', () => {
     cy.get('#login-usr').type('nina');
     cy.get('#password').type('shemishvi');
     Cypress.on('uncaught:exception', () => false);
-    cy.intercept('POST', `${Cypress.env('url')}/auth`, {
+    cy.intercept('POST', `${Cypress.env('API_URL')}/auth`, {
       statusCode: 401,
     });
     cy.get('#loginBtn').click();

@@ -21,7 +21,7 @@ describe('Social Links', () => {
       .invoke('removeClass', 'file_input_hidden')
       .attachFile('tamar.png');
     Cypress.on('uncaught:exception', () => false);
-    cy.intercept('POST', `${Cypress.env('url')}/change-band-logo`, {
+    cy.intercept('POST', `${Cypress.env('API_URL')}/change-band-logo`, {
       statusCode: 200,
     });
     cy.get('#uploadBtn').click();
@@ -39,7 +39,7 @@ describe('Social Links', () => {
       .invoke('removeClass', 'file_input_hidden')
       .attachFile('toobig.png');
     Cypress.on('uncaught:exception', () => false);
-    cy.intercept('PATCH', `${Cypress.env('url')}/change-band-logo`, {
+    cy.intercept('PATCH', `${Cypress.env('API_URL')}/change-band-logo`, {
       statusCode: 413,
     });
     cy.get('#uploadBtn').click();
@@ -60,7 +60,7 @@ describe('Social Links', () => {
     Cypress.on('uncaught:exception', () => false);
     cy.intercept(
       'PATCH',
-      `${Cypress.env('url')}/edit-band/62c9483da24de73b212bcd2c`,
+      `${Cypress.env('API_URL')}/edit-band/62c9483da24de73b212bcd2c`,
       {
         statusCode: 200,
       }
@@ -81,7 +81,7 @@ describe('Social Links', () => {
     Cypress.on('uncaught:exception', () => false);
     cy.intercept(
       'PATCH',
-      `${Cypress.env('url')}/edit-band/62c9483da24de73b212bcd2c`,
+      `${Cypress.env('API_URL')}/edit-band/62c9483da24de73b212bcd2c`,
       {
         statusCode: 422,
       }

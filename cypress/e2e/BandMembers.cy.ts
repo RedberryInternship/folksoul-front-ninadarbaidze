@@ -22,7 +22,7 @@ describe('Band Members', () => {
     cy.get('#color').type('#000098');
     cy.get('#biography').type('მე ვარ გია და მიყვარს ვიოლინო');
     Cypress.on('uncaught:exception', () => false);
-    cy.intercept('POST', `${Cypress.env('url')}/new-member`, {
+    cy.intercept('POST', `${Cypress.env('API_URL')}/new-member`, {
       statusCode: 201,
     });
 
@@ -44,7 +44,7 @@ describe('Band Members', () => {
     Cypress.on('uncaught:exception', () => false);
     cy.intercept(
       'POST',
-      `${Cypress.env('url')}/new-member`,
+      `${Cypress.env('API_URL')}/new-member`,
 
       {
         statusCode: 409,
@@ -61,7 +61,7 @@ describe('Band Members', () => {
     Cypress.on('uncaught:exception', () => false);
     cy.intercept(
       'PATCH',
-      `${Cypress.env('url')}/edit-member/62d93687da14c2df7bd9209c`,
+      `${Cypress.env('API_URL')}/edit-member/62d93687da14c2df7bd9209c`,
 
       {
         statusCode: 200,
@@ -85,7 +85,7 @@ describe('Band Members', () => {
       .invoke('removeClass', 'file_input_hidden')
       .attachFile('Vano.png');
     Cypress.on('uncaught:exception', () => false);
-    cy.intercept('POST', `${Cypress.env('url')}/change-avatar`, {
+    cy.intercept('POST', `${Cypress.env('API_URL')}/change-avatar`, {
       statusCode: 200,
     });
     cy.get('#uploadBtn').click();
@@ -130,7 +130,7 @@ describe('Band Members', () => {
     Cypress.on('uncaught:exception', () => false);
     cy.intercept(
       'DELETE',
-      `${Cypress.env('url')}/delete-member/62d93687da14c2df7bd9209c`,
+      `${Cypress.env('API_URL')}/delete-member/62d93687da14c2df7bd9209c`,
 
       {
         statusCode: 200,
