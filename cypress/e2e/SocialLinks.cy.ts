@@ -7,10 +7,17 @@ describe('Social Links', () => {
     cy.get('#password').type('nina');
     cy.wait(1000);
     Cypress.on('uncaught:exception', () => false);
-    cy.request('POST', `${Cypress.env('API_URL')}/auth`, {
-      username: 'nina',
-      password: 'nina',
+    cy.intercept('POST', `${Cypress.env('API_URL')}/auth`, (req) => {
+      req.body = {
+        username: 'nina',
+        password: 'nina',
+      };
+      req.reply({
+        token:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5pbmEiLCJpYXQiOjE2NTg3Mzg0OTQsImV4cCI6MTY1ODc0NTY5NH0.w3kTqC6eBWdc_kuANzJf9-pJ6k_DeSkC-h83SxBz4ec',
+      });
     });
+    cy.wait(1000);
     cy.get('#loginBtn').click();
   });
   afterEach(() => {
@@ -63,7 +70,7 @@ describe('Social Links', () => {
     Cypress.on('uncaught:exception', () => false);
     cy.intercept(
       'PATCH',
-      `${Cypress.env('API_URL')}/edit-social/62d93a5eda14c2df7bd92465`,
+      `${Cypress.env('API_URL')}/edit-social/62de6b33fa5bc7d5027d043f`,
 
       {
         statusCode: 200,
@@ -123,7 +130,7 @@ describe('Social Links', () => {
     Cypress.on('uncaught:exception', () => false);
     cy.intercept(
       'DELETE',
-      `${Cypress.env('API_URL')}/delete-social/62d93a5eda14c2df7bd92465`,
+      `${Cypress.env('API_URL')}/delete-social/62de6b33fa5bc7d5027d043f`,
 
       {
         statusCode: 200,
@@ -139,7 +146,7 @@ describe('Social Links', () => {
     Cypress.on('uncaught:exception', () => false);
     cy.intercept(
       'DELETE',
-      `${Cypress.env('API_URL')}/delete-social/62d93a5eda14c2df7bd92465`,
+      `${Cypress.env('API_URL')}/delete-social/62de6b33fa5bc7d5027d043f`,
 
       {
         statusCode: 200,

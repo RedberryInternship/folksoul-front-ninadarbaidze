@@ -8,10 +8,17 @@ describe('Band Members', () => {
     cy.get('#password').type('nina');
     cy.wait(1000);
     Cypress.on('uncaught:exception', () => false);
-    cy.request('POST', `${Cypress.env('API_URL')}/auth`, {
-      username: 'nina',
-      password: 'nina',
+    cy.intercept('POST', `${Cypress.env('API_URL')}/auth`, (req) => {
+      req.body = {
+        username: 'nina',
+        password: 'nina',
+      };
+      req.reply({
+        token:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5pbmEiLCJpYXQiOjE2NTg3Mzg0OTQsImV4cCI6MTY1ODc0NTY5NH0.w3kTqC6eBWdc_kuANzJf9-pJ6k_DeSkC-h83SxBz4ec',
+      });
     });
+    cy.wait(1000);
     cy.get('#loginBtn').click();
   });
   afterEach(() => {
