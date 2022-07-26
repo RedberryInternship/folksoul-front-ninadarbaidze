@@ -29,11 +29,11 @@ const NewMember = () => {
   const updateSocialHandler = async (data: AddNewSocial) => {
     try {
       await editSocial(authCtx.token, state.id, data);
-      authCtx.refreshSocials();
-      navigate('/dashboard/socials');
-
-      return;
     } catch (error) {}
+    authCtx.refreshSocials();
+    navigate('/dashboard/socials');
+
+    return;
   };
 
   const addNewSocialHandler = async (data: AddNewSocial) => {

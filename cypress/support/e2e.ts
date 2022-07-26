@@ -8,8 +8,11 @@ declare global {
        * Custom command to select DOM element by data-cy attribute.
        * @example cy.dataCy('greeting')
        */
-      deleteBandMember(value: string): Chainable<Element>;
-      deleteSocial(value: string): Chainable<Element>;
+      bandMembers(value: string): Chainable<Element>;
+      bands(value: string): Chainable<Element>;
+      socials(value: string): Chainable<Element>;
+      bandMembersAll(value: string): Chainable<Element>;
+      socialsAll(value: string): Chainable<Element>;
     }
   }
 }

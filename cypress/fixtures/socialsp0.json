@@ -1,0 +1,31 @@
+{
+  "socials": 
+[
+  {
+    "_id": "62de6b33fa5bc7d5027d043f",
+    "name": "google",
+    "url": "https://google.com",
+    "image": []
+  },
+  {
+    "_id": "62de6b36fa5bc7d5027d0449",
+    "name": "facebook",
+    "url": "https://facebook.com",
+    "image": [
+      {
+        "_id": "62de6b67fa5bc7d5027d0471",
+        "imageUrl": "images/1658743655682-google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png",
+        "socialId": "62de6b36fa5bc7d5027d0449"
+      }
+    ]
+  },
+  {
+    "_id": "62de6b39fa5bc7d5027d0453",
+    "name": "tumblr",
+    "url": "https://google.com",
+    "image": []
+  }
+  ],
+
+"total": 3
+}

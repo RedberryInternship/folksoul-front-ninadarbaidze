@@ -25,6 +25,8 @@ describe('About Band', () => {
   });
 
   it('upload band image', () => {
+    cy.wait(1000);
+    cy.bands('band');
     cy.get('#aboutNav').click();
     cy.get('#editPhoto').click();
     cy.get('#closeButton').click();
@@ -43,6 +45,7 @@ describe('About Band', () => {
   });
 
   it('CAN NOT upload band image', () => {
+    cy.bands('band');
     cy.get('#aboutNav').click();
     cy.get('#editPhoto').click();
     cy.get('#closeButton').click();
@@ -62,6 +65,7 @@ describe('About Band', () => {
   });
 
   it('visitors CAN EDIT band about', () => {
+    cy.bands('band2');
     cy.get('#aboutNav').click();
     cy.get('#editIcon').click();
     cy.get('#goBackBtn').click();
@@ -86,6 +90,7 @@ describe('About Band', () => {
   });
 
   it('visitors CAN NOT EDIT band about', () => {
+    cy.bands('band');
     cy.get('#aboutNav').click();
     cy.get('#editIcon').click();
     cy.get('#goBackBtn').click();

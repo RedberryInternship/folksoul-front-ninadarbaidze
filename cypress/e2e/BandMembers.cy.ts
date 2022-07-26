@@ -13,6 +13,7 @@ describe('Band Members', () => {
         username: 'nina',
         password: 'nina',
       };
+
       req.reply({
         token:
           'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5pbmEiLCJpYXQiOjE2NTg3Mzg0OTQsImV4cCI6MTY1ODc0NTY5NH0.w3kTqC6eBWdc_kuANzJf9-pJ6k_DeSkC-h83SxBz4ec',
@@ -20,12 +21,15 @@ describe('Band Members', () => {
     });
     cy.wait(1000);
     cy.get('#loginBtn').click();
+    cy.bandMembers('0');
+    cy.bandMembers('1');
   });
   afterEach(() => {
     cy.wait(1000);
   });
 
   it('visitors CAN ADD band member information and try uploading image', () => {
+    cy.wait(1000);
     cy.get('#membersNav').click();
     cy.get('#newMemberBtn').click();
     cy.get('#name').type('გია');
@@ -68,23 +72,25 @@ describe('Band Members', () => {
 
   it('visitors CAN EDIT band members and view image', () => {
     cy.get('#membersNav').click();
-    cy.get('[data-cy="yellowBtn"]').click({ multiple: true, force: true });
-    cy.get('#name').clear().type('იზოლდა');
+    cy.get('[data-cy="yellowBtn"]')
+      .eq(0)
+      .click({ multiple: true, force: true });
     Cypress.on('uncaught:exception', () => false);
     cy.intercept(
       'PATCH',
-      `${Cypress.env('API_URL')}/edit-member/62d93687da14c2df7bd9209c`,
+      `${Cypress.env('API_URL')}/edit-member/62de83dbfa5bc7d5027d05f2`,
 
       {
         statusCode: 200,
       }
     );
+    cy.wait(500);
     cy.get('#addUpdateBtn').click();
+    cy.wait(1000);
     cy.get('[data-cy="uploadImg"]')
       .eq(1)
       .click({ multiple: true, force: true });
     cy.get('#closeButton').click();
-
     cy.url().should('contain', '/band-members');
   });
 
@@ -138,11 +144,16 @@ describe('Band Members', () => {
   });
 
   it('visitors CAN DELETE band member information', () => {
+    cy.intercept('GET', `${Cypress.env('API_URL')}/band-members?page=0`, {
+      fixture: `membersp1`,
+    }).as('members');
+    cy.visit('/dashboard/band-members');
+    cy.wait('@members');
     cy.get('#membersNav').click();
     Cypress.on('uncaught:exception', () => false);
     cy.intercept(
       'DELETE',
-      `${Cypress.env('API_URL')}/delete-member/62d93687da14c2df7bd9209c`,
+      `${Cypress.env('API_URL')}/delete-member/62de8jcbfa5bc7d5027d05ed`,
 
       {
         statusCode: 200,
@@ -150,6 +161,8 @@ describe('Band Members', () => {
     );
     cy.get('#redButton').click();
     cy.get('#deletebtn').click();
+    cy.visit('/dashboard/band-members');
+    cy.wait('@members');
     cy.wait(500);
     cy.url().should('include', '/band-members');
   });

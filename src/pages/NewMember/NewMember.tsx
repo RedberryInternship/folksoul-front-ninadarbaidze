@@ -32,11 +32,11 @@ const NewMember = () => {
   const updateBandMemberHandler = async (data: AddNewMember) => {
     try {
       await editMember(authCtx.token, state.id, data);
-      authCtx.refreshMembers();
-      navigate('/dashboard/band-members');
-
-      return;
     } catch (error) {}
+    authCtx.refreshMembers();
+    navigate('/dashboard/band-members');
+
+    return;
   };
 
   const addNewBandMemberHandler = async (data: AddNewMember) => {

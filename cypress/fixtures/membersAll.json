@@ -1,0 +1,33 @@
+[
+    {
+      "_id": "62de83dbfa5bc7d5027d05f2",
+      "name": "საბა",
+      "instrument": "გიტარა ",
+      "orbitLength": 400,
+      "color": "#b453c4",
+      "biography": "ოლა",
+      "image": []
+    },
+    {
+      "_id": "62de83cbfa5bc7d50f7d05ed",
+      "name": "ნინა",
+      "instrument": "პიანინო",
+      "orbitLength": 350,
+      "color": "#9a53a7",
+      "biography": "ოლა",
+      "image": [ {
+        "_id": "62de9a05fa5bc7d5027d0705",
+        "imageUrl": "images/1658755589230-Vano.png",
+        "memberId": "62de99e8fa5bc7d5027d06f7"
+      }]
+    },
+    {
+      "_id": "62de83dbfa5bckd5027d05f2",
+      "name": "გია",
+      "instrument": "გიტარა ",
+      "orbitLength": 50,
+      "color": "#b453c4",
+      "biography": "ოლა",
+      "image": []
+    }
+  ]

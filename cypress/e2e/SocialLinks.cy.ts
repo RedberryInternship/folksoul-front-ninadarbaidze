@@ -19,12 +19,15 @@ describe('Social Links', () => {
     });
     cy.wait(1000);
     cy.get('#loginBtn').click();
+    cy.socials('0');
+    cy.socials('1');
   });
   afterEach(() => {
     cy.wait(1000);
   });
 
   it('visitors CAN ADD socials and try uploading image', () => {
+    cy.wait(1000);
     cy.get('#socialsNav').click();
     cy.get('#addNewSocial').click();
     cy.get('#social-name').type('google');
@@ -65,8 +68,9 @@ describe('Social Links', () => {
 
   it('visitors CAN EDIT social links and view image', () => {
     cy.get('#socialsNav').click();
-    cy.get('[data-cy="yellowBtn"]').click({ multiple: true, force: true });
-    cy.get('#social-name').clear().type('tumblr');
+    cy.get('[data-cy="yellowBtn"]')
+      .eq(0)
+      .click({ multiple: true, force: true });
     Cypress.on('uncaught:exception', () => false);
     cy.intercept(
       'PATCH',
@@ -142,11 +146,16 @@ describe('Social Links', () => {
   });
 
   it('visitors CAN DELETE social link', () => {
+    cy.intercept('GET', `${Cypress.env('API_URL')}/social-media?page=0`, {
+      fixture: `socialsp1`,
+    }).as('socials');
+    cy.visit('/dashboard/socials');
+    cy.wait('@socials');
     cy.get('#socialsNav').click();
     Cypress.on('uncaught:exception', () => false);
     cy.intercept(
       'DELETE',
-      `${Cypress.env('API_URL')}/delete-social/62de6b33fa5bc7d5027d043f`,
+      `${Cypress.env('API_URL')}/delete-social/62de6b3cfa5bc7d5027d045d`,
 
       {
         statusCode: 200,
@@ -154,6 +163,8 @@ describe('Social Links', () => {
     );
     cy.get('#redButton').click();
     cy.get('#deletebtn').click();
+    cy.visit('/dashboard/socials');
+    cy.wait('@socials');
     cy.wait(500);
     cy.url().should('include', '/socials');
   });

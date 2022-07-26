@@ -2,13 +2,16 @@
 /* eslint-disable cypress/no-unnecessary-waiting */
 describe('Front Application', () => {
   beforeEach(() => {
+    cy.bandMembersAll('membersAll');
     cy.visit('/');
   });
 
   it('test individual band members', () => {
+    cy.bandMembersAll('membersAll');
+    cy.socialsAll('socialsAll');
     cy.wait(500);
-    cy.get('#62d93687da14c2df7bd9209c').click({ force: true });
-    cy.get('#62d9368bda14c2df7bd920a6').click({ force: true });
+    cy.get('#62de83dbfa5bc7d5027d05f2').click({ force: true });
+    cy.get('#62de83cbfa5bc7d50f7d05ed').click({ force: true });
     cy.get('#sun').click();
   });
 });
