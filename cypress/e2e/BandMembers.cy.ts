@@ -3,24 +3,23 @@
 /* eslint-disable cypress/no-unnecessary-waiting */
 describe('Band Members', () => {
   beforeEach(() => {
+    Cypress.on('uncaught:exception', () => false);
     cy.visit('/login');
     cy.get('#login-usr').type('nina');
     cy.get('#password').type('nina');
     cy.wait(1000);
-    Cypress.on('uncaught:exception', () => false);
-    cy.intercept('POST', `${Cypress.env('API_URL')}/auth`, (req) => {
-      req.body = {
-        username: 'nina',
-        password: 'nina',
-      };
-
-      req.reply({
+    cy.intercept('POST', `${Cypress.env('API_URL')}/auth`, {
+      statusCode: 200,
+      body: {
         token:
           'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5pbmEiLCJpYXQiOjE2NTg3Mzg0OTQsImV4cCI6MTY1ODc0NTY5NH0.w3kTqC6eBWdc_kuANzJf9-pJ6k_DeSkC-h83SxBz4ec',
-      });
+      },
     });
     cy.wait(1000);
     cy.get('#loginBtn').click();
+
+    cy.wait(1000);
+    Cypress.on('uncaught:exception', () => false);
     cy.bandMembers('0');
     cy.bandMembers('1');
   });
@@ -29,7 +28,6 @@ describe('Band Members', () => {
   });
 
   it('visitors CAN ADD band member information and try uploading image', () => {
-    cy.wait(1000);
     cy.get('#membersNav').click();
     cy.get('#newMemberBtn').click();
     cy.get('#name').type('გია');

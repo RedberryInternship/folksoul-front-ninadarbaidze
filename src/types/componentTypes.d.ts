@@ -34,7 +34,7 @@ export type BandImage = {
 export type ImageUploadBand = {
   _id: string;
   about: string;
-  image: ImageTypes[];
+  image: string;
   setImageModalState: (boolean) => void;
 };
 

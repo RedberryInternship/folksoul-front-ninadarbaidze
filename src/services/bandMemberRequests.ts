@@ -6,6 +6,7 @@ export const getBandMembers = async (
   pageNumber: number
 ): Promise<AxiosResponse<BandMembersResponseTypes>> => {
   const response = await axios.get(`band-members?page=${pageNumber}`);
+  console.log(response);
   return response;
 };
 

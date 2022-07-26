@@ -32,7 +32,7 @@ const ImageUploadModal: React.FC<ImageUploadDataSocials> = (props) => {
     if (props.image.length <= 0 && !imagePreview) {
       return youtube;
     } else if (!imagePreview) {
-      return `${process.env.REACT_APP_API_URL}/${props.image[0].imageUrl}`;
+      return `${process.env.REACT_APP_API_URL}/${props.image}`;
     } else {
       return imagePreview;
     }

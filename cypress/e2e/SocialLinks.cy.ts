@@ -2,24 +2,25 @@
 /* eslint-disable cypress/no-unnecessary-waiting */
 describe('Social Links', () => {
   beforeEach(() => {
+    Cypress.on('uncaught:exception', () => false);
     cy.visit('/login');
     cy.get('#login-usr').type('nina');
     cy.get('#password').type('nina');
     cy.wait(1000);
-    Cypress.on('uncaught:exception', () => false);
-    cy.intercept('POST', `${Cypress.env('API_URL')}/auth`, (req) => {
-      req.body = {
-        username: 'nina',
-        password: 'nina',
-      };
-      req.reply({
+    cy.intercept('POST', `${Cypress.env('API_URL')}/auth`, {
+      statusCode: 200,
+      body: {
         token:
           'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5pbmEiLCJpYXQiOjE2NTg3Mzg0OTQsImV4cCI6MTY1ODc0NTY5NH0.w3kTqC6eBWdc_kuANzJf9-pJ6k_DeSkC-h83SxBz4ec',
-      });
+      },
     });
     cy.wait(1000);
     cy.get('#loginBtn').click();
+
+    cy.wait(1000);
+    Cypress.on('uncaught:exception', () => false);
     cy.socials('0');
+    Cypress.on('uncaught:exception', () => false);
     cy.socials('1');
   });
   afterEach(() => {
@@ -27,7 +28,6 @@ describe('Social Links', () => {
   });
 
   it('visitors CAN ADD socials and try uploading image', () => {
-    cy.wait(1000);
     cy.get('#socialsNav').click();
     cy.get('#addNewSocial').click();
     cy.get('#social-name').type('google');
@@ -46,6 +46,10 @@ describe('Social Links', () => {
     cy.get('#uploadBtn').click();
     cy.get('#saveBtn').click();
     cy.url().should('include', '/socials');
+    Cypress.on('uncaught:exception', (err, runnable) => {
+      console.log(err);
+      return false;
+    });
   });
 
   it('visitors CAN NOT ADD socials', () => {

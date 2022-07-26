@@ -23,7 +23,7 @@ const FrontApplication = () => {
     try {
       const response = await getAboutBandInfo();
 
-      setBandLogo(response.data.image[0].imageUrl);
+      setBandLogo(response.data.image);
       setBandInfo(response.data.about);
     } catch (error) {}
   }, []);
@@ -60,7 +60,7 @@ const FrontApplication = () => {
     } else if (selectedMember.image.length === 0) {
       return memberIcon;
     } else {
-      return `${process.env.REACT_APP_API_URL}/${selectedMember.image[0].imageUrl}`;
+      return `${process.env.REACT_APP_API_URL}/${selectedMember.image}`;
     }
   };
 
@@ -95,7 +95,7 @@ const FrontApplication = () => {
                   duration={member.orbitLength / 4}
                   padding={'500px'}
                   memberName={member.name}
-                  memberImage={member.image[0] ? member.image[0].imageUrl : ''}
+                  memberImage={member.image[0] ? member.image : ''}
                   memberColor={member.color}
                   onClick={() => setSelectedMember(member)}
                   setMemberIsSelected={setMemberIsSelected}
@@ -125,7 +125,7 @@ const FrontApplication = () => {
                       <img
                         src={
                           social.image.length > 0
-                            ? `${process.env.REACT_APP_API_URL}/${social.image[0].imageUrl}`
+                            ? `${process.env.REACT_APP_API_URL}/${social.image}`
                             : youtube
                         }
                         className='h-[2rem] cursor-pointer'

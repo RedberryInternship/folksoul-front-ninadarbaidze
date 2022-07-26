@@ -8,7 +8,7 @@ const Main = () => {
   const [data, setData] = useState<AboutBandTypes>({
     _id: '',
     about: '',
-    image: [],
+    image: '',
   });
 
   const fetchData = useCallback(async () => {
@@ -32,7 +32,7 @@ const Main = () => {
             <img
               src={
                 data.image.length > 0
-                  ? `${process.env.REACT_APP_API_URL}/${data.image[0].imageUrl}`
+                  ? `${process.env.REACT_APP_API_URL}/${data.image}`
                   : band
               }
               alt='band-member-logo'

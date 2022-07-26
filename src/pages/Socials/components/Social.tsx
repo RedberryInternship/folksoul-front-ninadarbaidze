@@ -58,7 +58,7 @@ const Social: React.FC<Socials> = (props) => {
           <img
             src={
               props.image.length > 0
-                ? `${process.env.REACT_APP_API_URL}/${props.image[0].imageUrl}`
+                ? `${process.env.REACT_APP_API_URL}/${props.image}`
                 : youtube
             }
             alt='social-icon'

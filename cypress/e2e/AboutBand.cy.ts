@@ -19,14 +19,16 @@ describe('About Band', () => {
     });
     cy.wait(1000);
     cy.get('#loginBtn').click();
+
+    cy.wait(1000);
+    Cypress.on('uncaught:exception', () => false);
+    cy.bands('band');
   });
   afterEach(() => {
     cy.wait(1000);
   });
 
   it('upload band image', () => {
-    cy.wait(1000);
-    cy.bands('band');
     cy.get('#aboutNav').click();
     cy.get('#editPhoto').click();
     cy.get('#closeButton').click();
@@ -45,7 +47,6 @@ describe('About Band', () => {
   });
 
   it('CAN NOT upload band image', () => {
-    cy.bands('band');
     cy.get('#aboutNav').click();
     cy.get('#editPhoto').click();
     cy.get('#closeButton').click();
@@ -90,7 +91,6 @@ describe('About Band', () => {
   });
 
   it('visitors CAN NOT EDIT band about', () => {
-    cy.bands('band');
     cy.get('#aboutNav').click();
     cy.get('#editIcon').click();
     cy.get('#goBackBtn').click();
