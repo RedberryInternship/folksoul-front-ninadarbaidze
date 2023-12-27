@@ -21,8 +21,8 @@ const Login = () => {
     mode: 'onChange',
     reValidateMode: 'onChange',
     defaultValues: {
-      username: '',
-      password: '',
+      username: 'user',
+      password: 'user',
     },
   });
 
