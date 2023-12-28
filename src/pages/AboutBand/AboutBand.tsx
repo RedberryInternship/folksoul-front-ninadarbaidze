@@ -51,8 +51,8 @@ const AboutBand = () => {
           <div className=' flex flex-col justify-center items-center relative rounded-full bg-backdrop mt-4 w-[10rem] h-[10rem] border-[5px] 2xl:border-[8px] border-blue3   2xl:w-[16rem] 2xl:h-[16rem] drop-shadow-5xl'>
             <img
               src={
-                data.image.length > 0
-                  ? `${process.env.REACT_APP_API_URL}/${data.image}`
+                data?.image?.length > 0
+                  ? `${process.env.REACT_APP_API_URL}/${data?.image}`
                   : band
               }
               alt='band-icon'

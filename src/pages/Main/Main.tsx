@@ -31,8 +31,8 @@ const Main = () => {
           <div className='flex flex-col justify-center h-[15vw] w-[25vw] bg-[#000000] border-[16px] overflow-clip'>
             <img
               src={
-                data.image.length > 0
-                  ? `${process.env.REACT_APP_API_URL}/${data.image}`
+                data?.image?.length > 0
+                  ? `${process.env.REACT_APP_API_URL}/${data?.image}`
                   : band
               }
               alt='band-member-logo'

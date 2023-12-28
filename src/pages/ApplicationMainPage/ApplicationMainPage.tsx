@@ -23,15 +23,15 @@ const FrontApplication = () => {
     try {
       const response = await getAboutBandInfo();
 
-      setBandLogo(response.data.image);
-      setBandInfo(response.data.about);
+      setBandLogo(response?.data?.image);
+      setBandInfo(response?.data?.about);
     } catch (error) {}
   }, []);
 
   const fetchSocials = useCallback(async () => {
     try {
       const response = await getSocialMediaLinks();
-      setSocials(response.data);
+      setSocials(response?.data);
     } catch (error) {}
   }, []);
 
