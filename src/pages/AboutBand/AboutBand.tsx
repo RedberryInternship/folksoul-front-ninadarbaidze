@@ -18,8 +18,6 @@ const AboutBand = () => {
   const navigate = useNavigate();
   const authCtx = useContext(AuthContext);
 
- 
-
   const fetchData = useCallback(async () => {
     try {
       const response = await getAboutBandInfo();
