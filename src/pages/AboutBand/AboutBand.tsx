@@ -18,9 +18,7 @@ const AboutBand = () => {
   const navigate = useNavigate();
   const authCtx = useContext(AuthContext);
 
-  const openImagePickerHandler = () => {
-    setImageModalState(true);
-  };
+ 
 
   const fetchData = useCallback(async () => {
     try {
@@ -60,7 +58,7 @@ const AboutBand = () => {
             />
 
             <EditPhoto
-              onClick={openImagePickerHandler}
+              onClick={() => {}}
               className='w-10 2xl:w-16 absolute ml-28 mt-32 2xl:ml-44 2xl:mt-48 cursor-pointer'
             />
           </div>

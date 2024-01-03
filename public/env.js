@@ -1,3 +1,3 @@
 window.env = {
-  "DOMAIN": "http://localhost:3000"
+  "DOMAIN": "http://:3000"
 };

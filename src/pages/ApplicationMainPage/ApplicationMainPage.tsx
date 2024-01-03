@@ -10,7 +10,6 @@ import {
 } from 'services';
 
 const FrontApplication = () => {
-  const [bandLogo, setBandLogo] = useState<string>('');
   const [bandInfo, setBandInfo] = useState<string>('');
   const [socials, setSocials] = useState<SocialsTypes[]>([]);
   const [bandMembers, setBandMembers] = useState<BandMemberTypes[]>([]);
@@ -23,7 +22,6 @@ const FrontApplication = () => {
     try {
       const response = await getAboutBandInfo();
 
-      setBandLogo(response?.data?.image);
       setBandInfo(response?.data?.about);
     } catch (error) {}
   }, []);
@@ -56,7 +54,7 @@ const FrontApplication = () => {
 
   const showMemberIcon = () => {
     if (!selectedMember) {
-      return `${process.env.REACT_APP_API_URL}/${bandLogo}`;
+      return BandLogo;
     } else if (selectedMember.image.length === 0) {
       return memberIcon;
     } else {
